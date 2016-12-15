@@ -12,14 +12,17 @@ This repository contains the sources for the following [docker](https://docker.i
 
 ```bash
 # Pull image
-git clone https://github.com/idoall/docker-golang1.7.4-base.git
-cd docker-golang1.7.4-base
+git clone https://github.com/idoall/docker.git
+cd golang1.7.4
 
 # hack hack hack
 
 # Build
-docker build -t idoall/centos7-golang-revel .
+docker build -t idoall/golang .
+
+# view version
+docker run -it --name=golang --rm idoall/golang go version
 
 # Run
-docker run -it --name=golang idoall/golang-1.7.4-base /bin/bash
+docker run -it --name=golang idoall/golang /bin/bash
 ```

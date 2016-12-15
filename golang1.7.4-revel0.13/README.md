@@ -10,13 +10,13 @@ This repository contains the sources for the following [docker](https://docker.i
 
 ```bash
 # Pull image
-git clone https://github.com/idoall/docker-golang1.7.4-revel0.13.git
-cd docker-golang1.7.4-revel0.13
+git clone https://github.com/idoall/docker.git
+cd golang1.7.4-revel0.13
 
 # hack hack hack
 
 # Build
-docker build -t idoall/docker-golang1.7.4-revel0.13 .
+docker build -t idoall/golang-revel .
 
 # create overlay network
 # 为新创建的 docker-net 指定10.0.9.0网段，也可以不指定网段
@@ -27,7 +27,7 @@ docker service create \
 --network idoall-org \
 --name golang-revel \
 -p 9000:9000 \
-idoall/docker-golang1.7.4-revel0.13
+idoall/golang-revel
 
 # Open http://localhost:9000 in your browser and you should see "It works!"
 ```

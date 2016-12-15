@@ -1,10 +1,15 @@
-FROM idoall/docker-golang1.7.4-base
+FROM idoall/golang
 MAINTAINER lion <lion.net@163.com>
 
+
+# -----------------------------------------------------------------------------
 # 由于G.F.W的原因，国内只能做成包的形式
+# -----------------------------------------------------------------------------
 ADD golang.tar.gz /home/work
 
+# -----------------------------------------------------------------------------
 # 增加时区文件
+# -----------------------------------------------------------------------------
 ADD zoneinfo.tar.gz /usr/share
 
 ADD _app /home/work/_app
@@ -36,5 +41,8 @@ RUN go install github.com/revel/cmd/revel \
     && cd /home/work/golang \
     && revel new github.com/idoall.org/my-app
 
+
+# 映射端口
+EXPOSE 80 9000
 
 CMD ["/usr/bin/supervisord", "-n", "-c", "/home/work/_app/supervisord/supervisord.ini"]
