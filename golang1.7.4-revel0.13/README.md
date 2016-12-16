@@ -3,7 +3,7 @@
 
 
 This repository contains the sources for the following [docker](https://docker.io) base images:
-- [`idoall/docker-golang1.7.4-revel0.13`](https://hub.docker.com/r/idoall/docker-golang1.7.4-revel0.13/)
+- [`idoall/golang-revel/`](https://hub.docker.com/r/idoall/golang-revel//)
 
 
 ## Developing
