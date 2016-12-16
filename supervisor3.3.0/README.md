@@ -19,11 +19,15 @@ docker build -t idoall/supervisor .
 
 # run
 docker run -d \
---name=supervisor \
---hostname=supervisor \
+--name supervisor \
+--hostname supervisor \
+-p 2222:22 \
 idoall/supervisor
 
-# view version
+# view supervisor version
 docker exec -it supervisor supervisord -v
+
+# ssh  user:work   password:123456
+ssh work@<your ip> -p 2222
 
 ```

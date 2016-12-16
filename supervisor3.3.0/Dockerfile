@@ -4,14 +4,15 @@ MAINTAINER lion <lion.net@163.com>
 # -----------------------------------------------------------------------------
 # Ensure UTF-8
 # -----------------------------------------------------------------------------
-ENV LANG       en_US.UTF-8
-ENV LC_ALL     en_US.UTF-8
+ENV LANG       en_US.UTF-8 \
+    LC_ALL     en_US.UTF-8
 
 
 # -----------------------------------------------------------------------------
 # 解决出现 Package 'dialog' has no installation candidate 的提示
 # -----------------------------------------------------------------------------
 ARG DEBIAN_FRONTEND=noninteractive
+ADD _app /home/work/_app
 
 
 # -----------------------------------------------------------------------------
@@ -44,10 +45,23 @@ RUN yum install -y wget iputils \
 ADD supervisor-3.3.0.tar.gz /home/work/_src
 RUN cd /home/work/_src/supervisor-3.3.0 \
     && python setup.py install \
-    && mkdir -p /home/work/_app/supervisord/ \
+    && mkdir -p /home/work/_app/supervisord/ /home/work/_logs/supervisord/ \
     && echo_supervisord_conf > /home/work/_app/supervisord/supervisord.ini \
     && echo "[include]" >> /home/work/_app/supervisord/supervisord.ini \
-    && echo "files = /home/work/_app/supervisord/conf.d/*.ini" >> /home/work/_app/supervisord/supervisord.ini
+    && echo "files = /home/work/_app/supervisord/conf.d/*.ini" >> /home/work/_app/supervisord/supervisord.ini \
+    && sed -i "s/logfile=\/tmp\/supervisord.log/logfile=\/home\/work\/_logs\/supervisord\/supervisord.log/" /home/work/_app/supervisord/supervisord.ini
+
+
+# -----------------------------------------------------------------------------
+# 安装sshd
+# -----------------------------------------------------------------------------   
+RUN yum install -y openssh-server openssh-client \
+#    && sed -i 's/#RSAAuthentication yes/RSAAuthentication yes/g' /etc/ssh/sshd_config \
+#    && sed -i 's/#PubkeyAuthentication yes/PubkeyAuthentication yes/g' /etc/ssh/sshd_config \
+    && ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key \
+    && ssh-keygen -t ecdsa -f /etc/ssh/ssh_host_ecdsa_key \
+    && ssh-keygen -t ed25519 -f /etc/ssh/ssh_host_ed25519_key
+
 
 # -----------------------------------------------------------------------------
 # 设置work目录的用户和用户组
@@ -59,6 +73,12 @@ RUN chown -R work:work /home/work/*
 # # Define working directory.
 # -----------------------------------------------------------------------------
 WORKDIR /home/work
+
+
+# -----------------------------------------------------------------------------
+# 映射端口
+# -----------------------------------------------------------------------------
+EXPOSE 22
 
 
 # 表示镜像运行默认参数，可被重写覆盖
