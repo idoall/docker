@@ -1,8 +1,8 @@
-# docker-supervisor
+# docker-centos6.8-supervisor
 
 
 This repository contains the sources for the following [docker](https://docker.io) base images:
-- [`centos:7`](https://hub.docker.com/r/library/centos/)
+- [`centos:6.8`](https://hub.docker.com/r/library/centos/)
 
 
 ## Developing
