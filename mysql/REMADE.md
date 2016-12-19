@@ -1,8 +1,8 @@
 # docker-centos6.8-mysql5.7.11
 
 
-This repository contains the sources for the following [docker](https://docker.io) base images:
-- [`centos:6.8`](https://hub.docker.com/r/library/centos/)
+This repository contains the sources for the following base images:
+- [`idoall/supervisor`](https://hub.docker.com/r/idoall/supervisor/)
 
 
 ## Developing
