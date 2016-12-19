@@ -26,8 +26,10 @@ docker run -d \
 -p 2222:22 \
 idoall/mysql
 
+
 # ssh  user:work   password:123456
 ssh work@<your ip> -p 2222
+
 ```
 
 # Configuration without a cnf file
@@ -54,7 +56,11 @@ idoall/mysql
 ```
 
 
+<<<<<<< HEAD
 # MYSQL_ROOT_PASSWORD 初始化root密码
+=======
+# MYSQL_ROOT_PASSWORD 初台化root密码
+>>>>>>> upstream/master
 ```bash
 docker run -d \
 --name mysql \
