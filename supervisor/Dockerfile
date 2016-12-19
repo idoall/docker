@@ -18,10 +18,10 @@ ADD _app /home/work/_app
 # 更改源为阿里云
 # -----------------------------------------------------------------------------
 RUN yum install -y wget \
-    && cd /etc/yum.repos.d/ \
-    && mv CentOS-Base.repo CentOS-Base.repo.bak \
-    && wget -O CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-6.repo \
-    && wget http://mirrors.163.com/.help/CentOS6-Base-163.repo \
+#    && cd /etc/yum.repos.d/ \
+#    && mv CentOS-Base.repo CentOS-Base.repo.bak \
+#    && wget -O CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-6.repo \
+#    && wget http://mirrors.163.com/.help/CentOS6-Base-163.repo \
     && yum clean all \
     && yum makecache \
     \
