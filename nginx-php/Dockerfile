@@ -8,7 +8,14 @@ MAINTAINER lion <lion.net@163.com>
 # -----------------------------------------------------------------------------
 RUN rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm \
     && rpm -Uvh https://mirror.webtatic.com/yum/el6/latest.rpm \
-    && yum install -y php56w php56w-cli php56w-fpm php56w-opcache php56w-gd php56w-devel php56w-bcmath  php56w-imap php56w-mbstring php56w-mcrypt php56w-mysql php56w-odbc php56w-pdo php56w-pear php56w-pecl-geoip php56w-pecl-imagick php56w-pecl-memcache php56w-xml php56w-xmlrpc php56w-opcache php56w-intl \
+    && yum update -y \
+    && yum clean all \
+    && yum makecache \
+    \
+# -----------------------------------------------------------------------------
+# 安装PHP 56
+# -----------------------------------------------------------------------------
+    && yum install -y php56w php56w-cli php56w-fpm php56w-opcache php56w-gd php56w-devel php56w-bcmath  php56w-imap php56w-mbstring php56w-mcrypt php56w-mysql php56w-odbc php56w-pdo php56w-pear php56w-pecl-geoip php56w-pecl-imagick php56w-pecl-memcache php56w-xml php56w-xmlrpc php56w-opcache php56w-intl php56w-pecl-redis php56w-pecl-memcache php56w-pecl-memcached \
     \
 # -----------------------------------------------------------------------------
 # 修改配置文件
@@ -29,10 +36,12 @@ RUN rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.
     && echo "<?php  phpinfo();  ?>" > /home/work/_app/nginx/html/index.php \
     \
 # -----------------------------------------------------------------------------
-# 安装php-redis
+# 删除多余文件
 # -----------------------------------------------------------------------------
-    && rpm -Uvh http://mirrors.ustc.edu.cn/fedora/epel/6/x86_64/epel-release-6-8.noarch.rpm \
-    && yum install -y php56w-pecl-redis
+    && mkdir -p /home/work/_script/ \
+    && yum clean all \
+    && rm -rf /home/work/_src/*
+
 
 # -----------------------------------------------------------------------------
 # 通过supervisor启动 php5-fpm

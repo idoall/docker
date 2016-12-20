@@ -24,6 +24,7 @@ RUN yum install -y libaio \
 # 删除多余文件
 # -----------------------------------------------------------------------------
     && mkdir -p /home/work/_script/ \
+    && yum clean all \
     && rm -rf /home/work/_src/*
 
 
