@@ -70,6 +70,12 @@ RUN yum install -y openssh-server openssh-client \
     && ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key \
     && ssh-keygen -t dsa -f /etc/ssh/ssh_host_dsa_key
 
+# -----------------------------------------------------------------------------
+# 删除多余文件
+# -----------------------------------------------------------------------------
+RUN mkdir -p /home/work/_script/ \
+    && yum clean all \
+    && rm -rf /home/work/_src/*
 
 # -----------------------------------------------------------------------------
 # 设置work目录的用户和用户组
