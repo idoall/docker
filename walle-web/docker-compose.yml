@@ -1,0 +1,31 @@
+version: '2'
+services:
+  walle-web-db:
+    image: "idoall/mysql"
+    ports:
+     - "6033:3306"
+    volumes:
+       - ./mysqldata:/home/work/_app/mysql/data/
+  walle-web:
+    image: "idoall/walle-web"
+    # build: 
+    #     context: .
+    #     dockerfile: Dockerfile
+    ports:
+     - "80:80"
+    links:
+     - walle-web-db:mysql
+    depends_on:
+     - walle-web-db
+  #   - postgres
+  # volumes:
+  #   - ./app/src:/usr/share/nginx/html
+  #   # Your php.ini
+  #   - /home/config/php.ini:/usr/local/etc/php/php.ini:ro
+  # environment:
+    # Set your APP env variables here:
+    # - APP_KEY=
+    # - DB_HOST=
+    # - DB_DATABASE=
+    # - DB_USERNAME=
+    # - DB_PASSWORD=
