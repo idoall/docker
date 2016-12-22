@@ -1,12 +1,12 @@
 
-golang1.7.4-docker
+golang1.7.4-revel0.13-ssh
 =============
 
 
-This repository contains the sources for the following [docker](https://docker.io) base images:
-- [`library/alpine`](https://hub.docker.com/r/library/alpine/)
+This repository contains the sources for the following base images:
+- [`idoall/supervisor`](https://hub.docker.com/r/idoall/supervisor/)
 
-> A minimal Docker image based on Alpine Linux with a complete package index and only 5 MB in size!
+
 
 ## Developing
 
@@ -17,12 +17,19 @@ cd golang-revel-ssh
 
 # hack hack hack
 
-# Build
+# build
 docker build -t idoall/golang-revel-ssh .
 
-# view version
-docker run -it --name=golang --rm idoall/golang go version
-
 # Run
-docker run -it --name=golang idoall/golang /bin/bash
+docker run -it \
+--name golang \
+--hostname golang \
+-p 80:80 \
+-p 2222:22 \
+idoall/golang-revel-ssh
+
+# Open http://localhost in your browser and you should see "It works!"
+
+# ssh  user:work   password:123456
+ssh work@<your ip> -p 2222
 ```

@@ -36,6 +36,16 @@ RUN unzip /go-release-branch.go1.4.zip -d /home/work \
     && GOBIN=/home/work/go/bin \
     && ./make.bash
 
+
+# -----------------------------------------------------------------------------
+# 设置 golang 的环境变量
+# -----------------------------------------------------------------------------
+ENV GOPATH /home/work/golang
+ENV GOROOT /home/work/go
+ENV GOBIN $GOROOT/bin
+ENV PATH $GOBIN:$PATH
+
+
 # -----------------------------------------------------------------------------
 # 由于G.F.W的原因，国内只能做成包的形式
 # -----------------------------------------------------------------------------
@@ -50,14 +60,14 @@ RUN go install github.com/revel/cmd/revel \
 # -----------------------------------------------------------------------------
     && cd /home/work/golang \
     && revel new github.com/idoall.org/my-app \
+    && sed -i "s/http.port = 9000/http.port = 80/" /home/work/golang/src/github.com/idoall.org/my-app/conf/app.conf \
     \
 # -----------------------------------------------------------------------------
 # 删除一些多余的东西
 # -----------------------------------------------------------------------------
     && rm -rf /go$GOLANG_VERSION.src.tar.gz /go-release-branch.go1.4.zip \
-    && rm -rf /home/work/go1.4 \
-    && yum clean all \
-    && rm -rf /home/work/_src/*
+    && rm -rf /home/work/go1.4 /home/work/_script /home/work/_src \
+    && yum clean all
 
 
 # -----------------------------------------------------------------------------
@@ -65,13 +75,6 @@ RUN go install github.com/revel/cmd/revel \
 # -----------------------------------------------------------------------------
 ADD _app /home/work/_app
 
-# -----------------------------------------------------------------------------
-# 设置 golang 的环境变量
-# -----------------------------------------------------------------------------
-ENV GOPATH /home/work/golang
-ENV GOROOT /home/work/go
-ENV GOBIN $GOROOT/bin
-ENV PATH $GOBIN:$PATH
 
 # 映射端口
 EXPOSE 80 9000
