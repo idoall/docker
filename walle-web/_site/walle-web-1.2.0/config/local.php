@@ -12,9 +12,9 @@ putenv('LC_ALL=zh_CN.UTF-8');
 return [
     'components' => [
         'db' => [
-            'dsn'       => isset($_ENV['WALLE_DB_DSN'])  ? $_ENV['WALLE_DB_DSN']  : 'mysql:host=mysql;dbname=walle',
-            'username'  => isset($_ENV['WALLE_DB_USER']) ? $_ENV['WALLE_DB_USER'] : 'root',
-            'password'  => isset($_ENV['WALLE_DB_PASS']) ? $_ENV['WALLE_DB_PASS'] : '123456',
+            'dsn'       => isset($_ENV['WALLE_DB_DSN'])  ? $_ENV['WALLE_DB_DSN']  : 'mysql:host=IDOALL_HOST;dbname=IDOALL_DB',
+            'username'  => isset($_ENV['WALLE_DB_USER']) ? $_ENV['WALLE_DB_USER'] : 'IDOALL_USERNAME',
+            'password'  => isset($_ENV['WALLE_DB_PASS']) ? $_ENV['WALLE_DB_PASS'] : 'IDOALL_PASSWORD',
         ],
         'mail' => [
             'transport' => [

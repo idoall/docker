@@ -28,8 +28,7 @@ RUN cd /home/work/_site/walle-web-1.2.0 \
 # -----------------------------------------------------------------------------
 # 删除多余文件
 # -----------------------------------------------------------------------------
-RUN mkdir -p /home/work/_script/ \
-    && yum clean all \
+RUN yum clean all \
     && rm -rf /home/work/_src/* \
     && chown -R work:work /home/work/*
 
@@ -40,6 +39,11 @@ COPY walle-web-init.sh /home/work/_script/walle-web-init.sh
 RUN chmod 777 /home/work/_script/walle-web-init.sh
 
 # -----------------------------------------------------------------------------
-# 设置 Nginx 站点目录
+# 通过 supervisor 启动 walle-web
 # -----------------------------------------------------------------------------
-ADD _app /home/work/_app
+ADD _app/supervisord/conf.d/walle-web.ini /home/work/_app/supervisord/conf.d/walle-web.ini
+
+# -----------------------------------------------------------------------------
+# 修改 Nginx 的配置文件支持PHP，并配置默认站点
+# -----------------------------------------------------------------------------
+ADD _app/nginx/conf/conf.d/default.conf /home/work/_app/nginx/conf/conf.d/default.conf
