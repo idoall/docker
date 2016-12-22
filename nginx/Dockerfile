@@ -34,13 +34,19 @@ RUN mkdir -p /home/work/_script /home/work/_app/nginx \
 #   设置环境变量
 # -----------------------------------------------------------------------------
     && echo "export PATH=\$PATH:/home/work/_app/nginx/sbin" >> /etc/profile \
-    && echo "export PATH=\$PATH:/home/work/_app/nginx/sbin" >> ~/.bashrc
-
+    && echo "export PATH=\$PATH:/home/work/_app/nginx/sbin" >> ~/.bashrc \
+    && sed -i "s/#user  nobody;/user  work;/" /home/work/_app/nginx/conf/nginx.conf \
+    \
+# -----------------------------------------------------------------------------
+# 删除多余文件
+# -----------------------------------------------------------------------------
+    && yum clean all \
+    && rm -rf /home/work/_src/*
 
 # -----------------------------------------------------------------------------
-# 通过supervisor启动 tengine
+# 通过 supervisor 启动 Tengine/2.2.0 (Nginx/1.8.1)
 # -----------------------------------------------------------------------------
-ADD _app /home/work/_app
+ADD _app/supervisord/conf.d/nginx.ini /home/work/_app/supervisord/conf.d/nginx.ini
 
 
 # -----------------------------------------------------------------------------

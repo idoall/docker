@@ -69,14 +69,7 @@ RUN go install github.com/revel/cmd/revel \
     && rm -rf /home/work/go1.4 /home/work/_script /home/work/_src \
     && yum clean all
 
-
 # -----------------------------------------------------------------------------
-# 通过 supervisor 调用 revel 启动demo
+# 通过 supervisor 启动 revel
 # -----------------------------------------------------------------------------
-ADD _app /home/work/_app
-
-
-# 映射端口
-EXPOSE 80 9000
-
-WORKDIR /home/work
+ADD _app/supervisord/conf.d/idoall.org.ini /home/work/_app/supervisord/conf.d/idoall.org.ini

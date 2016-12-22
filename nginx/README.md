@@ -2,7 +2,7 @@
 
 [TOC]
 
-# Docker-Centos6.8-Tengine/2.2.0 (nginx/1.8.1)
+# Docker-Centos6.8-Tengine/2.2.0 (Nginx/1.8.1)
 
 
 This repository contains the sources for the following base images:

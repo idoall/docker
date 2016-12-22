@@ -11,7 +11,6 @@ ENV LANG       en_US.UTF-8
 # 解决出现 Package 'dialog' has no installation candidate 的提示
 # -----------------------------------------------------------------------------
 ARG DEBIAN_FRONTEND=noninteractive
-ADD _app /home/work/_app
 
 
 # -----------------------------------------------------------------------------
@@ -43,7 +42,7 @@ RUN yum install -y wget \
 # -----------------------------------------------------------------------------
 # 创建work用户
 # -----------------------------------------------------------------------------
-    && useradd -r -m -s /bin/bash work \
+    && useradd -r -m work \
     && echo "work:123456" | chpasswd \
     && echo "root:123456" | chpasswd 
 
@@ -58,29 +57,33 @@ RUN cd /home/work/_src/supervisor-3.3.0 \
     && echo_supervisord_conf > /home/work/_app/supervisord/supervisord.ini \
     && echo "[include]" >> /home/work/_app/supervisord/supervisord.ini \
     && echo "files = /home/work/_app/supervisord/conf.d/*.ini" >> /home/work/_app/supervisord/supervisord.ini \
-    && sed -i "s/logfile=\/tmp\/supervisord.log/logfile=\/home\/work\/_logs\/supervisord\/supervisord.log/" /home/work/_app/supervisord/supervisord.ini
-
-
+    && sed -i "s/logfile=\/tmp\/supervisord.log/logfile=\/home\/work\/_logs\/supervisord\/supervisord.log/" /home/work/_app/supervisord/supervisord.ini \
+    \
 # -----------------------------------------------------------------------------
 # 安装sshd
 # -----------------------------------------------------------------------------   
-RUN yum install -y openssh-server openssh-client \
+    && yum install -y openssh-server openssh-client \
 #    && sed -i 's/#RSAAuthentication yes/RSAAuthentication yes/g' /etc/ssh/sshd_config \
 #    && sed -i 's/#PubkeyAuthentication yes/PubkeyAuthentication yes/g' /etc/ssh/sshd_config \
     && ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key \
-    && ssh-keygen -t dsa -f /etc/ssh/ssh_host_dsa_key
-
+    && ssh-keygen -t dsa -f /etc/ssh/ssh_host_dsa_key \
+    \
 # -----------------------------------------------------------------------------
 # 删除多余文件
 # -----------------------------------------------------------------------------
-RUN mkdir -p /home/work/_script/ \
+    && mkdir -p /home/work/_script/ \
     && yum clean all \
-    && rm -rf /home/work/_src/*
-
+    && rm -rf /home/work/_src/* \
+    \
 # -----------------------------------------------------------------------------
 # 设置work目录的用户和用户组
 # -----------------------------------------------------------------------------
-RUN chown -R work:work /home/work/*
+    && chown -R work:work /home/work/*
+
+# -----------------------------------------------------------------------------
+# 使用 supervisor 启动sshd的配置文件
+# -----------------------------------------------------------------------------
+ADD _app /home/work/_app
 
 
 # -----------------------------------------------------------------------------
