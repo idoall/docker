@@ -1,13 +1,15 @@
 version: '2'
 services:
   walle-web-db:
-    image: "idoall/mysql"
+    image: "idoall/mysql:1.5"
     ports:
      - "6033:3306"
+    # expose:
+    #   - "3306"
     volumes:
-       - ./mysqldata:/home/work/_app/mysql/data/
+       - ./walle-web-db:/home/work/_app/mysql/data/
   walle-web:
-    image: "idoall/walle-web"
+    image: "idoall/walle-web:1.6"
     # build: 
     #     context: .
     #     dockerfile: Dockerfile
