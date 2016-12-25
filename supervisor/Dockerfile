@@ -29,7 +29,7 @@ RUN yum install -y wget \
 # -----------------------------------------------------------------------------
     && yum install -y wget python-setuptools iputils bash-completion \
     && yum install -y net-tools vim arping \
-    && yum install -y zlib zlib-devel openssl openssl--devel pcre pcre-devel libtool \
+    && yum install -y zlib zlib-devel openssl openssl--devel openssh-clients pcre pcre-devel libtool \
     && yum install -y tar unzip man cmake patch lsof \
     && yum install -y cyrus-sasl-plain cyrus-sasl cyrus-sasl-devel cyrus-sasl-lib \
     && yum install -y autoconf file gcc gcc-c++ make pkg-config re2c pkg-config \
