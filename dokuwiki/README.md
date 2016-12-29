@@ -2,11 +2,11 @@
 
 [TOC]
 
-# Docker-Centos6.8-Tengine/2.2.0 (nginx/1.8.1)-PHP5.6.29
+# Docker-Centos6.8-Tengine/2.2.0 (nginx/1.8.1)-PHP5.6.29-dowuwiki2016-06-26
 
 
 This repository contains the sources for the following base images:
-- [`idoall/nginx`](https://hub.docker.com/r/idoall/nginx/)
+- [`idoall/nginx-php`](https://hub.docker.com/r/idoall/nginx-php/)
 
 
 ## Developing
