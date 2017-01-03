@@ -87,7 +87,7 @@ idoall/jira
 
 > Product：JIRA Software
 >
-> License type：JIRA Software (Data Center)
+> License type：JIRA Software (Server)
 >
 > Organization：输入你的组织名称
 >
@@ -105,13 +105,23 @@ idoall/jira
 
 > 如果出现错误，重新执行第1步
 
-4、进入容器
+
+
+​	6、进入容器
 
 ```bash
 docker exec -it jira /bin/bash
 ```
-使用以下命令重启服务，会自动改为2033年到期。
+​	使用以下命令重启服务，会自动改为2033年到期。
 ```bash
 service jira stop && service jira start
 ```
-5、中文版在 https://translations.atlassian.com/dashboard/download?lang=zh_CN#/JIRA Core/7.2.1 下载中文包，然后登录到jira后在
+
+
+​	7、中文版在 https://translations.atlassian.com/dashboard/download?lang=zh_CN#/JIRA Core/7.2.1 下载中文包.
+
+​	然后登录到jira，将鼠标移到右上角设置图标点击，在弹出 的下拉菜单中选择`Add-ons`，在左侧点击`Manage add-ons`，在右侧点击`Upload add-on`，在弹出的窗口中，选择你下载的中文包，然后点击`Upload`，耐心等待一下，看到提示`Installed and ready to go!`说明中文包安装成功了。
+
+​	将鼠标移到右上角设置图标点击，在弹出 的下拉菜单中选择`System`，点击右侧的`Edit Settings`，找到`Internationalization`，将`Indexing language`选择为`Chinese`，将`Default language`选择为`中文(中国)`，然后将页面拖动到最下方，点击`Update`。
+
+​	这时，你将看到JIRA彻底的变成了中文版。
