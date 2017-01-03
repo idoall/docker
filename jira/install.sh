@@ -4,16 +4,19 @@
 set timeout -1
 
 #设置变量
-set will_install Enter
+set will_install o
 set express_install 1
+set install_as_service i
 
 # 启动安装程序
 spawn /home/work/_src/atlassian-jira-software-7.2.2-x64.bin
 
 expect {
-    "OK*" { send "$will_install\r"; exp_continue}
-    "Express Install (use default settings) [1]*" { send "$express_install\r" }
+    "o, Enter" { send "o\r";exp_continue}
+    "use default settings" { send "1\r";exp_continue }
+    "i, Enter" { send "i\r"; }
 }
 
-#之后将ssh控制权转交给用户
-interact
+
+expect eof
+exit
