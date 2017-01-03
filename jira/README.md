@@ -41,7 +41,10 @@ docker run -d \
 -p 20015:22 \
 idoall/jira
 
-# ssh  user:work   password:123456
-ssh work@<your ip> -p 2222
-
 ```
+
+## hack
+1、打开浏览器：http://localhost:20012
+2、创建数据库帐号和链接
+3、在输入jira的license的时候，上网申请个临时30天的，使用`service jira stop && service jira start`重启服务器，会自动改为2033年到期。
+4、中文版在 https://translations.atlassian.com/dashboard/download?lang=zh_CN#/JIRA Core/7.2.1 下载中文包，然后登录到jira后在
