@@ -48,8 +48,8 @@ ADD install.sh /home/work/_script
 # 安装jira
 # -----------------------------------------------------------------------------
 RUN cd /home/work/_src \
-    && wget https://downloads.atlassian.com/software/jira/downloads/atlassian-jira-software-7.2.2-x64.bin \
-    && chmod 755 atlassian-jira-software-7.2.2-x64.bin \
+    && wget https://downloads.atlassian.com/software/jira/downloads/atlassian-jira-software-7.2.7-x64.bin \
+    && chmod 755 atlassian-jira-software-7.2.7-x64.bin \
     && chown work:work -R /home/work \
     && expect /home/work/_script/install.sh \
     && unzip jira7.2_hack.zip \

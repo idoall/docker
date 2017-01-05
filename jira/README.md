@@ -1,4 +1,8 @@
-# docker-centos6.8-supervisor-jira7.2汉化破解版
+# 目录
+
+[TOC]
+
+# docker-centos6.8-supervisor-jira7.2.7汉化破解版
 
 
 This repository contains the sources for the following base images:
@@ -21,7 +25,6 @@ docker build -t idoall/jira .
 docker run -d \
     --name=mysql-db \
     --hostname=mysql-db \
-    -v ./mysql-db:/var/lib/mysql \
     -p 20010:3306 \
     -e MYSQL_ROOT_PASSWORD=123456 \
     -e MYSQL_DATABASE=jira \
@@ -42,14 +45,29 @@ docker run -d \
 idoall/jira
 ```
 
-## hack
-​	1、打开浏览器：http://localhost:20012，选择`I'll set it up myself`-`Next`
-
-> 如遇到访问错误，请执行步骤4
 
 
 
-​	2、在`Database setup`，选择`My Own Database`，按以下信息选择和输入
+
+# hack
+
+
+
+## 1、打开浏览器：http://localhost:20012
+
+> 如遇到访问错误，请执行步骤10
+
+
+
+## 2、JIRA setup
+
+​	选择`I'll set it up myself`-`Next`
+
+
+
+## 3、Database setup
+
+​	在`Database setup`，选择`My Own Database`，按以下信息选择和输入
 
 > Database Type：MySQL
 >
@@ -69,7 +87,7 @@ idoall/jira
 
 
 
-​	3、Set up application properties
+## 4、Set up application properties
 
 ​	输入你的`Application Title`，选择`Mode`，输入`Base URL`，点击`Next`
 
@@ -79,7 +97,7 @@ idoall/jira
 
 
 
-​	4、Specify your license key
+## 5、Specify your license key
 
 ​	点击`generate a JIRA trial license`，上网申请个临时30天的许可证。
 
@@ -99,29 +117,54 @@ idoall/jira
 
 ​	
 
-​	5、Set up administrator account
+## 6、Set up administrator account
 
-​	输入你的全称、邮件、用户名、密码，点击`Next`
+​	输入你的全称：root、邮件：xxx@xxx.com、用户名：root、密码：123456，点击`Next`
 
 > 如果出现错误，重新执行第1步
 
 
 
-​	6、进入容器
+## 7、Set up email notifications
 
-```bash
-docker exec -it jira /bin/bash
-```
-​	使用以下命令重启服务，会自动改为2033年到期。
-```bash
-service jira stop && service jira start
-```
+​		`Configure Email Notifications`选择`Later`，然后点击`Finish`
 
 
-​	7、中文版在 https://translations.atlassian.com/dashboard/download?lang=zh_CN#/JIRA Core/7.2.1 下载中文包.
 
-​	然后登录到jira，将鼠标移到右上角设置图标点击，在弹出 的下拉菜单中选择`Add-ons`，在左侧点击`Manage add-ons`，在右侧点击`Upload add-on`，在弹出的窗口中，选择你下载的中文包，然后点击`Upload`，耐心等待一下，看到提示`Installed and ready to go!`说明中文包安装成功了。
+## 8、Welcome to JIRA, root!
 
-​	将鼠标移到右上角设置图标点击，在弹出 的下拉菜单中选择`System`，点击右侧的`Edit Settings`，找到`Internationalization`，将`Indexing language`选择为`Chinese`，将`Default language`选择为`中文(中国)`，然后将页面拖动到最下方，点击`Update`。
+​	选择`English (United States) [Default]`，点击`Continue`，设置头像时，点击`Next`。这样就完成了`JIRA`的设置。
+
+
+
+## 9、创建一个新项目
+
+​	进行完步骤8后，会进入到`JIRA`的首页，可以看到`Welcome!`的文字。
+
+​	点击`Create a new project`，然后点击`Next`，继续点击`Select`。
+
+​	在`Name`处输入test，点击`Submit`。
+
+
+
+## 9、中文汉化
+
+​	在 [https://translations.atlassian.com/dashboard/download?lang=zh_CN#/JIRA Core/7.2.7](https://translations.atlassian.com/dashboard/download?lang=zh_CN#/JIRA Core/7.2.7)下载中文包，保存到你的本地。
+
+​	如果你是在步骤8操作以后，将鼠标移到右上角设置图标`长的像一个齿轮`点击，在弹出的下拉菜单中选择`Add-ons`，在左侧点击`Manage add-ons`，在右侧点击`Upload add-on`，在弹出的窗口中，选择你下载的中文包，然后点击`Upload`，耐心等待一下，看到弹出窗口提示`Installed and ready to go!`说明中文包安装成功了。
+
+​	将鼠标移到右上角设置图标点击，在弹出的下拉菜单中选择`System`，点击右侧的`Edit Settings`，找到`Internationalization`，将`Indexing language`选择为`Chinese`，将`Default language`选择为`中文(中国)`，然后将页面拖动到最下方，点击`Update`。
 
 ​	这时，你将看到JIRA彻底的变成了中文版。
+
+
+
+## 10、进入容器，重启jira服务
+
+​	使用以下命令重启`JIRA`服务
+
+```bash
+docker exec jira sh service jira stop && docker exec jira sh service jira start
+```
+
+​	
