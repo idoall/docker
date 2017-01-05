@@ -1,18 +1,21 @@
 version: '2'
 services:
   walle-web-db:
-    image: "idoall/mysql:1.5"
+    image: "mysql:5.7"
     ports:
      - "6033:3306"
     # expose:
     #   - "3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456
+      - MYSQL_DATABASE=walle
     volumes:
        - ./walle-web-db:/home/work/_app/mysql/data/
   walle-web:
-    image: "idoall/walle-web:1.6"
-    # build: 
-    #     context: .
-    #     dockerfile: Dockerfile
+    image: "idoall/walle-web"
+    build: 
+        context: .
+        dockerfile: Dockerfile
     ports:
      - "80:80"
     links:
@@ -31,3 +34,5 @@ services:
     # - DB_DATABASE=
     # - DB_USERNAME=
     # - DB_PASSWORD=
+    # 
+    # 

@@ -38,13 +38,18 @@ RUN rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.
 # -----------------------------------------------------------------------------
 # 删除多余文件
 # -----------------------------------------------------------------------------
-    && mkdir -p /home/work/_script/ \
     && yum clean all \
     && rm -rf /home/work/_src/*
 
 
 # -----------------------------------------------------------------------------
-# 通过supervisor启动 php5-fpm
-# 添加nginx配置文件可以浏览PHP
+# 通过 supervisor 启动 php-fpm
 # -----------------------------------------------------------------------------
-ADD _app /home/work/_app
+ADD _app/supervisord/conf.d/php5-fpm.ini /home/work/_app/supervisord/conf.d/php5-fpm.ini
+
+
+# -----------------------------------------------------------------------------
+# 修改 Nginx 的配置文件支持 PHP，并配置默认站点
+# -----------------------------------------------------------------------------
+ADD _app/nginx/conf/nginx.conf /home/work/_app/nginx/conf/nginx.conf
+ADD _app/nginx/conf/conf.d/default.conf /home/work/_app/nginx/conf/conf.d/default.conf

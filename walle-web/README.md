@@ -18,14 +18,41 @@ cd walle-web
 
 # hack hack hack
 
-# Build and Run
-docker-compose up
+# Build
+docker build -t idoall/walle-web .
+
+# Run
+docker run -d \
+--name walle-web \
+--hostname walle-web \
+--link mysql:mysql \
+-p 80:80 \
+-p 2222:22 \
+idoall/walle-web
 
 # default   user-admin  password-admin
 # Open http://localhost in your browser and you should see
 ```
 
+## Environment Variables
 
+生成容器时的一些参数
+
+### `MYSQL_HOST`
+
+MySql的地址，默认是创建连接后的`mysql`
+
+### `MYSQL_DB`
+
+数据库名称，默认是`walle-web`
+
+### `MYSQL_USERNAME`
+
+数据库帐号，默认是`root`
+
+### `MYSQL_PASSWORD`
+
+数据库密码，默认是`123456`
 
 # About Walle-web
 
