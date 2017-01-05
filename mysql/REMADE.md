@@ -1,9 +1,10 @@
-# docker-centos6.8-mysql5.7.11
+# docker-centos6.8-mysql
 
+Supported tags and respective Dockerfile links
 
-This repository contains the sources for the following base images:
-- [`mysql:5.7`](https://hub.docker.com/_/mysql/)
-
+- [`8.0.0`, `8.0`, `8` (*8.0/Dockerfile*)](https://github.com/docker-library/mysql/blob/4dd33136c4739667a223d39b6f829beb27b235cf/8.0/Dockerfile)
+- [5.7.17`, `5.7`, `5`, `latest` (*5.7/Dockerfile*)](https://github.com/docker-library/mysql/blob/c207cc19a272a6bfe1916c964ed8df47f18479e7/5.7/Dockerfile)
+- [`5.6.35`, `5.6` (*5.6/Dockerfile*)](https://github.com/docker-library/mysql/blob/fd3bdabe513643b62fc379f365b2b5dd10886311/5.6/Dockerfile)
 
 ## Developing
 
@@ -15,7 +16,7 @@ cd mysql
 # hack hack hack
 
 # build
-docker build -t idoall/mysql .
+docker build -t idoall/mysql:tag ./tag
 
 # run
 docker run -d \
@@ -24,8 +25,7 @@ docker run -d \
 -p 6033:3306 \
 -v datadir:/var/lib/mysql \
 -e MYSQL_ROOT_PASSWORD=123456 \
--e MYSQL_DATABASE=walle-web \
-idoall/mysql
+idoall/mysql:tag
 ```
 
 
