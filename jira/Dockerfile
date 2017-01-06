@@ -31,7 +31,9 @@ RUN yum makecache \
     && echo "export JAVA_HOME=/usr/lib/jvm/jdk1.8.0_111" >>  /etc/profile \
     && echo "export JRE_HOME=\$JAVA_HOME/jre" >>  /etc/profile \
     && echo "export CLASSPATH=.:\$JAVA_HOME/lib:\$JRE_HOME/lib" >>  /etc/profile \
-    && echo "PATH=\$JAVA_HOME/bin:\$PATH" >>  /etc/profile
+    && echo "PATH=\$JAVA_HOME/bin:\$PATH" >>  /etc/profile \
+    \
+    && rm -rf /home/work/_src/jdk-8u111-linux-x64.tar.gz
 
 
 # -----------------------------------------------------------------------------
@@ -39,36 +41,34 @@ RUN yum makecache \
 # -----------------------------------------------------------------------------
 ADD jira7.2_hack.zip /home/work/_src
 
-# -----------------------------------------------------------------------------
-# 加入安装文件
-# -----------------------------------------------------------------------------
-ADD install.sh /home/work/_script
 
 # -----------------------------------------------------------------------------
-# 安装jira
+# 下载jira
 # -----------------------------------------------------------------------------
 RUN cd /home/work/_src \
     && wget https://downloads.atlassian.com/software/jira/downloads/atlassian-jira-software-7.2.7-x64.bin \
     && chmod 755 atlassian-jira-software-7.2.7-x64.bin \
-    && chown work:work -R /home/work \
-    && expect /home/work/_script/install.sh \
-    && unzip jira7.2_hack.zip \
-    && cp /opt/atlassian/jira/atlassian-jira/WEB-INF/lib/atlassian-extras-3.1.2.jar /opt/atlassian/jira/atlassian-jira/WEB-INF/lib/atlassian-extras-3.1.2.jar.bak \
-    && cp /home/work/_src/jira7.2/atlassian-extras-3.1.2.jar /opt/atlassian/jira/atlassian-jira/WEB-INF/lib \
-    && cp /home/work/_src/jira7.2/mysql-connector-java-5.1.39-bin.jar /opt/atlassian/jira/atlassian-jira/WEB-INF/lib \
-    && service jira stop \
-    && service jira start \
     \
 # -----------------------------------------------------------------------------
 # 删除多余文件
 # -----------------------------------------------------------------------------
-    && yum clean all \
-    && rm -rf /home/work/_src/*
+    && yum clean all
+
+# -----------------------------------------------------------------------------
+# 复制启动命令
+# -----------------------------------------------------------------------------
+COPY jira-install.sh /home/work/_script/jira-install.sh
+COPY jira-init.sh /home/work/_script/jira-init.sh
+RUN chmod 777 /home/work/_script/jira-init.sh
 
 # -----------------------------------------------------------------------------
 # 通过 supervisor 启动 jira
 # -----------------------------------------------------------------------------
 ADD _app/supervisord/conf.d/jira.ini /home/work/_app/supervisord/conf.d/jira.ini
+
+
+# Define data volumes
+VOLUME ["/opt/atlassian", "/var/atlassian"]
 
 
 # -----------------------------------------------------------------------------
