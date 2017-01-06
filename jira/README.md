@@ -43,10 +43,25 @@ docker run -d \
 -p 20014:8090 \
 -p 20015:22 \
 idoall/jira
+
+
+# For the first time, initialize the program, please wait
+# Open http://localhost:20012 in your browser and you should see
 ```
 
 
+## Where is the data stored? 
+
+The JIRA container uses host mounted volumes to store persistent data:
+
+| Local location            | Container location |
+| ------------------------- | ------------------ |
+| `/srv/jira/opt_atlassian` | `/opt/atlassian`   |
+| `/srv/jira/var_atlassian` | `/var/atlassian`   |
+
+You can fine tune these directories to meet your requirements.
 
 
-更详细的汉化、破解方法：[Docker创建JIRA 7.2.7中文破解版](http://idoall.org/blog/post/lion/Docker%E5%88%9B%E5%BB%BAJIRA-7.2.7%E4%B8%AD%E6%96%87%E7%A0%B4%E8%A7%A3%E7%89%88)
-​	
+
+更详细的汉化、破解方法：[Docker创建JIRA 7.2.7中文破解版](http://idoall.org/blog/post/lion/Docker%E5%88%9B%E5%BB%BAJIRA-7.2.7%E4%B8%AD%E6%96%87%E7%A0%B4%E8%A7%A3%E7%89%88) ​
+
