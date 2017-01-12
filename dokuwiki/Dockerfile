@@ -3,7 +3,13 @@ MAINTAINER lion <lion.net@163.com>
 
 ADD dokuwiki-release_stable_2016-06-26a.tar.gz /home/work/_app/nginx/
 
-RUN rm -rf /home/work/_app/nginx/html/* \
-    && chown work:work -R /home/work \
-    && mv /home/work/_app/nginx/dokuwiki-release_stable_2016-06-26a/* /home/work/_app/nginx/html/ \
-    && rm -rf /home/work/_app/nginx/dokuwiki-release_stable_2016-06-26a/
+# -----------------------------------------------------------------------------
+# 复制启动命令
+# -----------------------------------------------------------------------------
+COPY dokuwiki-init.sh /home/work/_script/dokuwiki-init.sh
+RUN chmod 777 /home/work/_script/dokuwiki-init.sh
+
+# -----------------------------------------------------------------------------
+# 通过 supervisor 启动 dokuwiki
+# -----------------------------------------------------------------------------
+ADD _app/supervisord/conf.d/dokuwiki.ini /home/work/_app/supervisord/conf.d/dokuwiki.ini
