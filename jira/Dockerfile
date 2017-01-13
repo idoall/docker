@@ -46,10 +46,10 @@ ADD jira7.2_hack.zip /home/work/_src
 # 下载jira
 # -----------------------------------------------------------------------------
 RUN cd /home/work/_src \
-#    && wget https://downloads.atlassian.com/software/jira/downloads/atlassian-jira-software-7.2.7-x64.bin \
-#    && chmod 755 atlassian-jira-software-7.2.7-x64.bin \
-    && wget https://downloads.atlassian.com/software/jira/downloads/atlassian-jira-software-7.2.4-x64.bin \
-    && chmod 755 atlassian-jira-software-7.2.4-x64.bin \
+    && wget https://downloads.atlassian.com/software/jira/downloads/atlassian-jira-software-7.2.7-x64.bin \
+    && chmod 755 atlassian-jira-software-7.2.7-x64.bin \
+#    && wget https://downloads.atlassian.com/software/jira/downloads/atlassian-jira-software-7.2.2-x64.bin \
+#    && chmod 755 atlassian-jira-software-7.2.2-x64.bin \
     \
 # -----------------------------------------------------------------------------
 # 删除多余文件
