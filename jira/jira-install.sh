@@ -9,7 +9,7 @@ set express_install 1
 set install_as_service i
 
 # 启动安装程序
-spawn /home/work/_src/atlassian-jira-software-7.2.6-x64.bin
+spawn /home/work/_src/atlassian-jira-software-7.2.4-x64.bin
 
 expect {
     "o, Enter" { send "o\r";exp_continue}
