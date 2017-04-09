@@ -26,14 +26,20 @@ docker build -t idoall/fisp .
 docker run -d \
 --name fisp \
 --hostname fisp \
+-v /Users/lion/my_project/_php/tsy/fe/web_pc:/home/work/_website \
 -p 8000:8080 \
 idoall/fisp
 
 # start fisp
 docker exec -it fisp fisp server start
+#docker exec -it fisp fis3 server start --type php --rewrite
+
+# 进入容器
+docker exec -it fisp /bin/bash
 
 # 对设置的目录进行实时更新监控
-docker exec -it fisp fisp release -w -r /home/work/_website/pc-demo/home
+# docker exec -it fisp fisp release -w -r /home/work/_website/pc-demo/home
+#docker exec -it fisp fis3 release -w -r /home/work/_website/common
 
 # Then setup fis at URL http://localhost:8000
 
@@ -46,7 +52,7 @@ The fis3 container uses host mounted volumes to store persistent data:
 
 | Local location            | Container location |
 | ------------------------- | ------------------ |
-| `/fis folder` | `/home/work/_app/_website`   |
+| `/fis folder` | `/home/work/_website`   |
 
 You can fine tune these directories to meet your requirements.
 

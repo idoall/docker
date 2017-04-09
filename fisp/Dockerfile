@@ -56,6 +56,7 @@ RUN cd /home/work/_src \
 # -----------------------------------------------------------------------------
 	&& npm install -g fis-plus \
 	&& npm install -g fis3 \
+	&& npm install -g fis3-server-php \
 	&& mkdir -p /home/work/_website \
 	&& cd /home/work/_website \
 	&& fisp server init \
