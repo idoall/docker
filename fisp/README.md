@@ -2,7 +2,7 @@
 
 [TOC]
 
-# FIS3-PHP-Nodejs4.X-JDK8 (nginx/1.8.1)-PHP5.6.29-dowuwiki2016-06-26
+# FIS3-PHP6-Nodejsv0.12.0-NPM-JDK8
 
 
 
@@ -37,9 +37,9 @@ docker exec -it fisp fisp server start
 # 进入容器
 docker exec -it fisp /bin/bash
 
-# 对设置的目录进行实时更新监控
+# 对设置的目录进行实时更新监控、并部署
 # docker exec -it fisp fisp release -w -r /home/work/_website/pc-demo/home
-#docker exec -it fisp fis3 release -w -r /home/work/_website/common
+# docker exec -it fisp fis3 release -w -r /home/work/_website/common
 
 # Then setup fis at URL http://localhost:8000
 
