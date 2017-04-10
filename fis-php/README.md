@@ -31,9 +31,9 @@ docker run -d \
 idoall/fis-php
 
 # Compile fis-php
-docker exec -it fis-php fis3 release -w -r /home/work/_website/common
-docker exec -it fis-php fis3 release -w -r /home/work/_website/subsiteA
-docker exec -it fis-php fis3 release -w -r /home/work/_website/subsiteB
+docker exec -it fis-php fis3 release -w /home/work/_website/common
+docker exec -it fis-php fis3 release -w /home/work/_website/subsiteA
+docker exec -it fis-php fis3 release -w /home/work/_website/subsiteB
 
 # start fis-php
 docker exec -it fis-php fis3 server start --type php --rewrite
