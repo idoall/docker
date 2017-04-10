@@ -26,14 +26,13 @@ docker build -t idoall/fis-php .
 docker run -d \
 --name fis-php \
 --hostname fis-php \
--v /Users/lion/my_project/_php/tsy/fe/web_pc:/home/work/_website \
 -p 8000:8080 \
 idoall/fis-php
 
 # Compile fis-php
-docker exec -it fis-php fis3 release -w /home/work/_website/common
-docker exec -it fis-php fis3 release -w /home/work/_website/subsiteA
-docker exec -it fis-php fis3 release -w /home/work/_website/subsiteB
+docker exec -it fis-php fis3 release -r /home/work/_website/common
+docker exec -it fis-php fis3 release -r /home/work/_website/subsiteA
+docker exec -it fis-php fis3 release -r /home/work/_website/subsiteB
 
 # start fis-php
 docker exec -it fis-php fis3 server start --type php --rewrite
