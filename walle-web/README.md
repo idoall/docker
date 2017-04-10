@@ -22,6 +22,7 @@ cd walle-web
 docker build -t idoall/walle-web .
 
 # Run
+```
 docker run -d \
 --name walle-web \
 --hostname walle-web \
@@ -29,6 +30,17 @@ docker run -d \
 -p 80:80 \
 -p 2222:22 \
 idoall/walle-web
+```
+
+# 基于docker 1.13.1 以上版本的 docker Compose 运行方法
+```
+docker stack deploy -c walle-web.yml walle
+```
+
+# 关闭服务
+```
+docker stack rm walle
+```
 
 # default   user-admin  password-admin
 # Open http://localhost in your browser and you should see

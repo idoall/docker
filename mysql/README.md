@@ -28,7 +28,14 @@ docker run -d \
 idoall/mysql:tag
 ```
 
-
+# docker swarm
+```
+docker service create \
+--name mysql \
+-e MYSQL_ROOT_PASSWORD=123456 \
+-p 3306:3306/tcp \
+idoall/mysql:tag
+```
 
 ## Start a `mysql` server instance
 
