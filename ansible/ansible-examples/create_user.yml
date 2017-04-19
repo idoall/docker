@@ -1,0 +1,21 @@
+- name: create user
+# 选择的主机
+  hosts: web
+# 远程主机执行用户的权限
+  remote_user: root
+  gather_facts: false
+# 变量
+  vars:
+  - user: "idoall"
+# 任务列表
+  tasks:
+  - name: create {{ user }} on localhost
+    user: name="{{ user }}"
+# 使用shell脚本启动命令，如果stop 有错误的时候，也返回true
+  tasks:
+  - name: stop nginx
+    shell: /home/work/_app/nginx/sbin/nginx -s stop || /bin/true
+# 复制文件
+  tasks:
+  - name: Copy file to client
+    copy: src=/home/work/_script/hosts dest=/home/work/_script/

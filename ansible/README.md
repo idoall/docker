@@ -2,7 +2,7 @@
 
 [TOC]
 
-# Docker-Centos6.8-supervisor
+# Docker-Centos6.8-supervisor-ansible2.3.0.0-1
 
 
 This repository contains the sources for the following base images:
@@ -33,6 +33,10 @@ idoall/ansible
 # access container
 docker exec -it ansible /bin/bash
 
+# test ansible
+ansible -i /etc/ansible/hosts local -m command -a uptime
+ansible local -m command -a uptime
+ansible local -a uptime
 ```
 
 
