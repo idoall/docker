@@ -71,6 +71,7 @@ RUN cd /home/work/_src \
 	&& npm install -g fis3-server-php \
 	&& npm install -g fis3-smarty \
 	&& npm install -g fis3-server-smarty \
+	&& npm install -g fis-optimizer-minify-html \
 	&& mkdir -p /home/work/_website \
 #	&& cd /home/work/_website \
 #	&& fis3 server start --type php --rewrite \
