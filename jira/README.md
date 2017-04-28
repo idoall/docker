@@ -30,7 +30,7 @@ docker run -d \
     -e MYSQL_DATABASE=jira \
     -e MYSQL_USER=jira \
     -e MYSQL_PASSWORD=jira \
-    mysql:5.6
+    idoall/mysql:5.6
 
 # run
 docker run -d \

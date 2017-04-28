@@ -1,4 +1,4 @@
-FROM idoall/nginx
+FROM idoall/nginx:1.9
 MAINTAINER lion <lion.net@163.com>
 
 
@@ -15,7 +15,7 @@ RUN rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.
 # -----------------------------------------------------------------------------
 # 安装PHP 56
 # -----------------------------------------------------------------------------
-    && yum install -y php56w php56w-cli php56w-fpm php56w-opcache php56w-gd php56w-devel php56w-bcmath  php56w-imap php56w-mbstring php56w-mcrypt php56w-mysql php56w-odbc php56w-pdo php56w-pear php56w-pecl-geoip php56w-pecl-imagick php56w-pecl-memcache php56w-xml php56w-xmlrpc php56w-opcache php56w-intl php56w-pecl-redis php56w-pecl-memcache php56w-pecl-memcached \
+    && yum install -y php56w php56w-cli php56w-fpm php56w-opcache php56w-gd php56w-devel php56w-bcmath  php56w-imap php56w-mbstring php56w-mcrypt php56w-mysql php56w-odbc php56w-pdo php56w-pear php56w-pecl-geoip php56w-pecl-imagick php56w-pecl-memcache php56w-xml php56w-xmlrpc php56w-opcache php56w-intl php56w-pecl-redis php56w-pecl-memcache php56w-pecl-memcached php56w-soap \
     \
 # -----------------------------------------------------------------------------
 # 修改配置文件
@@ -42,10 +42,6 @@ RUN rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.
     && rm -rf /home/work/_src/*
 
 
-# -----------------------------------------------------------------------------
-# 通过 supervisor 启动 php-fpm
-# -----------------------------------------------------------------------------
-ADD _app/supervisord/conf.d/php5-fpm.ini /home/work/_app/supervisord/conf.d/php5-fpm.ini
 
 
 # -----------------------------------------------------------------------------
@@ -53,3 +49,13 @@ ADD _app/supervisord/conf.d/php5-fpm.ini /home/work/_app/supervisord/conf.d/php5
 # -----------------------------------------------------------------------------
 ADD _app/nginx/conf/nginx.conf /home/work/_app/nginx/conf/nginx.conf
 ADD _app/nginx/conf/conf.d/default.conf /home/work/_app/nginx/conf/conf.d/default.conf
+
+# -----------------------------------------------------------------------------
+# 添加执行文件
+# -----------------------------------------------------------------------------
+ADD run.sh /
+RUN chmod +x /run.sh
+CMD ["/run.sh"]
+
+
+

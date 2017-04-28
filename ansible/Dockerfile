@@ -1,4 +1,4 @@
-FROM idoall/supervisor
+FROM idoall/supervisor:1.9
 MAINTAINER lion <lion.net@163.com>
 
 
@@ -15,12 +15,6 @@ RUN yum clean all \
     && echo 'localhost' >> /etc/ansible/hosts \
     && cd /home/work/_src/ansible-2.3.0.0-1 \
     && python setup.py install \
-    \
-# -----------------------------------------------------------------------------
-# 配置 ssh
-# -----------------------------------------------------------------------------   
-    && ssh-keygen -q -t rsa -P '' -f /root/.ssh/id_rsa \
-    && cat /root/.ssh/id_rsa.pub > /root/.ssh/authorized_keys \
     \
 # -----------------------------------------------------------------------------
 # 删除一些多余的东西
