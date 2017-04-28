@@ -1,4 +1,4 @@
-FROM idoall/supervisor
+FROM idoall/supervisor:1.9
 MAINTAINER lion <lion.net@163.com>
 
 
@@ -43,14 +43,21 @@ RUN mkdir -p /home/work/_script /home/work/_app/nginx \
     && yum clean all \
     && rm -rf /home/work/_src/*
 
-# -----------------------------------------------------------------------------
-# 通过 supervisor 启动 Tengine/2.2.0 (Nginx/1.8.1)
-# -----------------------------------------------------------------------------
-ADD _app/supervisord/conf.d/nginx.ini /home/work/_app/supervisord/conf.d/nginx.ini
 
+# -----------------------------------------------------------------------------
+# 修改 Nginx 的配置文件，并配置默认站点
+# -----------------------------------------------------------------------------
+ADD _app/nginx/conf/nginx.conf /home/work/_app/nginx/conf/nginx.conf
+ADD _app/nginx/conf/conf.d/default.conf /home/work/_app/nginx/conf/conf.d/default.conf
 
 # -----------------------------------------------------------------------------
 # 映射端口
 # -----------------------------------------------------------------------------
 EXPOSE 80
 
+# -----------------------------------------------------------------------------
+# 添加执行文件
+# -----------------------------------------------------------------------------
+ADD run.sh /
+RUN chmod +x /run.sh
+CMD ["/run.sh"]

@@ -18,11 +18,12 @@ cd supervisor3.3.0
 docker build -t idoall/supervisor .
 
 # run
-docker run -d \
+docker run -it \
 --name supervisor \
 --hostname supervisor \
 -p 2222:22 \
-idoall/supervisor
+idoall/supervisor \
+/bin/bash
 
 # view supervisor version
 docker exec -it supervisor supervisord -v

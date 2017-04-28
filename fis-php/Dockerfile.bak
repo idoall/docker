@@ -1,4 +1,4 @@
-FROM idoall/supervisor
+FROM idoall/supervisor:1.9
 MAINTAINER lion <lion.net@163.com>
 
 
@@ -14,8 +14,8 @@ ENV PATH $JAVA_HOME/bin:$PATH
 # -----------------------------------------------------------------------------
 # 安装java8环境
 # -----------------------------------------------------------------------------
-RUN cd /home/work/_src \
-	&& wget https://cdn.azul.com/zulu/bin/zulu8.19.0.1-jdk8.0.112-linux_x64.tar.gz \
+RUN axel -n 10 -o /home/work/_src/ https://cdn.azul.com/zulu/bin/zulu8.19.0.1-jdk8.0.112-linux_x64.tar.gz \
+	&& cd /home/work/_src \
 	&& mkdir -p /usr/lib/jvm/jdk8 \
 	&& tar zxvf zulu8.19.0.1-jdk8.0.112-linux_x64.tar.gz \
 	&& mv zulu8.19.0.1-jdk8.0.112-linux_x64/* /usr/lib/jvm/jdk8 \
@@ -37,42 +37,58 @@ RUN cd /home/work/_src \
     && echo "export JAVA_HOME=/usr/lib/jvm/jdk8" >>  /etc/profile \
     && echo "export JRE_HOME=\$JAVA_HOME/jre" >>  /etc/profile \
     && echo "export CLASSPATH=.::\$JRE_HOME/lib" >>  /etc/profile \
-    && echo "PATH=\$JAVA_HOME/bin:\$PATH" >>  /etc/profile \
-    \
+    && echo "PATH=\$JAVA_HOME/bin:\$PATH" >>  /etc/profile
+    
 # -----------------------------------------------------------------------------
-#   安装 nodejs 4.X
+#   安装 nodejs 0.12.0
 # -----------------------------------------------------------------------------
-	&& yum install -y gcc-c++ make \
-	&& curl -sL https://rpm.nodesource.com/setup_4.x | bash - \
-	&& yum install -y nodejs \
-	\
+RUN yum install -y gcc-c++ make openssl-devel wget \
+	&& axel -n 10 -o /home/work/_src http://nodejs.org/dist/v0.12.0/node-v0.12.0.tar.gz \
+	&& cd /home/work/_src \
+	&& tar xzvf node-v0.12.0.tar.gz \
+	&& cd node-v0.12.0 \
+	&& ./configure --prefix=/usr/local/node/v0.12.0 \
+	&& make && make install \
+	&& ln -s /usr/local/node/v0.12.0/bin/node /usr/bin/node \
+	&& cd /home/work/_src \
+	&& wget https://www.npmjs.com/install.sh \
+	&& sh install.sh
+
 # -----------------------------------------------------------------------------
-#   安装 php-cgi
+#   安装 php5.6
 # -----------------------------------------------------------------------------
-	&& yum install -y php php-cgi \
-	\
+RUN rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm \
+    && rpm -Uvh https://mirror.webtatic.com/yum/el6/latest.rpm \
+    && yum update -y \
+    && yum clean all \
+    && yum makecache \
+    && yum install -y php56w php56w-cli php56w-cgi php56w-gd php56w-devel php56w-bcmath  php56w-imap php56w-mbstring php56w-mcrypt php56w-mysql php56w-odbc php56w-pdo php56w-pear php56w-pecl-geoip php56w-pecl-imagick php56w-xml php56w-xmlrpc php56w-opcache php56w-intl php56w-pecl-redis php56w-pecl-memcache php56w-pecl-memcached php56w-soap
+
 # -----------------------------------------------------------------------------
-#   安装 fisp、fis3
+#   安装 fis3
 # -----------------------------------------------------------------------------
-	&& npm install -g fis-plus \
-	&& npm install -g fis3 \
+RUN npm install -g fis3 \
 	&& npm install -g fis3-server-php \
+	&& npm install -g fis3-smarty \
+	&& npm install -g fis3-server-smarty \
+	&& npm install -g fis-optimizer-minify-html \
 	&& mkdir -p /home/work/_website \
-	&& cd /home/work/_website \
-	&& fisp server init \
-	&& fisp init pc-demo \
-	&& cd pc-demo \
-	&& fisp release -r common \
-	&& fisp release -r home \
-	&& fisp server start \
+#	&& cd /home/work/_website \
+#	&& fis3 server start --type php --rewrite \
 	\
 # -----------------------------------------------------------------------------
 # 删除一些多余的东西
 # -----------------------------------------------------------------------------
-    && rm -rf /home/work/_src/zulu*
+    && rm -rf /home/work/_src/zulu* \
+    && rm -rf /home/work/_src/node* \
+    && yum clean all
 
 
-
+# -----------------------------------------------------------------------------
+# 部署 fis3 使用 php 运行的基础文件
+# -----------------------------------------------------------------------------
+ADD server_env.tar.gz /root/.fis3-tmp/www
+ADD demo.tar.gz /home/work/_website
 
 
 # -----------------------------------------------------------------------------
@@ -80,9 +96,11 @@ RUN cd /home/work/_src \
 # -----------------------------------------------------------------------------
 EXPOSE 8080
 
-WORKDIR /home/work
 
-
-
-
+# -----------------------------------------------------------------------------
+# 添加执行文件
+# -----------------------------------------------------------------------------
+ADD run.sh /
+RUN chmod +x /run.sh
+CMD ["/run.sh"]
 

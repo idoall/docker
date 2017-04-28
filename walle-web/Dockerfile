@@ -1,4 +1,4 @@
-FROM idoall/nginx-php
+FROM idoall/nginx-php:1.9
 MAINTAINER lion <lion.net@163.com>
 
 
@@ -51,3 +51,11 @@ ADD _app/supervisord/conf.d/walle-web.ini /home/work/_app/supervisord/conf.d/wal
 # 修改 Nginx 的配置文件支持PHP，并配置默认站点
 # -----------------------------------------------------------------------------
 ADD _app/nginx/conf/conf.d/default.conf /home/work/_app/nginx/conf/conf.d/default.conf
+
+
+# -----------------------------------------------------------------------------
+# 添加执行文件
+# -----------------------------------------------------------------------------
+ADD run.sh /
+RUN chmod +x /run.sh
+CMD ["/run.sh"]
