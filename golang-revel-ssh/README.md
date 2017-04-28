@@ -21,7 +21,7 @@ cd golang-revel-ssh
 docker build -t idoall/golang-revel-ssh .
 
 # Run
-docker run -it \
+docker run -d \
 --name golang \
 --hostname golang \
 -p 80:80 \

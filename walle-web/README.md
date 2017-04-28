@@ -34,12 +34,17 @@ idoall/walle-web
 
 # 基于docker 1.13.1 以上版本的 docker Compose 运行方法
 ```
-docker stack deploy -c walle-web.yml walle
+docker-compose up
 ```
 
-# 关闭服务
+# 停止服务
 ```
-docker stack rm walle
+docker-compose stop
+```
+
+# 移除服务
+```
+docker-compose rm
 ```
 
 # default   user-admin  password-admin

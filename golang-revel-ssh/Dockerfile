@@ -1,4 +1,4 @@
-FROM idoall/supervisor
+FROM idoall/supervisor:1.9
 MAINTAINER Docker lion <lion.net@163.com>
 
 ENV GOLANG_VERSION 1.7.4
@@ -72,4 +72,12 @@ RUN go install github.com/revel/cmd/revel \
 # -----------------------------------------------------------------------------
 # 通过 supervisor 启动 revel
 # -----------------------------------------------------------------------------
-ADD _app/supervisord/conf.d/idoall.org.ini /home/work/_app/supervisord/conf.d/idoall.org.ini
+#ADD _app/supervisord/conf.d/idoall.org.ini /home/work/_app/supervisord/conf.d/idoall.org.ini
+
+
+# -----------------------------------------------------------------------------
+# 添加执行文件
+# -----------------------------------------------------------------------------
+ADD run.sh /
+RUN chmod +x /run.sh
+CMD ["/run.sh"]
