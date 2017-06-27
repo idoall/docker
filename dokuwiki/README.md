@@ -29,16 +29,15 @@ docker run -d \
 idoall/dokuwiki
 
 # Then setup dokuwiki using installer at URL http://localhost/install.php
-
 ```
 
 
 ## Where is the data stored? 
 
-The JIRA container uses host mounted volumes to store persistent data:
+The dokuwiki container uses host mounted volumes to store persistent data:
 
-| Local location            | Container location |
-| ------------------------- | ------------------ |
-| `/srv/jira/dokuwiki_folder` | `/home/work/_app/nginx/html`   |
+| Local location         | Container location                       |
+| ---------------------- | ---------------------------------------- |
+| `/srv/dokuwiki_folder` | `/home/work/_site/dokuwiki-release_stable_2016-06-26a` |
 
 You can fine tune these directories to meet your requirements.
