@@ -1,0 +1,38 @@
+{
+  "Services": {
+    "mysql": {
+      "Env": [
+        "MYSQL_ROOT_PASSWORD=123456", 
+        "MYSQL_DATABASE=walle-web"
+      ], 
+      "Image": "idoall/mysql@sha256:970d60d1f4dbfca1fac8ee93dd3683c1ee59d1e41f8c834b015fa510624227f9", 
+      "Networks": [
+        "tsy-backend"
+      ], 
+      "Ports": [
+        {
+          "Port": 3306, 
+          "Protocol": "tcp"
+        }
+      ]
+    }, 
+    "walle": {
+      "Image": "idoall/walle-web@sha256:cc9dc930384c95803813b23c9877ea80715115a84490e3a6485e179f1658d29d", 
+      "Networks": [
+        "tsy-backend", 
+        "tsy-fored"
+      ], 
+      "Ports": [
+        {
+          "Port": 80, 
+          "Protocol": "tcp"
+        }, 
+        {
+          "Port": 22, 
+          "Protocol": "tcp"
+        }
+      ]
+    }
+  }, 
+  "Version": "0.1"
+}
