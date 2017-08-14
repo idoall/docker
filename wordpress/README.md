@@ -1,0 +1,1 @@
+根据官方配置，改版成nginx的方式访问wordpress
