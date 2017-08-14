@@ -1,4 +1,4 @@
-# docker-centos6.8-supervisor
+# docker-centos7.3.1611-supervisor
 
 
 This repository contains the sources for the following [docker](https://docker.io) base images:
@@ -18,12 +18,15 @@ cd supervisor3.3.0
 docker build -t idoall/supervisor ./tag
 
 # run
-docker run -it \
+docker run -d \
 --name supervisor \
 --hostname supervisor \
 -p 2222:22 \
-idoall/supervisor \
-/bin/bash
+idoall/supervisor
+
+# access container
+docker exec -it supervisor /bin/bash
+
 
 # view supervisor version
 docker exec -it supervisor supervisord -v

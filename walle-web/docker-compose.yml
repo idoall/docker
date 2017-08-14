@@ -1,10 +1,7 @@
 version: '3'
 services:
-  walle-web:
-    image: "idoall/walle-web"
-    build: 
-        context: .
-        dockerfile: Dockerfile
+  walle:
+    image: "idoall/walle-web:1.9"
     ports:
      - "80:80"
      - "2222:22"

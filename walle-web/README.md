@@ -15,41 +15,72 @@ This repository contains the sources for the following base images:
 # Pull image
 git clone https://github.com/idoall/docker.git
 cd walle-web
+```
 
-# hack hack hack
 
-# Build
+## Build
+```
 docker build -t idoall/walle-web .
+```
 
-# Run
-```
-docker run -d \
---name walle-web \
---hostname walle-web \
---link mysql:mysql \
--p 80:80 \
--p 2222:22 \
-idoall/walle-web
-```
+
 
 # 基于docker 1.13.1 以上版本的 docker Compose 运行方法
+
+部署服务
+
 ```
 docker-compose up
 ```
 
-# 停止服务
+
+
+停止服务
+
 ```
 docker-compose stop
 ```
 
-# 移除服务
+
+
+移除服务
+
 ```
 docker-compose rm
 ```
 
-# default   user-admin  password-admin
-# Open http://localhost in your browser and you should see
+ default   user-admin  password-admin
+ Open http://localhost in your browser and you should see
+
+
+
+# 使用docker stack的编排服务，创建docker APP
+
+部署服务
+```shell
+docker stack deploy -c docker-compose-stack.yml walle
 ```
+
+
+
+查看服务状态
+
+```shell
+docker stack services walle
+```
+
+
+
+移除服务
+
+```shell
+docker stack rm walle
+```
+
+default   user-admin  password-admin
+ Open http://localhost in your browser and you should see
+
+
 
 ## Environment Variables
 
