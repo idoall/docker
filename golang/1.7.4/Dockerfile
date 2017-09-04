@@ -2,7 +2,7 @@ FROM idoall/golang:1.4
 MAINTAINER lion <lion.net@163.com>
 
 
-ENV GOLANG_VERSION 1.9
+ENV GOLANG_VERSION 1.7.4
 
 # -----------------------------------------------------------------------------
 # 下载 golang
@@ -10,7 +10,7 @@ ENV GOLANG_VERSION 1.9
 RUN set -eux \
 	&& cd /home/work/_src \
 	&& wget -O go.tgz "https://storage.googleapis.com/golang/go$GOLANG_VERSION.src.tar.gz" \
-	&& echo 'a4ab229028ed167ba1986825751463605264e44868362ca8e7accc8be057e993 *go.tgz' | sha256sum -c - \
+	&& echo '4c189111e9ba651a2bb3ee868aa881fab36b2f2da3409e80885ca758a6b614cc *go.tgz' | sha256sum -c - \
 	&& tar -C /home/work/_app -xzf /home/work/_src/go.tgz \
 	&& cd /home/work/_app/go/src \
 	&& export GOPATH=/home/work/_src/golang \
