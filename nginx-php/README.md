@@ -1,53 +1,14 @@
-# 目录
+This repository contains the sources for the following [docker](https://docker.io) base images:
 
-[TOC]
-
-# Docker-Centos6.8-Tengine/2.2.0 (nginx/1.8.1)-PHP5.6.29
+- [`idoall/supervisor`](https://hub.docker.com/r/idoall/supervisor/)
 
 
-This repository contains the sources for the following base images:
-- [`idoall/nginx`](https://hub.docker.com/r/idoall/nginx/)
 
+# Supported tags and respective `Dockerfile` links
 
-## Developing
+- [`7.1.9`(*7.1.9/Dockerfile*)](https://github.com/idoall/docker/blob/master/nginx-php/7.1.9/Dockerfile)
 
-```bash
-# Pull image
-git clone https://github.com/idoall/docker.git
-cd nginx-php
+- [`5.6.29`(*5.6.29/Dockerfile*)](https://github.com/idoall/docker/blob/master/nginx-php/5.6.29/Dockerfile)
 
-# hack hack hack
+  ​
 
-# build
-docker build -t idoall/nginx-php .
-
-# run
-docker run -d \
---name nginx-php \
---hostname nginx-php \
--p 8080:80 \
-idoall/nginx-php
-
-# Open http://localhost:8080/ in your browser and you should see "php info!"
-
-# view version
-docker exec -it nginx-php php -v
-```
-
-## Directory structure inside image
-/home/work/_app/nginx # Nginx root
-/home/work/_logs/nginx # Nginx,PHP logs
-/home/work/_app/nginx/html # meant to contain web content
-
-# Custom Nginx Config files
-Sometimes you need a custom config file for nginx to achieve this read the [Nginx config guide](https://hub.docker.com/r/idoall/nginx/)
-
-## meant to contain web content
-```bash
-docker run -d \
---name nginx-php \
---hostname nginx-php \
--v /mysite:/home/work/_app/nginx/html \
--p 8080:80 \
-idoall/nginx-php
-```

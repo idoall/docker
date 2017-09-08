@@ -2,7 +2,7 @@
 
 [TOC]
 
-# Docker-Centos6.8-Tengine/2.2.0 (nginx/1.8.1)-PHP5.6.29-Wordpress4.8.1
+# Docker-Centos6.8-Tengine/2.2.0 (nginx/1.8.1)-Wordpress4.8.1-PHP7.1.9
 
 
 This repository contains the sources for the following base images:
@@ -19,7 +19,7 @@ cd wordpress
 # hack hack hack
 
 # build
-docker build -t idoall/wordpress:4.8.1-php5.6 .
+docker build -t idoall/wordpress:4.8.1-php7.1.9 .
 
 # run
 docker run -d \
@@ -27,7 +27,7 @@ docker run -d \
 --hostname wordpress \
 --link some-mysql:mysql \
 -p 8080:80 \
-idoall/wordpress:4.8.1-php5.6
+idoall/wordpress:4.8.1-php7.1.9
 
 # Open http://localhost:8080/ in your browser
 

@@ -38,4 +38,4 @@ RUN set -eux \
 ENV GOPATH /home/work/_src/golang
 ENV GOROOT /home/work/_app/go$GOLANG_VERSION
 ENV GOBIN $GOROOT/bin
-ENV PATH $GOBIN:$PATH
+ENV PATH /home/work/_app/go$GOLANG_VERSION/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
