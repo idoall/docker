@@ -1,4 +1,4 @@
-FROM idoall/nginx-php:1.9
+FROM idoall/nginx-php:php5.6.29
 MAINTAINER lion <lion.net@163.com>
 
 
