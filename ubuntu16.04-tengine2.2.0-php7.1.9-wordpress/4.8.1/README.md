@@ -2,7 +2,7 @@
 
 [TOC]
 
-# Docker-Centos6.8-Tengine/2.2.0 (nginx/1.8.1)-Wordpress4.8.1-PHP7.1.9
+# Docker-Wordpress-PHP/7.1.9-Tengine/2.2.0 (Nginx/1.8.1)-Ubuntu/16.04
 
 
 This repository contains the sources for the following base images:
