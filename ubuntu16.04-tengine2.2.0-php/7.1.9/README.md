@@ -1,4 +1,4 @@
-# docker-php7-tengine2.2.0-ubuntu16.04
+# Docker-PHP-Tengine/2.2.0 (Nginx/1.8.1)-Ubuntu/16.04
 
 
 This repository contains the sources for the following [docker](https://docker.io) base images:
