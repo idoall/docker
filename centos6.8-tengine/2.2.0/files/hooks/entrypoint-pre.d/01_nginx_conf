@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+
+echo "copying nginx.conf"
+cp -r /etc/_nginx/nginx.conf /home/work/_app/nginx/conf/
+
+
+echo "copying conf.d/default.conf"
+mkdir -p /home/work/_app/nginx/conf/conf.d/
+cp -r /etc/_nginx/conf.d/default.conf /home/work/_app/nginx/conf/conf.d/

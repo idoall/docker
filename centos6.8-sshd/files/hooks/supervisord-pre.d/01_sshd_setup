@@ -1,0 +1,10 @@
+#!/bin/bash
+
+
+# As /etc/ssh is mounted from a persistent volume, need to copy sshd_config there
+cp -f /sshd_config /etc/ssh
+echo "copying sshd_config"
+
+
+cp -f /etc/_sshd/sshd.ini /home/work/_app/supervisord/conf.d/
+echo "copying supervisord/conf.d/sshd.ini"
