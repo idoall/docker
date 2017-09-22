@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+export GID=`/usr/bin/id -g`
+
+echo "${UID}:x:${UID}:${GID}:noone:/tmp:/sbin/nologin" >> /etc/passwd
+echo "${GID}:x:${GID}:${UID}" >> /etc/group

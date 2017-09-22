@@ -1,0 +1,49 @@
+#!/bin/bash
+
+[ ${DOCKER_DEBUG} ] && set -x
+
+die () {
+  echo "ERROR: ${1}"
+  exit 1
+}
+
+# PID, trap, wait; all belongs to 'docker stop' signal handeling.
+# This is the same logic as the parent docker container, but rather this,
+# than creating a one-time process in supervisord to handle this logic.
+PID=; trap '[[ ${PID} ]] && kill ${PID}; exit 0' SIGTERM
+
+# Set exec-bit automatic. When adding hooks in a Dockerfile, we shoulnt also haveto think about setting +x
+# in the Dockerfile for the same file. If you want to disable a hook, rename it.
+chmod +x /hooks/{supervisord-pre.d/*,supervisord} 2> /dev/null || true
+
+supervisord_pre=$(ls /hooks/supervisord-pre.d/* 2>/dev/null | sort -n )
+if [ "$supervisord_pre" != "" ]; then
+  for hook in $supervisord_pre; do
+    echo "Executing hook ${hook}"
+    /bin/bash -c "${hook}"
+    if [ "$?" != "0" ]; then
+      die "hook ${hook}} returned a non-zero exit status '$?'"
+    fi
+  done
+fi
+
+
+#exec /usr/bin/supervisord -n -c /home/work/_app/supervisord/supervisord.ini -e ${SUPERVISORD_LOGLEVEL:-error}
+service supervisord start
+
+
+# tail log
+chmod +x /hooks/log.after/* 2> /dev/null || true
+
+log_after=$(ls /hooks/log.after/* 2>/dev/null | sort -n )
+log_name=
+if [ "$log_after" != "" ]; then
+  for hook in $log_after; do
+    echo "Executing log after hook ${hook}"
+    for line in `cat $hook`
+	do
+        log_name="$log_name $line"
+	done
+  done
+fi
+tail -f $log_name

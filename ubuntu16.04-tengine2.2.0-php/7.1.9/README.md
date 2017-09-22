@@ -1,3 +1,7 @@
+# 目录
+
+[TOC]
+
 # Docker-PHP-Tengine/2.2.0 (Nginx/1.8.1)-Ubuntu/16.04
 
 
@@ -18,7 +22,8 @@ cd ubuntu16.04-tengine2.2.0-php/7.1.9
 docker build -t idoall/ubuntu16.04-tengine2.2.0-php:7.1.9 .
 
 # run
-docker run -d \
+docker run -it \
+--rm \
 --name php \
 --hostname php \
 -p 2222:2222 \

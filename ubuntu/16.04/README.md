@@ -18,7 +18,8 @@ cd ubuntu/16.04
 docker build -t idoall/ubuntu:16.04 .
 
 # run
-docker run -d \
+docker run -it \
+--rm \
 --name ubuntu16 \
 --hostname ubuntu16 \
 idoall/ubuntu:16.04
