@@ -41,7 +41,7 @@ RUN chmod 755 /hooks \
   	&& rm -rf /home/work/_src/*
 	
 
-ENV GOPATH /home/work/_src/golang
+ENV GOPATH /home/work/_project/golang
 ENV GOROOT /home/work/_app/go$GOLANG_VERSION
 ENV GOBIN $GOROOT/bin
 ENV PATH /home/work/_app/go$GOLANG_VERSION/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin

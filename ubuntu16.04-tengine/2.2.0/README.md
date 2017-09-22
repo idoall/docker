@@ -1,4 +1,4 @@
-# docker-Tengine/2.2.0 (Nginx/1.8.1)-Ubuntu/16.04
+# Docker-Tengine/2.2.0 (Nginx/1.8.1)-Ubuntu/16.04
 
 
 This repository contains the sources for the following [docker](https://docker.io) base images:

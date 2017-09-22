@@ -1,6 +1,6 @@
 This repository contains the sources for the following [docker](https://docker.io) base images:
 
-- [`idoall/ubuntu16.04-golang:1.4`](https://hub.docker.com/r/idoall/ubuntu16.04-golang/)
+- [`idoall/ubuntu:16.04`](https://hub.docker.com/r/idoall/ubuntu/)
 
 
 

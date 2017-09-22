@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+
+echo "copying nginx.conf(php)"
+cp -r /etc/_nginx/nginx.conf /home/work/_app/nginx/conf/
+
+
+echo "copying conf.d/default.conf(php)"
+cp -r /etc/_nginx/conf.d/default.conf /home/work/_app/nginx/conf/conf.d/

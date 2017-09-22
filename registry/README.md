@@ -18,7 +18,8 @@ cd registry
 docker build -t idoall/registry .
 
 # run
-docker run -d \
+docker run -it \
+--rm \
 --name registry \
 --hostname registry \
 -p 80:80 \
