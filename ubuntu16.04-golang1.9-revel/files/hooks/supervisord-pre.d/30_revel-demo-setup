@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+
+echo "copying supervisord/revel.ini"
+cp -r /etc/_supervisord/revel.ini /home/work/_app/supervisord/revel.d/
+
