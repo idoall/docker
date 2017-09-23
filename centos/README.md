@@ -10,3 +10,23 @@ This repository contains the sources for the following [docker](https://docker.i
 
   ​
 
+## Developing
+
+```bash
+
+# run
+docker run -it \
+--rm \
+--name centos \
+--hostname centos \
+idoall/centos:<version>
+
+
+# view supervisor version
+docker exec -it centos supervisord -v
+
+
+# access the contain
+docker exec -it centos /bin/bash
+
+```

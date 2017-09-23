@@ -14,3 +14,16 @@ This repository contains the sources for the following [docker](https://docker.i
 
   ​
 
+## Developing
+
+```bash
+
+# view version
+docker run -it --name=golang --rm idoall/centos6.8-golang:<version> go version
+
+# Run
+docker run -d --name=golang idoall/centos6.8-golang:<version>
+
+# access the contain
+docker exec -it golang /bin/bash
+```

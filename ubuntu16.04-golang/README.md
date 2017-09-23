@@ -14,3 +14,16 @@ This repository contains the sources for the following [docker](https://docker.i
 
   ​
 
+## Developing
+
+```bash
+
+# view version
+docker run -it --name=golang --rm idoall/ubuntu16.04-golang:<version> go version
+
+# Run
+docker run -d --name=golang idoall/ubuntu16.04-golang:<version>
+
+# access the contain
+docker exec -it golang /bin/bash
+```

@@ -2,7 +2,7 @@
 
 [TOC]
 
-# Docker-PHP/7.1.9-Tengine/2.2.0 (Nginx/1.8.1)-Ubuntu/16.04
+# Docker-PHP/7.1.9-Tengine/2.2.0 (Nginx/1.8.1)-Centos/6.8
 
 
 This repository contains the sources for the following [docker](https://docker.io) base images:
