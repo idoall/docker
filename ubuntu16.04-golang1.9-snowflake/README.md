@@ -1,6 +1,13 @@
+# 目录
 
-docker-ubuntu16.04-golang1.9-snowflake
-=============
+[TOC]
+
+# Docker-snowflake-Golang/1.9-Ubuntu/16.04
+
+
+This repository contains the sources for the following [docker](https://docker.io) base images:
+- [`idoall/ubuntu16.04-golang:1.9`](https://hub.docker.com/r/idoall/ubuntu16.04-golang/)
+
 
 # snowflake
 
