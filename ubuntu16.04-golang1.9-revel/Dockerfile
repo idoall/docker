@@ -9,10 +9,10 @@ COPY files/ /
 # -----------------------------------------------------------------------------
 RUN cd $GOPATH \
     && go get -u github.com/revel/cmd/revel \
-    && revel new github.com/idoall.org/my-app
-
+    && revel new github.com/idoall.org/my-app \
+    && sed -i "s/http.port = 9000/http.port = 8080/" $GOPATH/src/github.com/idoall.org/my-app/conf/app.conf
 
 # -----------------------------------------------------------------------------
 # 映射端口
 # -----------------------------------------------------------------------------
-EXPOSE 80 9000
+EXPOSE 8080
