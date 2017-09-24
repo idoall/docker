@@ -1,9 +1,12 @@
+# 目录
 
-# docker-golang1.7.4-revel0.13
+[TOC]
+
+# Docker-revel-Golang/1.9-Ubuntu/16.04
 
 
 This repository contains the sources for the following [docker](https://docker.io) base images:
-- [`idoall/golang-revel/`](https://hub.docker.com/r/idoall/golang-revel//)
+- [`idoall/ubuntu16.04-golang:1.9`](https://hub.docker.com/r/idoall/ubuntu16.04-golang/)
 
 
 ## Developing
@@ -11,7 +14,7 @@ This repository contains the sources for the following [docker](https://docker.i
 ```bash
 # Pull image
 git clone https://github.com/idoall/docker.git
-cd golang1.7.4-revel0.13
+cd ubuntu16.04-golang1.9-revel
 
 # hack hack hack
 
@@ -23,7 +26,7 @@ docker build -t idoall/ubuntu16.04-golang1.9-revel .
 docker run -it \
 --rm \
 --name golang-revel \
--p 9000:9000 \
+-p 8080:8080 \
 idoall/ubuntu16.04-golang1.9-revel
 
 # Open http://localhost:9000 in your browser and you should see "It works!"
