@@ -46,4 +46,4 @@ If the `WORDPRESS_DB_NAME` specified does not already exist on the given MySQL s
 
 # Custom Nginx Config files
 
-Sometimes you need a custom config file for nginx to achieve this read the [Nginx config guide](https://hub.docker.com/r/idoall/nginx/)
+Sometimes you need a custom config file for nginx to achieve this read the [Nginx config guide](https://hub.docker.com/r/idoall/ubuntu16.04-nginx/)
