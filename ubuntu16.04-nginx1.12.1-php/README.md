@@ -54,7 +54,7 @@ docker run -it --rm idoall/ubuntu16.04-nginx1.12.1-php:<version> php -v
 /home/work/_app/nginx/html # meant to contain web content
 
 # Custom Nginx Config files
-Sometimes you need a custom config file for nginx to achieve this read the [Nginx config guide](https://hub.docker.com/r/idoall/nginx/)
+Sometimes you need a custom config file for nginx to achieve this read the [Nginx config guide](https://hub.docker.com/r/idoall/ubuntu16.04-nginx/)
 
 ## meant to contain web content
 ```bash
