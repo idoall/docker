@@ -12,6 +12,14 @@ This repository contains the sources for the following [docker](https://docker.i
 
 ```bash
 
+# run mysql
+docker run -d \
+--name mysqldb \
+--hostname mysqldb \
+-p 3306:3306 \
+-e MYSQL_ROOT_PASSWORD=123456 \
+idoall/mysql:5.7
+
 # run
 docker run -d \
 --name wordpress \
@@ -46,4 +54,4 @@ If the `WORDPRESS_DB_NAME` specified does not already exist on the given MySQL s
 
 # Custom Nginx Config files
 
-Sometimes you need a custom config file for nginx to achieve this read the [Nginx config guide](https://hub.docker.com/r/idoall/nginx/)
+Sometimes you need a custom config file for nginx to achieve this read the [Nginx config guide](https://hub.docker.com/r/idoall/ubuntu16.04-nginx/)

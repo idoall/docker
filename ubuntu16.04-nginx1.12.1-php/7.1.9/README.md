@@ -3,6 +3,7 @@
 [TOC]
 
 # Docker-PHP/7.1.9-Nginx/1.12.1-Ubuntu/16.04
+Supported Memcached & Redis
 
 
 This repository contains the sources for the following [docker](https://docker.io) base images:

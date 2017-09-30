@@ -21,11 +21,19 @@ cd ubuntu16.04-nginx1.12.1-php7.1.9-wordpress/4.8.1
 # build
 docker build -t idoall/ubuntu16.04-nginx1.12.1-php7.1.9-wordpress:4.8.1 .
 
+# run mysql
+docker run -d \
+--name mysqldb \
+--hostname mysqldb \
+-p 3306:3306 \
+-e MYSQL_ROOT_PASSWORD=123456 \
+idoall/mysql:5.7
+
 # run
 docker run -d \
 --name wordpress \
 --hostname wordpress \
---link some-mysql:mysql \
+--link mysqldb:mysql \
 -p 80:80 \
 idoall/ubuntu16.04-nginx1.12.1-php7.1.9-wordpress:4.8.1
 

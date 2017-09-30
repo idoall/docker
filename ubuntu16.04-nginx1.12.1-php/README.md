@@ -64,3 +64,4 @@ docker run -d \
 -v /mysite:/home/work/_app/nginx/html \
 -p 80:80 \
 idoall/ubuntu16.04-nginx1.12.1-php:<version>
+```
