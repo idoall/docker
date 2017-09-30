@@ -10,7 +10,7 @@ ENV PHP_VERSION 7.1.9
 # 基础工具
 # -----------------------------------------------------------------------------
 RUN apt-fast update -y \
-	&& apt-fast install -y imagemagick graphicsmagick libxml2 libxml2-dev libcurl3-openssl-dev libjpeg-dev libpng-dev libfreetype6-dev libmcrypt-dev \
+	&& apt-fast install -y imagemagick graphicsmagick libmemcached-dev libxml2 libxml2-dev libcurl3-openssl-dev libjpeg-dev libpng-dev libfreetype6-dev libmcrypt-dev git autoconf \
 	&& ln -s /usr/lib/x86_64-linux-gnu/libssl.so  /usr/lib
 
 # -----------------------------------------------------------------------------
@@ -81,6 +81,32 @@ RUN cd /home/work/_src \
     && sed -i -e 's/fastcgi_param  SERVER_PORT        $server_port;/fastcgi_param  SERVER_PORT        $http_x_forwarded_port;/g' /home/work/_app/nginx/conf/fastcgi_params \
     && echo "<?php  phpinfo();  ?>" > /home/work/_app/nginx/html/index.php
 
+
+# -----------------------------------------------------------------------------
+# 安装 php-redis
+# ----------------------------------------------------------------------------- 
+RUN export PATH=$PATH:/home/work/_app/php7.1.9/bin:/home/work/_app/php7.1.9/sbin \
+    && cd /home/work/_src \
+    && git clone https://github.com/phpredis/phpredis.git \
+    && cd phpredis \
+    && phpize \
+    && ./configure \
+    && make && make install \
+    && echo "extension=redis.so" >> /home/work/_app/php7.1.9/etc/php.ini
+
+
+# -----------------------------------------------------------------------------
+# 安装 php-memcached
+# ----------------------------------------------------------------------------- 
+RUN export PATH=$PATH:/home/work/_app/php7.1.9/bin:/home/work/_app/php7.1.9/sbin \
+    && cd /home/work/_src \
+    && git clone https://github.com/php-memcached-dev/php-memcached.git \
+    && cd php-memcached \
+    && git checkout php7 \
+    && phpize \
+    && ./configure \
+    && make && make install \
+    && echo "extension=memcached.so" >> /home/work/_app/php7.1.9/etc/php.ini
 
 # -----------------------------------------------------------------------------
 # 清除

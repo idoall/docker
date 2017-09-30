@@ -12,6 +12,14 @@ This repository contains the sources for the following [docker](https://docker.i
 
 ```bash
 
+# run mysql
+docker run -d \
+--name mysqldb \
+--hostname mysqldb \
+-p 3306:3306 \
+-e MYSQL_ROOT_PASSWORD=123456 \
+idoall/mysql:5.7
+
 # run
 docker run -d \
 --name wordpress \
