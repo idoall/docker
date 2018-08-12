@@ -13,7 +13,7 @@ This repository contains the sources for the following [docker](https://docker.i
 ```bash
 # Pull image
 git clone https://github.com/idoall/docker.git
-cd ubuntu16.04-golang/1.10.3
+cd docker/ubuntu16.04-golang/1.10.3
 
 # hack hack hack
 
