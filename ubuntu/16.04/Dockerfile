@@ -10,7 +10,7 @@ COPY files/ /
 # -----------------------------------------------------------------------------
 RUN apt-get update -y \
 	&& apt-get -y upgrade \
-	&& apt-get -o Dpkg::Options::=--force-confdef -y install curl netcat wget telnet vim bzip2 ssmtp locales python-pip software-properties-common python-software-properties bash-completion net-tools  \
+	&& apt-get -o Dpkg::Options::=--force-confdef -y install curl netcat wget telnet vim bzip2 ssmtp locales python-pip software-properties-common python-software-properties bash-completion net-tools iputils-ping  \
 	&& locale-gen en_US.utf8 \
 	&& localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8 \
 	&& chmod -R 777 /var/run /var/log /etc/passwd /etc/group \
