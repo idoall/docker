@@ -1,5 +1,5 @@
 
-docker-ubuntu16.04-golang1.9
+docker-ubuntu16.04-golang1.10.3
 =============
 
 
