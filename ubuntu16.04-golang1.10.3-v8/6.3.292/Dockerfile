@@ -18,3 +18,15 @@ RUN mkdir -p `go env GOPATH`/src/github.com/idoall \
     && ln -s `go env GOPATH`/src/github.com/idoall/v8/data/vendor/v8/include $GOPATH/src/github.com/idoall/v8/include \
     && ln -s `go env GOPATH`/src/github.com/idoall/v8/data/vendor/v8/out/x64.release $GOPATH/src/github.com/idoall/v8/libv8
 
+RUN apt-get update -y \
+    && apt-fast install -y libasound2-dev
+
+
+# -----------------------------------------------------------------------------
+# 清除
+# -----------------------------------------------------------------------------
+RUN chmod 755 /hooks \
+	&& chown -R work:work /home/work/* \
+	&& apt-get -y clean \
+  	&& rm -rf /var/lib/apt/lists/* \
+  	&& rm -rf /var/cache/apt/archives/apt-fast/* 
