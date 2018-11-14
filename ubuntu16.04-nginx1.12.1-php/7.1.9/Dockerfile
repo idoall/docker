@@ -60,6 +60,8 @@ RUN cd /home/work/_src \
 # 修改配置文件
 # -----------------------------------------------------------------------------   
     && mkdir -p /home/work/_logs/php /home/work/_app/php7.1.9/session \
+    && chmod o=rwx -R /home/work/_app/php7.1.9/session \
+    && sed -i "s/pdo_mysql.default_socket=/pdo_mysql.default_socket=\/tmp\/mysql.sock/" /home/work/_app/php7.1.9/etc/php.ini \
     && sed -i "s/;date.timezone =.*/date.timezone = Asia\/Shanghai/" /home/work/_app/php7.1.9/etc/php.ini \
     && sed -i 's/max_execution_time = 30/max_execution_time = 300/g' /home/work/_app/php7.1.9/etc/php.ini \
     && sed -i 's/upload_max_filesize = 2M/upload_max_filesize = 256M/g' /home/work/_app/php7.1.9/etc/php.ini \

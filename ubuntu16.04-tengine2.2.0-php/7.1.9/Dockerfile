@@ -62,6 +62,7 @@ RUN cd /home/work/_src \
     && mkdir -p /home/work/_logs/php \
     && sed -i "s/;date.timezone =.*/date.timezone = Asia\/Shanghai/" /home/work/_app/php7.1.9/etc/php.ini \
     && sed -i 's/max_execution_time = 30/max_execution_time = 300/g' /home/work/_app/php7.1.9/etc/php.ini \
+    && sed -i 's/pdo_mysql.default_socket=/pdo_mysql.default_socket=/tmp/mysqld.sock/g' /home/work/_app/php7.1.9/etc/php.ini \
     && sed -i 's/upload_max_filesize = 2M/upload_max_filesize = 256M/g' /home/work/_app/php7.1.9/etc/php.ini \
     && sed -i 's/post_max_size = 8M/post_max_size = 512M/g' /home/work/_app/php7.1.9/etc/php.ini \
     && sed -i 's/memory_limit = 128M/memory_limit = 256M/g' /home/work/_app/php7.1.9/etc/php.ini \
