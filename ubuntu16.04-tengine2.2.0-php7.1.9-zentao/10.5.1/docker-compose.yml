@@ -1,0 +1,51 @@
+version: '3'
+# https://docs.docker.com/compose/compose-file/
+# support Docker version 17.05.0-ce
+services:
+
+#################################### zentao ######################################################
+
+##############################
+# zentao_mysql
+##############################
+  zentao_mysql:
+    image: "idoall/mysql:5.7"
+    hostname: zentao_mysql
+    volumes:
+      - /Users/lion/my_project/_docker/github_idoall/ubuntu16.04-tengine2.2.0-php7.1.9-zentao/10.5.1/tempdata:/var/lib/mysql
+    ports:
+     - "6033:3306"
+    networks:
+      - zentao
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456
+      - MYSQL_DATABASE=zentao
+    deploy:
+      replicas: 1
+      update_config:
+        delay: 1s
+      restart_policy:
+        condition: on-failure
+##############################
+# zentao
+##############################
+  zentao:
+    image: "idoall/ubuntu16.04-tengine2.2.0-php7.1.9-zentao:10.5.1"
+    hostname: zentao
+    ports:
+     - "20070:80"
+    networks:
+      - zentao
+    depends_on:
+     - zentao_mysql
+    deploy:
+      replicas: 1
+      update_config:
+        delay: 1s
+      restart_policy:
+        condition: on-failure
+
+# 统一网络设置
+networks:
+  zentao:
+    driver: overlay
