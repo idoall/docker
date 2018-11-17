@@ -22,7 +22,8 @@ docker run -it \
 --rm \
 --name ubuntu16 \
 --hostname ubuntu16 \
-idoall/ubuntu:16.04
+idoall/ubuntu:16.04 \
+/bin/bash
 
 
 # view supervisor version
