@@ -1,0 +1,64 @@
+version: '3'
+# https://docs.docker.com/compose/compose-file/
+# support Docker version 17.05.0-ce
+services:
+
+#################################### zentao ######################################################
+
+##############################
+# confluence_mysql
+##############################
+  confluence_mysql:
+    image: "idoall/mysql:5.7"
+    hostname: confluence_mysql
+    ports:
+     - "6033:3306"
+    volumes:
+      - /Users/lion/my_project/_docker/github_idoall/ubuntu16.04-jdk10-confluence/6.12.2/my.ini:/etc/mysql/my.cnf
+    networks:
+      - confluence
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456
+      - MYSQL_DATABASE=confluence
+      - MYSQL_USER=confluence
+      - MYSQL_PASSWORD=confluence_mshk
+      - character-set-server=utf8
+      - collation-server=utf8_bin
+    deploy:
+      replicas: 1
+      update_config:
+        delay: 1s
+      restart_policy:
+        condition: on-failure
+##############################
+# confluence
+# 使用最多不超过50%的CPU和2G内存，总是有25%的CPU以及1G内存可用
+##############################
+  confluence:
+    image: "idoall/ubuntu16.04-jdk10-confluence:6.12.2"
+    hostname: confluence
+    ports:
+     - "80:8090"
+     - "8000:8000"
+    networks:
+      - confluence
+    depends_on:
+     - confluence_mysql
+    deploy:
+      replicas: 1
+      update_config:
+        delay: 1s
+      restart_policy:
+        condition: on-failure
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 2048M
+        reservations:
+          cpus: '0.25'
+          memory: 1024M
+
+# 统一网络设置
+networks:
+  confluence:
+    driver: overlay

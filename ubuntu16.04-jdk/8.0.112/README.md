@@ -21,10 +21,10 @@ cd ubuntu16.04-jdk/8.0.112
 docker build -t idoall/ubuntu16.04-jdk:8.0.112 .
 
 # view version
-docker run -it --name=idoall_jdk --rm idoall/ubuntu16.04-JDK:8.0.112 java -version
+docker run -it --name=idoall_jdk --rm idoall/ubuntu16.04-jdk:8.0.112 java -version
 
 # Run
-docker run -d --name=idoall_jdk idoall/ubuntu16.04-JDK:8.0.112
+docker run -d --name=idoall_jdk idoall/ubuntu16.04-jdk:8.0.112
 
 # access the contain
 docker exec -it idoall_jdk /bin/bash
