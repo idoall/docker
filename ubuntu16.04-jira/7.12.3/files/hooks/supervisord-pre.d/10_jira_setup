@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+
+echo "start jira..."
+service jira start
+
