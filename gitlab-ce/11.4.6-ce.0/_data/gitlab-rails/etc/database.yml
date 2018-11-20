@@ -1,0 +1,23 @@
+# This file is managed by gitlab-ctl. Manual changes will be
+# erased! To change the contents below, edit /etc/gitlab/gitlab.rb
+# and run `sudo gitlab-ctl reconfigure`.
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  collation: 
+  database: gitlabhq_production
+  pool: 10
+  username: "gitlab"
+  password: 
+  host: "/var/opt/gitlab/postgresql"
+  port: 5432
+  socket: 
+  sslmode: 
+  sslcompression: 0
+  sslrootcert: 
+  sslca: 
+  load_balancing: {"hosts":[]}
+  prepared_statements: false
+  statements_limit: 1000
+  fdw: 

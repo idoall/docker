@@ -1,0 +1,43 @@
+# This file is managed by gitlab-ctl. Manual changes will be
+# erased! To change the contents below, edit /etc/gitlab/gitlab.rb
+# and run `sudo gitlab-ctl reconfigure`.
+
+# GitLab user. git by default
+user: git
+
+# Url to gitlab instance. Used for api calls. Should end with a slash.
+gitlab_url: "http://127.0.0.1:8080"
+
+http_settings:
+  
+#  user: someone
+#  password: somepass
+#  ca_file: /etc/ssl/cert.pem
+#  ca_path: /etc/pki/tls/certs
+#  self_signed_cert: false
+
+# File used as authorized_keys for gitlab user
+auth_file: "/var/opt/gitlab/.ssh/authorized_keys"
+
+# Redis settings used for pushing commit notices to gitlab
+redis:
+  host: 127.0.0.1
+  port: 
+  socket: /var/opt/gitlab/redis/redis.socket
+  database: 
+  namespace: resque:gitlab
+
+# Log file.
+# Default is gitlab-shell.log in the root directory.
+log_file: "/var/log/gitlab/gitlab-shell/gitlab-shell.log"
+
+# Log level. INFO by default
+log_level: 
+
+
+# Audit usernames.
+# Set to true to see real usernames in the logs instead of key ids, which is easier to follow, but
+# incurs an extra API call on every gitlab-shell command.
+audit_usernames: 
+
+

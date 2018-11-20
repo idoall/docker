@@ -1,0 +1,9 @@
+---
+global: {}
+templates: []
+route:
+  receiver: default-receiver
+  routes: []
+receivers:
+- name: default-receiver
+inhibit_rules: []

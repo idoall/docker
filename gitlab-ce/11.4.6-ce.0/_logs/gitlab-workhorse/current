@@ -1,0 +1,32 @@
+2018-11-20_13:47:32.32880 time="2018-11-20T13:47:32Z" level=error msg=error correlation-id=qZX80zaYXE7 error="badgateway: failed after 0s: dial unix /var/opt/gitlab/gitlab-rails/sockets/gitlab.socket: connect: no such file or directory" method=GET uri=/help
+2018-11-20_13:47:32.32943 localhost @ - - [2018/11/20:13:47:32 +0000] "GET /help HTTP/1.1" 502 2940 "" "curl/7.59.0" 0.004
+2018-11-20_13:48:32.43270 time="2018-11-20T13:48:32Z" level=error msg=error correlation-id=0jE0HKaE79 error="badgateway: failed after 0s: dial unix /var/opt/gitlab/gitlab-rails/sockets/gitlab.socket: connect: no such file or directory" method=GET uri=/help
+2018-11-20_13:48:32.43307 localhost @ - - [2018/11/20:13:48:32 +0000] "GET /help HTTP/1.1" 502 2940 "" "curl/7.59.0" 0.002
+2018-11-20_13:49:32.54771 time="2018-11-20T13:49:32Z" level=error msg=error correlation-id=AKNDWoBy5x9 error="badgateway: failed after 0s: dial unix /var/opt/gitlab/gitlab-rails/sockets/gitlab.socket: connect: no such file or directory" method=GET uri=/help
+2018-11-20_13:49:32.54864 localhost @ - - [2018/11/20:13:49:32 +0000] "GET /help HTTP/1.1" 502 2940 "" "curl/7.59.0" 0.006
+2018-11-20_13:50:32.66393 time="2018-11-20T13:50:32Z" level=error msg=error correlation-id=OXE8HHpHr62 error="badgateway: failed after 0s: dial unix /var/opt/gitlab/gitlab-rails/sockets/gitlab.socket: connect: no such file or directory" method=GET uri=/help
+2018-11-20_13:50:32.66527 localhost @ - - [2018/11/20:13:50:32 +0000] "GET /help HTTP/1.1" 502 2940 "" "curl/7.59.0" 0.005
+2018-11-20_13:51:32.81321 time="2018-11-20T13:51:32Z" level=error msg=error correlation-id=EvJaIHF6M33 error="badgateway: failed after 0s: dial unix /var/opt/gitlab/gitlab-rails/sockets/gitlab.socket: connect: no such file or directory" method=GET uri=/help
+2018-11-20_13:51:32.81361 localhost @ - - [2018/11/20:13:51:32 +0000] "GET /help HTTP/1.1" 502 2940 "" "curl/7.59.0" 0.002
+2018-11-20_13:52:32.94242 time="2018-11-20T13:52:32Z" level=error msg=error correlation-id=4oDYcY22KO7 error="badgateway: failed after 0s: dial unix /var/opt/gitlab/gitlab-rails/sockets/gitlab.socket: connect: no such file or directory" method=GET uri=/help
+2018-11-20_13:52:32.94276 localhost @ - - [2018/11/20:13:52:32 +0000] "GET /help HTTP/1.1" 502 2940 "" "curl/7.59.0" 0.002
+2018-11-20_13:53:33.06394 time="2018-11-20T13:53:33Z" level=error msg=error correlation-id=NwMG8sophY6 error="badgateway: failed after 0s: dial unix /var/opt/gitlab/gitlab-rails/sockets/gitlab.socket: connect: no such file or directory" method=GET uri=/help
+2018-11-20_13:53:33.06445 localhost @ - - [2018/11/20:13:53:33 +0000] "GET /help HTTP/1.1" 502 2940 "" "curl/7.59.0" 0.002
+2018-11-20_13:54:33.17600 time="2018-11-20T13:54:33Z" level=error msg=error correlation-id=V3H15iIcXU8 error="badgateway: failed after 0s: dial unix /var/opt/gitlab/gitlab-rails/sockets/gitlab.socket: connect: no such file or directory" method=GET uri=/help
+2018-11-20_13:54:33.17658 localhost @ - - [2018/11/20:13:54:33 +0000] "GET /help HTTP/1.1" 502 2940 "" "curl/7.59.0" 0.003
+2018-11-20_13:55:33.29274 time="2018-11-20T13:55:33Z" level=error msg=error correlation-id=Lh36tVopJr1 error="badgateway: failed after 0s: dial unix /var/opt/gitlab/gitlab-rails/sockets/gitlab.socket: connect: no such file or directory" method=GET uri=/help
+2018-11-20_13:55:33.29319 localhost @ - - [2018/11/20:13:55:33 +0000] "GET /help HTTP/1.1" 502 2940 "" "curl/7.59.0" 0.003
+2018-11-20_13:56:33.39533 time="2018-11-20T13:56:33Z" level=error msg=error correlation-id=HThRa9MJtZ3 error="badgateway: failed after 0s: dial unix /var/opt/gitlab/gitlab-rails/sockets/gitlab.socket: connect: no such file or directory" method=GET uri=/help
+2018-11-20_13:56:33.39577 localhost @ - - [2018/11/20:13:56:33 +0000] "GET /help HTTP/1.1" 502 2940 "" "curl/7.59.0" 0.003
+2018-11-20_13:57:33.51059 time="2018-11-20T13:57:33Z" level=error msg=error correlation-id=GZUQMsIErY7 error="badgateway: failed after 0s: dial unix /var/opt/gitlab/gitlab-rails/sockets/gitlab.socket: connect: no such file or directory" method=GET uri=/help
+2018-11-20_13:57:33.51103 localhost @ - - [2018/11/20:13:57:33 +0000] "GET /help HTTP/1.1" 502 2940 "" "curl/7.59.0" 0.003
+2018-11-20_13:58:33.60741 time="2018-11-20T13:58:33Z" level=error msg=error correlation-id=zfYM23yFCB6 error="badgateway: failed after 0s: dial unix /var/opt/gitlab/gitlab-rails/sockets/gitlab.socket: connect: no such file or directory" method=GET uri=/help
+2018-11-20_13:58:33.60806 localhost @ - - [2018/11/20:13:58:33 +0000] "GET /help HTTP/1.1" 502 2940 "" "curl/7.59.0" 0.002
+2018-11-20_13:59:33.71389 time="2018-11-20T13:59:33Z" level=error msg=error correlation-id=OxzM1UbhkQ6 error="badgateway: failed after 0s: dial unix /var/opt/gitlab/gitlab-rails/sockets/gitlab.socket: connect: no such file or directory" method=GET uri=/help
+2018-11-20_13:59:33.71420 localhost @ - - [2018/11/20:13:59:33 +0000] "GET /help HTTP/1.1" 502 2940 "" "curl/7.59.0" 0.002
+2018-11-20_14:00:07.89411 time="2018-11-20T14:00:07Z" level=error msg=error correlation-id=Knv3tFYKP0a error="badgateway: failed after 0s: dial unix /var/opt/gitlab/gitlab-rails/sockets/gitlab.socket: connect: no such file or directory" method=GET uri=/
+2018-11-20_14:00:07.89474 localhost @ - - [2018/11/20:14:00:07 +0000] "GET / HTTP/1.1" 502 2940 "" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36" 0.002
+2018-11-20_14:00:08.58590 time="2018-11-20T14:00:08Z" level=error msg=error correlation-id=zLTbPeRLQS9 error="badgateway: failed after 0s: dial unix /var/opt/gitlab/gitlab-rails/sockets/gitlab.socket: connect: no such file or directory" method=GET uri=/favicon.ico
+2018-11-20_14:00:08.58732 localhost @ - - [2018/11/20:14:00:08 +0000] "GET /favicon.ico HTTP/1.1" 502 2940 "http://localhost/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36" 0.011
+2018-11-20_14:00:33.82102 time="2018-11-20T14:00:33Z" level=error msg=error correlation-id=l0aeEv5kJS7 error="badgateway: failed after 0s: dial unix /var/opt/gitlab/gitlab-rails/sockets/gitlab.socket: connect: no such file or directory" method=GET uri=/help
+2018-11-20_14:00:33.82162 localhost @ - - [2018/11/20:14:00:33 +0000] "GET /help HTTP/1.1" 502 2940 "" "curl/7.59.0" 0.003
