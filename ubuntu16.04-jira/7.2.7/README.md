@@ -4,12 +4,6 @@
 
 # Docker-JIRA/7.2.7-Ubuntu/16.04
 
-
-This repository contains the sources for the following [docker](https://docker.io) base images:
-- [`idoall/ubuntu16.04-sshd`](https://hub.docker.com/r/idoall/ubuntu16.04-sshd/)
-
-
-
 ## Developing
 
 ```bash

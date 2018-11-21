@@ -1,3 +1,6 @@
+ubuntu16.04-jira
+=============
+
 This repository contains the sources for the following [docker](https://docker.io) base images:
 
 - [`idoall/ubuntu:16.04`](https://hub.docker.com/r/idoall/ubuntu/)
@@ -7,6 +10,7 @@ This repository contains the sources for the following [docker](https://docker.i
 # Supported tags and respective `Dockerfile` links
 
 - [`7.2.7`(*7.2.7/Dockerfile*)](https://github.com/idoall/docker/blob/master/ubuntu16.04-jira/7.2.7/Dockerfile)
+- [`7.12.3`(*7.12.3/Dockerfile*)](https://github.com/idoall/docker/blob/master/ubuntu16.04-jira/7.12.3/Dockerfile)
 
 
 
@@ -23,7 +27,7 @@ docker run -d \
     -e MYSQL_DATABASE=jira \
     -e MYSQL_USER=jira \
     -e MYSQL_PASSWORD=jira \
-    idoall/mysql:5.6
+    idoall/mysql:5.7
 
 # run
 docker run -d \
@@ -61,4 +65,4 @@ You can fine tune these directories to meet your requirements.
 
 
 
-更详细的汉化、破解方法：[Docker创建JIRA 7.2.7中文破解版](http://mshk.top/2017/08/docker-jira-7-2-7/) ​
+更详细的汉化、破解方法：[Docker 创建 Jira7.12.3 中文破解版](https://mshk.top/2018/11/docker-jira-7-12-3/)

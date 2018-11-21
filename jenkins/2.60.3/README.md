@@ -1,29 +1,32 @@
 
-gitlab-ce:9.3.6-ce.0
+ubuntu16.04-jdk10-confluence6.12.2
 =============
 
+
+This repository contains the sources for the following [idoall/ubuntu16.04-jdk:10](https://hub.docker.com/r/idoall/ubuntu16.04-jdk) base images:
+- [`ubuntu16.04-jdk10-confluence`](https://hub.docker.com/r/idoall/ubuntu16.04-jdk10-confluence/)
 
 ## Developing
 
 ```bash
 # Pull image
 git clone https://github.com/idoall/docker.git
-cd gitlab-ce/9.3.6-ce.0
+cd jenkins/2.60.3
 
 # hack hack hack
 
 # Build
-docker build -t idoall/gitlab-ce:9.3.6-ce.0 .
+docker build -t idoall/jenkins:2.60.3 .
 
 # Run rm
-docker run -it --name=mshk_gitlab --rm -p 80:80 idoall/gitlab-ce:9.3.6-ce.0
+docker run -it --name=mshk --rm -p 80:80 idoall/gitlab-ce:9.3.6-ce.0
 
 # After running, wait for 1 minutes.
 # Open http://localhost/ in your browser
-docker run -d --name=mshk_gitlab -p 80:80 idoall/gitlab-ce:9.3.6-ce.0
+docker run -d --name=mshk -p 80:80 idoall/gitlab-ce:9.3.6-ce.0
 
 # access the contain
-docker exec -it mshk_gitlab /bin/bash
+docker exec -it mshk /bin/bash
 ```
 # Using docker stack deploy service to create APP
 

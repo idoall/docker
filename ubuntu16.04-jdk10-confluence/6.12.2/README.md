@@ -3,9 +3,6 @@ ubuntu16.04-jdk10-confluence6.12.2
 =============
 
 
-This repository contains the sources for the following [idoall/ubuntu16.04-jdk:10](https://hub.docker.com/r/idoall/ubuntu16.04-jdk) base images:
-- [`ubuntu16.04-jdk10-confluence`](https://hub.docker.com/r/idoall/ubuntu16.04-jdk10-confluence/)
-
 # 相关文章
 [Docker创建Confluence6.12.2 中文破解版](https://mshk.top/2018/11/docker-confluence-6-12-2/)
 

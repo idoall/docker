@@ -1,12 +1,5 @@
-ubuntu16.04-jira:7.12.3
+gitlab-ce:11.4.6-ce.0
 =============
-
-
-This repository contains the sources for the following [idoall/ubuntu:16.04](https://hub.docker.com/r/idoall/ubuntu/16.04) base images:
-- [`ubuntu16.04-jira:7.12.3`](https://hub.docker.com/r/idoall/ubuntu16.04-jira/7.12.3)
-
-# 相关文章
-[Docker 创建 Jira7.12.3 中文破解版](https://mshk.top/2018/11/docker-jira-7-12-3/)
 
 ## Developing
 

@@ -1,13 +1,68 @@
-# V8 Bindings for Go [![Build Status](https://travis-ci.org/augustoroman/v8.svg?branch=master)](https://travis-ci.org/augustoroman/v8) [![Go Report Card](https://goreportcard.com/badge/github.com/augustoroman/v8)](https://goreportcard.com/report/github.com/augustoroman/v8) [![GoDoc](https://godoc.org/github.com/augustoroman/v8?status.svg)](https://godoc.org/github.com/augustoroman/v8)
 
-The v8 bindings allow a user to execute javascript from within a go executable.
+ubuntu16.04-jdk10-confluence
+=============
 
-The bindings are tested to work with several recent v8 builds matching the
-Chrome builds 54 - 60 (see the .travis.yml file for specific versions). For
-example, Chrome 59 (dev branch) uses v8 5.9.211.4 when this was written.
 
-Note that v8 releases match the Chrome release timeline:
-Chrome 48 corresponds to v8 4.8.\*, Chrome 49 matches v8 4.9.\*. You can see
-the table of current chrome and the associated v8 releases at:
+This repository contains the sources for the following [idoall/ubuntu16.04-jdk:10](https://hub.docker.com/r/idoall/ubuntu16.04-jdk) base images:
+- [`6.12.2`(*6.12.2/Dockerfile*)](https://github.com/idoall/docker/blob/master/ubuntu16.04-jdk10-confluence/6.12.2/Dockerfile)
 
-http://omahaproxy.appspot.com/
+# 相关文章
+[Docker 创建 Confluence6.12.2 中文破解版](https://mshk.top/2018/11/docker-confluence-6-12-2/)
+
+## Developing
+
+```bash
+# Pull image
+git clone https://github.com/idoall/docker.git
+cd ubuntu16.04-jdk10-confluence/<tag>
+
+# hack hack hack
+
+# Build
+docker build -t idoall/ubuntu16.04-jdk10-confluence:<tag> .
+
+# Run rm
+docker run -it --name=idoall_confluence --rm -p 80:8090 idoall/ubuntu16.04-jdk10-confluence:<tag>
+
+# After running, wait for 1 minutes.
+# Open http://localhost/ in your browser
+docker run -d --name=idoall_confluence -p 80:8090 idoall/ubuntu16.04-jdk10-confluence:<tag>
+
+# access the contain
+docker exec -it idoall_confluence /bin/bash
+```
+# Using docker stack deploy service to create APP
+
+
+
+When deploying, pay attention to modifying the  `my.ini` in the `docker-compose.yml` file content.
+
+
+
+## deploy service
+
+```bash
+docker stack deploy -c docker-compose.yml mshk_confluence
+```
+
+## remove deploy
+
+```bash
+docker stack rm mshk_confluence
+```
+
+## view service list
+
+```bash
+# 所有服务列表
+docker service ls
+
+# 指定应用的列表
+docker stack services mshk_confluence
+```
+
+## View service status
+
+```bash
+watch docker service ps mshk_confluence
+```
