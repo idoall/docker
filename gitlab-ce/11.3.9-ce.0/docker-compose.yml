@@ -10,14 +10,11 @@ services:
 ##############################
   mshk_gitlab:
     image: idoall/gitlab-ce:11.4.6-ce.0
+    hostname: mshk_gitlab
     ports:
-      - "22:22"
-      - "80:80"
-      - "443:443"
-    environment:
-      GITLAB_OMNIBUS_CONFIG: |
-        external_url 'http://localhost'
-        gitlab_rails['gitlab_shell_ssh_port'] = 2224
+      - "20052:22"
+      - "20050:80"
+      - "20051:443"
     networks:
       - mshk
     deploy:
@@ -26,13 +23,6 @@ services:
         delay: 1s
       restart_policy:
         condition: on-failure
-      resources:
-        limits:
-          cpus: '0.50'
-          memory: 2048M
-        reservations:
-          cpus: '0.25'
-          memory: 1024M
 
 
 # 统一网络设置

@@ -1,4 +1,4 @@
-gitlab-ce:11.4.6-ce.0
+gitlab-ce:11.3.9-ce.0
 =============
 
 ## Developing
@@ -6,23 +6,27 @@ gitlab-ce:11.4.6-ce.0
 ```bash
 # Pull image
 git clone https://github.com/idoall/docker.git
-cd gitlab-ce/11.4.6-ce.0
+cd gitlab-ce/11.3.9-ce.0
 
 # hack hack hack
 
 # Build
-docker build -t idoall/gitlab-ce:11.4.6-ce.0 .
+docker build -t idoall/gitlab-ce:11.3.9-ce.0 .
 
 # Run After running, wait for 1 minutes.
 # Open http://localhost/ in your browser
 docker run -d \
 --name=mshk_gitlab \
 -p 80:80 -p 443:443 -p 22:22 \
-idoall/gitlab-ce:11.4.6-ce.0
+idoall/gitlab-ce:11.3.9-ce.0
 
 # access the contain
 docker exec -it mshk_gitlab /bin/bash
+
+# 汉化
+wget https://gitlab.com/xhang/gitlab/-/archive/11-3-stable-zh/gitlab-11-3-stable-zh.tar.bz2
 ```
+
 
 
 # Using docker stack deploy service to create APP
@@ -79,7 +83,6 @@ To fix your container, simply execute `update-permissions` and restart the conta
 ```bash
 docker exec mshk_gitlab update-permissions
 docker restart mshk_gitlab
-docker exec $CONTAINERNAME sh -c 'gitlab-ctl stop unicorn && gitlab-ctl stop sidekiq && gitlab-ctl start'
 ```
 
 ## Linux ACL issues

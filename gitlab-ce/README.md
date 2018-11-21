@@ -31,6 +31,7 @@ docker exec -it mshk_gitlab /bin/bash
 ```
 
 
+
 # Using docker stack deploy service to create APP
 
 
@@ -60,7 +61,7 @@ docker stack services mshk_gitlab
 ## View service status
 
 ```bash
-watch docker service ps mshk_gitlab_gitlab
+watch docker service ps mshk_gitlab_mshk_gitlab
 ```
 
 ## Where is the data stored?
