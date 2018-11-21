@@ -1,0 +1,57 @@
+version: '3'
+# https://docs.docker.com/compose/compose-file/
+# support Docker version 17.05.0-ce
+services:
+
+#################################### jira ######################################################
+
+##############################
+# jira_mysql
+##############################
+  jira_mysql:
+    image: "idoall/mysql:5.7"
+    hostname: jira_mysql
+    ports:
+     - "20032:3306"
+    volumes:
+      - /Users/lion/my_project/_docker/github_idoall/ubuntu16.04-jira-software/7.12.3/my.ini:/etc/mysql/my.cnf
+    networks:
+      - jira
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456
+      - MYSQL_DATABASE=jira
+      - MYSQL_USER=jira
+      - MYSQL_PASSWORD=jira_mshk
+      - character-set-server=utf8
+      - collation-server=utf8_bin
+    deploy:
+      replicas: 1
+      update_config:
+        delay: 1s
+      restart_policy:
+        condition: on-failure
+##############################
+# jira-software
+# 使用最多不超过50%的CPU和2G内存，总是有25%的CPU以及1G内存可用
+##############################
+  jira-software:
+    image: "idoall/ubuntu16.04-jira-software:7.12.3"
+    hostname: jira
+    ports:
+     - "20030:8080"
+     - "20031:8005"
+    networks:
+      - jira
+    depends_on:
+     - jira_mysql
+    deploy:
+      replicas: 1
+      update_config:
+        delay: 1s
+      restart_policy:
+        condition: on-failure
+
+# 统一网络设置
+networks:
+  jira:
+    driver: overlay
