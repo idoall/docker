@@ -12,7 +12,9 @@ This is a fully functional Jenkins server, based on the weekly and LTS releases 
 
 ![img](http://jenkins-ci.org/sites/default/files/jenkins_logo.png)
 
-- To use the latest 2.138.3: `docker pull idoall/jenkins:2.138.3`
+- To use the latest LTS: `docker pull idoall/jenkins:<tag>`
+- To use the latest weekly: `docker pull jenkins/jenkins`
+- Lighter alpine based image also available
 
 Read [documentation](https://github.com/jenkinsci/docker/blob/master/README.md) for usage
 
@@ -22,20 +24,19 @@ Read [documentation](https://github.com/jenkinsci/docker/blob/master/README.md) 
 ```bash
 # Pull image
 git clone https://github.com/idoall/docker.git
-cd jenkins/2.138.3
+cd jenkins/<tag>
 
 # hack hack hack
 
 # Build
-docker build -t idoall/jenkins:2.138.3 .
+docker build -t idoall/jenkins:<tag> .
 
 # Run After running, wait for 1 minutes.
 # Open http://localhost/ in your browser
-docker run -it \
---rm \
+docker run -d \
 --name=mshk_jenkins \
--p 80:8080 -p 50000:50000 \
-idoall/jenkins:2.138.3
+-p 8080:8080 -p 50000:50000 \
+idoall/jenkins:<tag>
 
 # access the contain
 docker exec -it mshk_jenkins /bin/bash
