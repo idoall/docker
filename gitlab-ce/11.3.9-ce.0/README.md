@@ -90,3 +90,29 @@ If these are not correct, set them with:
 ```bash
 $ sudo setfacl -mR default:group:docker:rwx /srv/gitlab
 ```
+
+# 汉化方法
+
+汉化的命令，都是在容器内部执行
+
+## 1、登录到容器内部，执行以下命令，安装patch工具：
+```bash
+apt-get update -y \
+&& apt-get install -y patch
+```
+
+## 2、执行以下命令后，在执行`patch -d /opt/gitlab/embedded/service/gitlab-rails -p1 < ../11.3.9-zh.diff`命令后，会提示一路回车，按到底。
+```bash
+cd /tmp \
+&& git clone https://gitlab.com/xhang/gitlab.git \
+&& gitlab-ctl stop \
+&& cd gitlab \
+&& git diff v11.3.9 v11.3.9-zh > ../11.3.9-zh.diff \
+&& patch -d /opt/gitlab/embedded/service/gitlab-rails -p1 < ../11.3.9-zh.diff
+```
+## 3、重启容器
+```bash
+gitlab-ctl start \
+&& apt-get -y clean \
+&& rm -rf /var/lib/apt/lists/*
+```
