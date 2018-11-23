@@ -1,4 +1,4 @@
-version: "3"
+version: "3.6"
 # https://docs.docker.com/compose/compose-file/
 # support Docker version 17.05.0-ce
 services:
@@ -17,6 +17,13 @@ services:
       - "20051:443"
     networks:
       - mshk
+    environment:
+      GITLAB_OMNIBUS_CONFIG: "from_file('/omnibus_config.rb')"
+    configs:
+      - source: gitlab
+        target: /omnibus_config.rb
+    secrets:
+      - gitlab_root_password
     deploy:
       replicas: 1
       update_config:
@@ -24,7 +31,12 @@ services:
       restart_policy:
         condition: on-failure
 
-
+configs:
+  gitlab:
+    file: ./gitlab.rb
+secrets:
+  gitlab_root_password:
+    file: ./root_password.txt
 # 统一网络设置
 networks:
   mshk:
