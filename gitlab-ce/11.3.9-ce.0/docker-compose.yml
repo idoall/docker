@@ -9,7 +9,7 @@ services:
 # mshk_gitlab
 ##############################
   mshk_gitlab:
-    image: idoall/gitlab-ce:11.4.6-ce.0
+    image: idoall/gitlab-ce:11.3.9-ce.0
     hostname: mshk_gitlab
     ports:
       - "20052:22"
