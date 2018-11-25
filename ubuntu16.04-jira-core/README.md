@@ -9,7 +9,7 @@ This repository contains the sources for the following [idoall/ubuntu:16.04](htt
 
 
 # 相关文章
-[Docker 创建 Jira Core/SoftWare 7.12.3 中文破解版](https://mshk.top/2018/11/docker-jira-core-software-7-12-3/)
+[Docker 创建 Jira Core/SoftWare 7.12.3 中文版](https://mshk.top/2018/11/docker-jira-core-software-7-12-3/)
 
 ## Developing
 
