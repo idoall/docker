@@ -1,5 +1,5 @@
 
-ubuntu16.04-jira-fisheye:4.6.1
+ubuntu16.04-jira-crucible:4.6.1
 =============
 
 
