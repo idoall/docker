@@ -17,32 +17,26 @@ RUN apt-fast update -y \
 RUN mkdir -p /home/work/_src \
     && axel -n 10 -o /home/work/_src/fisheye.tar.gz https://product-downloads.atlassian.com/software/fisheye/downloads/fisheye-$FISHEYE_VERSION.zip
 
-
 # -----------------------------------------------------------------------------
-# 安装 bamboo
+# 安装 fisheye
 # -----------------------------------------------------------------------------
 RUN cd /home/work/_src \
-    && tar -xzvf bamboo.tar.gz \
-    && mkdir -p /home/work/_app/_java_bamboo \
-    && mv /home/work/_src/atlassian-bamboo-$BAMBOO_VERSION/* /home/work/_app/_java_bamboo/ \
-    && mkdir -p /home/work/_data/_java_bamboo \
-    && sed -i "s/\#bamboo.home=C:\/bamboo\/bamboo-home/bamboo.home=\/home\/work\/_data\/_java_bamboo/" /home/work/_app/_java_bamboo/atlassian-bamboo/WEB-INF/classes/bamboo-init.properties
+    && unzip fisheye.tar.gz \
+    && mkdir -p /home/work/_app/_java_fisheye \
+    && mv /home/work/_src/fecru-$FISHEYE_VERSION/* /home/work/_app/_java_fisheye/ \
+    && mkdir -p /home/work/_data/_java_fisheye \
+    && echo "FISHEYE_INST=\"/home/work/_data/_java_fisheye\"" >> /etc/environment \
+    && cp /home/work/_app/_java_fisheye/config.xml /home/work/_data/_java_fisheye/
 
 # -----------------------------------------------------------------------------
-# 安装 bamboo mysql 驱动 
+# 安装 mysql 驱动 
 # -----------------------------------------------------------------------------
 RUN curl -Ls https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.47.tar.gz | tar -xz --directory /home/work/_src/ --strip-components=1 --no-same-owner \
-    && cp -r /home/work/_src/mysql-connector-java-5.1.47-bin.jar /home/work/_app/_java_bamboo/atlassian-bamboo/WEB-INF/lib/
+    && cp -r /home/work/_src/mysql-connector-java-5.1.47-bin.jar /home/work/_app/_java_fisheye/lib/
 
 
 COPY files/ /
 
-# -----------------------------------------------------------------------------
-# 破解 bamboo
-# -----------------------------------------------------------------------------
-RUN mv /home/work/_app/_java_bamboo/atlassian-bamboo/WEB-INF/lib/atlassian-extras-decoder-v2-3.3.0.jar /home/work/_app/_java_bamboo/atlassian-bamboo/WEB-INF/lib/atlassian-extras-decoder-v2-3.3.0.jar.bak \
-    && mv /home/work/_app/_java_bamboo/atlassian-bamboo/WEB-INF/lib/atlassian-extras-legacy-3.3.0.jar /home/work/_app/_java_bamboo/atlassian-bamboo/WEB-INF/lib/atlassian-extras-legacy-3.3.0.jar.bak \
-    && cp -r /usr/src/_bamboo/* /home/work/_app/_java_bamboo/atlassian-bamboo/WEB-INF/lib/
 
 # -----------------------------------------------------------------------------
 # 清除

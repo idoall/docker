@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+
+echo "start fisheye..."
+/home/work/_app/_java_fisheye/bin/start.sh
+
