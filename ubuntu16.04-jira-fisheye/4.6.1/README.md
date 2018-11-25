@@ -1,9 +1,8 @@
 
-ubuntu16.04-jira-bamboo:6.7.1
+ubuntu16.04-jira-fisheye:4.6.1
 =============
 
 
-# 相关文章
 
 ## Developing
 
