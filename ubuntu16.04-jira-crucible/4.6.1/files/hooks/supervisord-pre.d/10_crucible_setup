@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+
+echo "start crucible..."
+/home/work/_app/_java_crucible/bin/start.sh
+

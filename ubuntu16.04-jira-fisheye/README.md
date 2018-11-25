@@ -3,7 +3,7 @@ ubuntu16.04-jira-fisheye
 =============
 
 This repository contains the sources for the following [idoall/ubuntu:16.04](https://hub.docker.com/r/idoall/ubuntu/) base images:
-- [`ubuntu16.04-jira-fisheye:4.6.1`(*4.6.1/Dockerfile*)](https://github.com/idoall/docker/blob/master/ubuntu16.04-jira-fisheye/6.7.1/Dockerfile)
+- [`ubuntu16.04-jira-fisheye:4.6.1`(*4.6.1/Dockerfile*)](https://github.com/idoall/docker/blob/master/ubuntu16.04-jira-fisheye/4.6.1/Dockerfile)
 
 
 
