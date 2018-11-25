@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+
+echo "start crowd..."
+/home/work/_app/_jira_crowd/start_crowd.sh
+

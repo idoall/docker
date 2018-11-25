@@ -12,56 +12,28 @@ This repository contains the sources for the following [idoall/ubuntu:16.04](htt
 ```bash
 # Pull image
 git clone https://github.com/idoall/docker.git
-cd ubuntu16.04-jira-fisheye/<tab>
+cd ubuntu16.04-jira-fisheye/<tag>
 
 # hack hack hack
 
 # Build
-docker build -t idoall/ubuntu16.04-jira-fisheye:<tab> .
+docker build -t idoall/ubuntu16.04-jira-fisheye:<tag> .
 
 # Run rm
-docker run -it --name=mshk_fisheye --rm -p 80:8060 idoall/ubuntu16.04-jira-fisheye:<tab>
+docker run -it --name=mshk_fisheye --rm -p 80:8060 idoall/ubuntu16.04-jira-fisheye:<tag>
 
 # After running, wait for 1 minutes.
 # Open http://localhost/ in your browser
-docker run -d --name=mshk_fisheye -p 80:8060 idoall/ubuntu16.04-jira-fisheye:<tab>
+docker run -d --name=mshk_fisheye -p 80:8060 idoall/ubuntu16.04-jira-fisheye:<tag>
 
 # access the contain
 docker exec -it mshk_fisheye /bin/bash
 ```
-# Using docker stack deploy service to create APP
 
+## Where is the data stored?
 
-
-When deploying, pay attention to modifying the  `my.ini` in the `docker-compose.yml` file content.
-
-
-
-## deploy service
-
-```bash
-docker stack deploy -c docker-compose.yml mshk_fisheye
-```
-
-## remove deploy
-
-```bash
-docker stack rm mshk_fisheye
-```
-
-## view service list
-
-```bash
-# 所有服务列表
-docker service ls
-
-# 指定应用的列表
-docker stack services mshk_fisheye
-```
-
-## View service status
-
-```bash
-watch docker service ps mshk_fisheye
-```
+The container uses host mounted volumes to store persistent data:
+| Local location       | Container location | Usage                                      |
+| -------------------- | ------------------ | ------------------------------------------ |
+| `/srv/Fisheye/Home directory`   | `/home/work/_data/_jira_fisheye`  | For storing application data               |
 

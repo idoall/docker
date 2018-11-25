@@ -12,56 +12,29 @@ This repository contains the sources for the following [idoall/ubuntu:16.04](htt
 ```bash
 # Pull image
 git clone https://github.com/idoall/docker.git
-cd ubuntu16.04-jira-crucible/<tab>
+cd ubuntu16.04-jira-crucible/<tag>
 
 # hack hack hack
 
 # Build
-docker build -t idoall/ubuntu16.04-jira-crucible:<tab> .
+docker build -t idoall/ubuntu16.04-jira-crucible:<tag> .
 
 # Run rm
-docker run -it --name=mshk_crucible --rm -p 80:8060 idoall/ubuntu16.04-jira-crucible:<tab>
+docker run -it --name=mshk_crucible --rm -p 80:8060 idoall/ubuntu16.04-jira-crucible:<tag>
 
 # After running, wait for 1 minutes.
 # Open http://localhost/ in your browser
-docker run -d --name=mshk_crucible -p 80:8060 idoall/ubuntu16.04-jira-crucible:<tab>
+docker run -d --name=mshk_crucible -p 80:8060 idoall/ubuntu16.04-jira-crucible:<tag>
 
 # access the contain
 docker exec -it mshk_crucible /bin/bash
 ```
-# Using docker stack deploy service to create APP
 
 
+## Where is the data stored?
 
-When deploying, pay attention to modifying the  `my.ini` in the `docker-compose.yml` file content.
-
-
-
-## deploy service
-
-```bash
-docker stack deploy -c docker-compose.yml mshk_crucible
-```
-
-## remove deploy
-
-```bash
-docker stack rm mshk_crucible
-```
-
-## view service list
-
-```bash
-# 所有服务列表
-docker service ls
-
-# 指定应用的列表
-docker stack services mshk_crucible
-```
-
-## View service status
-
-```bash
-watch docker service ps mshk_crucible
-```
+The container uses host mounted volumes to store persistent data:
+| Local location       | Container location | Usage                                      |
+| -------------------- | ------------------ | ------------------------------------------ |
+| `/srv/Crucible/Home directory`   | `/home/work/_data/_jira_crucible`  | For storing application data               |
 

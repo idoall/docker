@@ -3,7 +3,7 @@ MAINTAINER lion <lion.net@163.com>
 
 ARG DEBIAN_FRONTEND=noninteractive
 
-ENV FISHEYE_VERSION 4.6.1
+ENV CROWD_VERSION 3.3.2
 
 # -----------------------------------------------------------------------------
 # 安装 openjdk-8\
@@ -12,27 +12,26 @@ RUN apt-fast update -y \
     && apt-fast install -y unzip zip openjdk-8-jdk
 
 # -----------------------------------------------------------------------------
-# 下载 fisheye
+# 下载 crowd
 # -----------------------------------------------------------------------------
 RUN mkdir -p /home/work/_src \
-    && axel -n 10 -o /home/work/_src/fisheye.tar.gz https://product-downloads.atlassian.com/software/fisheye/downloads/fisheye-$FISHEYE_VERSION.zip
+    && axel -n 10 -o /home/work/_src/crowd.tar.gz https://product-downloads.atlassian.com/software/crowd/downloads/atlassian-crowd-$CROWD_VERSION.tar.gz
 
 # -----------------------------------------------------------------------------
-# 安装 fisheye
+# 安装 crowd
 # -----------------------------------------------------------------------------
 RUN cd /home/work/_src \
-    && unzip fisheye.tar.gz \
-    && mkdir -p /home/work/_app/_jira_fisheye \
-    && mv /home/work/_src/fecru-$FISHEYE_VERSION/* /home/work/_app/_jira_fisheye/ \
-    && mkdir -p /home/work/_data/_jira_fisheye \
-    && echo "FISHEYE_INST=\"/home/work/_data/_jira_fisheye\"" >> /etc/environment \
-    && cp /home/work/_app/_jira_fisheye/config.xml /home/work/_data/_jira_fisheye/
+    && tar -xzvf crowd.tar.gz \
+    && mkdir -p /home/work/_app/_jira_crowd \
+    && mv /home/work/_src/atlassian-crowd-$CROWD_VERSION/* /home/work/_app/_jira_crowd/ \
+    && mkdir -p /home/work/_data/_jira_crowd \
+    && echo "crowd.home=\"/home/work/_data/_jira_crowd\"" >> /home/work/_app/_jira_crowd/crowd-webapp/WEB-INF/classes/crowd-init.properties
 
 # -----------------------------------------------------------------------------
 # 安装 mysql 驱动 
 # -----------------------------------------------------------------------------
 RUN curl -Ls https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.47.tar.gz | tar -xz --directory /home/work/_src/ --strip-components=1 --no-same-owner \
-    && cp -r /home/work/_src/mysql-connector-java-5.1.47-bin.jar /home/work/_app/_jira_fisheye/lib/
+    && cp -r /home/work/_src/mysql-connector-java-5.1.47-bin.jar /home/work/_app/_jira_crowd/crowd-webapp/WEB-INF/lib/
 
 
 COPY files/ /
@@ -52,5 +51,5 @@ RUN chmod 755 /hooks \
 # -----------------------------------------------------------------------------
 # 映射端口
 # -----------------------------------------------------------------------------
-EXPOSE 8060
+EXPOSE 8095
 

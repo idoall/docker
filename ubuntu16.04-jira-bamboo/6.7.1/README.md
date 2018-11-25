@@ -16,17 +16,19 @@ cd ubuntu16.04-jira-bamboo/6.7.1
 docker build -t idoall/ubuntu16.04-jira-bamboo:6.7.1 .
 
 # Run rm
-docker run -it --name=idoall_bamboo --rm -p 80:8085 idoall/ubuntu16.04-jira-bamboo:6.7.1
+docker run -it --name=mshk_bamboo --rm -p 80:8085 idoall/ubuntu16.04-jira-bamboo:6.7.1
 
 # After running, wait for 1 minutes.
 # Open http://localhost/ in your browser
-docker run -d --name=idoall_bamboo -p 80:8085 idoall/ubuntu16.04-jira-bamboo:6.7.1
+docker run -d --name=mshk_bamboo -p 80:8085 idoall/ubuntu16.04-jira-bamboo:6.7.1
 
 # access the contain
-docker exec -it idoall_bamboo /bin/bash
+docker exec -it mshk_bamboo /bin/bash
 ```
-# Using docker stack deploy service to create APP
 
+
+
+# Using docker stack deploy service to create APP
 
 
 When deploying, pay attention to modifying the  `my.ini` in the `docker-compose.yml` file content.

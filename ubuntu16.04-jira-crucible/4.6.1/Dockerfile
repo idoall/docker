@@ -24,32 +24,18 @@ RUN mkdir -p /home/work/_src \
 # -----------------------------------------------------------------------------
 RUN cd /home/work/_src \
     && unzip crucible.tar.gz \
-    && mkdir -p /home/work/_app/_java_crucible \
-    && mv /home/work/_src/fecru-$CRUCIBLE_VERSION/* /home/work/_app/_java_crucible/ \
-    && mkdir -p /home/work/_data/_java_crucible \
-    && echo "FISHEYE_INST=\"/home/work/_data/_java_crucible\"" >> /etc/environment \
-    && cp /home/work/_app/_java_crucible/config.xml /home/work/_data/_java_crucible/
+    && mkdir -p /home/work/_app/_jira_crucible \
+    && mv /home/work/_src/fecru-$CRUCIBLE_VERSION/* /home/work/_app/_jira_crucible/ \
+    && mkdir -p /home/work/_data/_jira_crucible \
+    && echo "FISHEYE_INST=\"/home/work/_data/_jira_crucible\"" >> /etc/environment \
+    && cp /home/work/_app/_jira_crucible/config.xml /home/work/_data/_jira_crucible/
 
-
-# -----------------------------------------------------------------------------分隔线
-
-
-# -----------------------------------------------------------------------------
-# 安装 crucible
-# -----------------------------------------------------------------------------
-RUN cd /home/work/_src \
-    && unzip fisheye.tar.gz \
-    && mkdir -p /home/work/_app/_java_fisheye \
-    && mv /home/work/_src/fecru-$FISHEYE_VERSION/* /home/work/_app/_java_fisheye/ \
-    && mkdir -p /home/work/_data/_java_fisheye \
-    && echo "FISHEYE_INST=\"/home/work/_data/_java_fisheye\"" >> /etc/environment \
-    && cp /home/work/_app/_java_fisheye/config.xml /home/work/_data/_java_fisheye/
 
 # -----------------------------------------------------------------------------
 # 安装 mysql 驱动 
 # -----------------------------------------------------------------------------
 RUN curl -Ls https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.47.tar.gz | tar -xz --directory /home/work/_src/ --strip-components=1 --no-same-owner \
-    && cp -r /home/work/_src/mysql-connector-java-5.1.47-bin.jar /home/work/_app/_java_fisheye/lib/
+    && cp -r /home/work/_src/mysql-connector-java-5.1.47-bin.jar /home/work/_app/_jira_crucible/lib/
 
 
 COPY files/ /
