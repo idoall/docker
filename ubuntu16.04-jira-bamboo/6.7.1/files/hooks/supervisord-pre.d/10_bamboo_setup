@@ -2,5 +2,5 @@
 
 
 echo "start bamboo..."
-/home/work/_app/_java_bamboo/bin/start-bamboo.sh
+/home/work/_app/_jira_bamboo/bin/start-bamboo.sh
 

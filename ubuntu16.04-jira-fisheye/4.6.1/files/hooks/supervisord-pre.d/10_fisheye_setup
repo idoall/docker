@@ -2,5 +2,5 @@
 
 
 echo "start fisheye..."
-/home/work/_app/_java_fisheye/bin/start.sh
+/home/work/_app/_jira_fisheye/bin/start.sh
 
