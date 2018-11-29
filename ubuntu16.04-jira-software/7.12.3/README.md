@@ -19,7 +19,7 @@ cd ubuntu16.04-jira-software/7.12.3
 docker build -t idoall/ubuntu16.04-jira-software:7.12.3 .
 
 # Run rm
-docker run -it --name=idoall_jira_software --rm -p 80:8080 idoall/ubuntu16.04-jira-software:7.12.3 /bin/bash
+docker run -it --name=idoall_jira_software --rm -p 80:8080 idoall/ubuntu16.04-jira-software:7.12.3
 
 # After running, wait for 1 minutes.
 # Open http://localhost/ in your browser

@@ -12,7 +12,7 @@ services:
     image: "idoall/mysql:5.7"
     hostname: confluence_mysql
     ports:
-     - "6033:3306"
+     - "20042:3306"
     volumes:
       - /Users/lion/my_project/_docker/github_idoall/ubuntu16.04-jdk10-confluence/6.12.2/my.ini:/etc/mysql/my.cnf
     networks:
@@ -38,8 +38,8 @@ services:
     image: "idoall/ubuntu16.04-jdk10-confluence:6.12.2"
     hostname: confluence
     ports:
-     - "80:8090"
-     - "8000:8000"
+     - "20040:8090"
+     - "20041:8000"
     networks:
       - confluence
     depends_on:

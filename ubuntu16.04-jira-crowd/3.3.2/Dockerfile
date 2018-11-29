@@ -25,7 +25,7 @@ RUN cd /home/work/_src \
     && mkdir -p /home/work/_app/_jira_crowd \
     && mv /home/work/_src/atlassian-crowd-$CROWD_VERSION/* /home/work/_app/_jira_crowd/ \
     && mkdir -p /home/work/_data/_jira_crowd \
-    && echo "crowd.home=\"/home/work/_data/_jira_crowd\"" >> /home/work/_app/_jira_crowd/crowd-webapp/WEB-INF/classes/crowd-init.properties
+    && echo "crowd.home=/home/work/_data/_jira_crowd" >> /home/work/_app/_jira_crowd/crowd-webapp/WEB-INF/classes/crowd-init.properties
 
 # -----------------------------------------------------------------------------
 # 安装 mysql 驱动 
