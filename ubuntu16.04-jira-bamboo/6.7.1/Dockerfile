@@ -9,7 +9,7 @@ ENV BAMBOO_VERSION 6.7.1
 # 安装 openjdk-8\
 # -----------------------------------------------------------------------------
 RUN apt-fast update -y \
-    && apt-fast install -y unzip zip openjdk-8-jdk
+    && apt-fast install -y subversion git unzip zip openjdk-8-jdk
 
 # -----------------------------------------------------------------------------
 # 下载 bamboo
