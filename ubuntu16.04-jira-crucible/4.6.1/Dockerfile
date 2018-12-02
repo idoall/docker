@@ -27,7 +27,7 @@ RUN cd /home/work/_src \
     && mkdir -p /home/work/_app/_jira_crucible \
     && mv /home/work/_src/fecru-$CRUCIBLE_VERSION/* /home/work/_app/_jira_crucible/ \
     && mkdir -p /home/work/_data/_jira_crucible \
-    && echo "FISHEYE_INST=\"/home/work/_data/_jira_crucible\"" >> /etc/environment \
+    && echo "FISHEYE_INST=/home/work/_data/_jira_crucible" >> /etc/environment \
     && cp /home/work/_app/_jira_crucible/config.xml /home/work/_data/_jira_crucible/
 
 
@@ -51,6 +51,11 @@ RUN chmod 755 /hooks \
     && rm -rf /var/cache/apt/archives/apt-fast/* \
     && rm -rf /home/work/_src/*
 
+    
+# -----------------------------------------------------------------------------
+# 设置环境变量
+# -----------------------------------------------------------------------------
+ENV FISHEYE_INST /home/work/_data/_jira_crucible
 
 # -----------------------------------------------------------------------------
 # 映射端口

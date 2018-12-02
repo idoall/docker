@@ -3,27 +3,27 @@ version: '3'
 # support Docker version 17.05.0-ce
 services:
 
-#################################### crowd ######################################################
+#################################### crucible ######################################################
 
 ##############################
-# jira_crowd_mysql
+# crucible_mysql
 ##############################
-  jira_crowd_mysql:
-    image: "idoall/mysql:5.7"
-    hostname: jira_crowd_mysql
+  crucible_mysql:
+    image: idoall/mysql:5.7
+    hostname: crucible_mysql
     ports:
      - "6033:3306"
     volumes:
-      - /Users/lion/my_project/_docker/github_idoall/ubuntu16.04-jira-crowd/3.3.2/my.ini:/etc/mysql/my.cnf
+      - /Users/lion/my_project/_docker/github_idoall/ubuntu16.04-jira-crucible/4.6.1/my.ini:/etc/mysql/my.cnf
     networks:
-      - crowd
+      - mshk-crucible
     environment:
       - MYSQL_ROOT_PASSWORD=123456
-      - MYSQL_DATABASE=crowd
-      - MYSQL_USER=crowd
-      - MYSQL_PASSWORD=crowd_mshk
-      - character-set-server=utf8mb4
-      - collation-server=utf8mb4_bin
+      - MYSQL_DATABASE=crucible
+      - MYSQL_USER=crucible
+      - MYSQL_PASSWORD=crucible_mshk
+      - character-set-server=utf8
+      - collation-server=utf8_bin
     deploy:
       replicas: 1
       update_config:
@@ -31,17 +31,17 @@ services:
       restart_policy:
         condition: on-failure
 ##############################
-# jira_crowd
+# crucible
 ##############################
-  jira_crowd:
-    image: "idoall/ubuntu16.04-jira-crowd:3.3.2"
-    hostname: jira_crowd
+  crucible:
+    image: idoall/ubuntu16.04-jira-crucible:4.6.1
+    hostname: crucible
     ports:
-     - "20000:8095"
+     - "80:8060"
     networks:
-      - crowd
+      - mshk-crucible
     depends_on:
-     - jira_crowd_mysql
+     - crucible_mysql
     deploy:
       replicas: 1
       update_config:
@@ -51,5 +51,5 @@ services:
 
 # 统一网络设置
 networks:
-  crowd:
+  mshk-crucible:
     driver: overlay

@@ -27,6 +27,37 @@ docker run -d --name=mshk_crucible -p 80:8060 idoall/ubuntu16.04-jira-crucible:4
 docker exec -it mshk_crucible /bin/bash
 ```
 
+# Using docker stack deploy service to create APP
+
+## deploy service
+
+```bash
+docker stack deploy -c docker-compose.yml mshk_crucible
+```
+
+## remove deploy
+
+```bash
+docker stack rm mshk_crucible
+```
+
+## view service list
+
+```bash
+# 所有服务列表
+docker service ls
+
+# 指定应用的列表
+docker stack services mshk_crucible
+```
+
+## View service status
+
+```bash
+watch docker service ps mshk_crucible
+```
+
+
 
 ## Where is the data stored?
 
@@ -36,11 +67,20 @@ The container uses host mounted volumes to store persistent data:
 | `/srv/Crucible/Home directory`   | `/home/work/_data/_jira_crucible`  | For storing application data               |
 
 
+# Related Articles
+
+[The Crucible workflow](https://confluence.atlassian.com/crucible/the-crucible-workflow-298977485.html)
+
+[Backing up and restoring Crucible data](https://confluence.atlassian.com/crucible/backing-up-and-restoring-crucible-data-298977490.html)
+
+
+
+
 # 破解方法
 
 ## 1、将需要破解的文件复制出来
 ```bash
-CONTAINERNAME=`docker ps --format "{{.Names}}" | grep mshk_crucible`
+CONTAINERNAME=`docker ps --format "{{.Names}}" | grep mshk_crucible_crucible.1`
 docker cp $CONTAINERNAME:/home/work/_app/_jira_crucible/lib/atlassian-extras-2.5.jar ./atlassian-extras-2.3.1-SNAPSHOT.jar
 docker cp $CONTAINERNAME:/usr/src/_crucible/crucible_keygen.jar .
 ```

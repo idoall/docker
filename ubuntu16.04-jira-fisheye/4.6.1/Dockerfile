@@ -25,7 +25,7 @@ RUN cd /home/work/_src \
     && mkdir -p /home/work/_app/_jira_fisheye \
     && mv /home/work/_src/fecru-$FISHEYE_VERSION/* /home/work/_app/_jira_fisheye/ \
     && mkdir -p /home/work/_data/_jira_fisheye \
-    && echo "FISHEYE_INST=\"/home/work/_data/_jira_fisheye\"" >> /etc/environment \
+    && echo "FISHEYE_INST=/home/work/_data/_jira_fisheye" >> /etc/environment \
     && cp /home/work/_app/_jira_fisheye/config.xml /home/work/_data/_jira_fisheye/
 
 # -----------------------------------------------------------------------------
@@ -48,6 +48,10 @@ RUN chmod 755 /hooks \
     && rm -rf /var/cache/apt/archives/apt-fast/* \
     && rm -rf /home/work/_src/*
 
+# -----------------------------------------------------------------------------
+# 设置环境变量
+# -----------------------------------------------------------------------------
+ENV FISHEYE_INST /home/work/_data/_jira_fisheye
 
 # -----------------------------------------------------------------------------
 # 映射端口
