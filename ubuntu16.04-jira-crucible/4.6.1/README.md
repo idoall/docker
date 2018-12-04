@@ -69,5 +69,5 @@ The container uses host mounted volumes to store persistent data:
 
 # Related Articles
 
-[Docker 创建 Crucible 4.6.1 以及与 Crowd3.3.2 实现 SSO 单点登录](/2018/12/docker-crucible-crowd-sso/)
+[Docker 创建 Crucible4.6.1 以及与 Crowd3.3.2 实现 SSO 单点登录](https://mshk.top/2018/12/docker-crucible-crowd-sso/)
 

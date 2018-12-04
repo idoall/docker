@@ -37,28 +37,7 @@ The container uses host mounted volumes to store persistent data:
 | `/srv/Fisheye/Home directory`   | `/home/work/_data/_jira_fisheye`  | For storing application data               |
 
 
-# 破解方法
 
-## 1、将需要破解的文件复制出来
-```bash
-CONTAINERNAME=`docker ps --format "{{.Names}}" | grep mshk_fisheye`
-docker cp $CONTAINERNAME:/home/work/_app/_jira_fisheye/lib/atlassian-extras-2.5.jar ./atlassian-extras-2.3.1-SNAPSHOT.jar
-docker cp $CONTAINERNAME:/usr/src/_fisheye/fisheye_keygen.jar .
-```
+# Related Articles
 
-## 2、执行以下命令，打开破解工具
-```bash
-java -jar fisheye_keygen.jar
-```
-
-找到复制出来的 `atlassian-extras-2.3.1-SNAPSHOT.jar` 文件，点击`.patch!`，进行破解。这时不要关闭破解工具。
-
-将破解后的文件，复制回容器中。
-```bash
-docker exec $CONTAINERNAME sh -c '/home/work/_app/_jira_fisheye/bin/stop.sh;mv /home/work/_app/_jira_fisheye/lib/atlassian-extras-2.5.jar /home/work/_app/_jira_fisheye/lib/atlassian-extras-2.5.jar.bak'
-docker cp atlassian-extras-2.3.1-SNAPSHOT.jar $CONTAINERNAME:/home/work/_app/_jira_fisheye/lib/atlassian-extras-2.5.jar
-docker exec $CONTAINERNAME sh -c '/home/work/_app/_jira_fisheye/bin/start.sh'
-```
-
-## 3、重新打开浏览器
-在页面中选择`Enter existing license`，在刚才打开的破解工具中，输入`Servce ID`，点击`.gen!`，生成Key后，复制到页面中，即可完成破解。
+[Docker 创建 Crucible4.6.1 以及与 Crowd3.3.2 实现 SSO 单点登录](https://mshk.top/2018/12/docker-crucible-crowd-sso/)
