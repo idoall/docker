@@ -1,0 +1,55 @@
+version: '3'
+# https://docs.docker.com/compose/compose-file/
+# support Docker version 17.05.0-ce
+services:
+
+#################################### bamboo ######################################################
+
+##############################
+# jira_bamboo_mysql
+##############################
+  jira_bamboo_mysql:
+    image: "idoall/mysql:5.7"
+    hostname: jira_bamboo_mysql
+    ports:
+     - "6033:3306"
+    volumes:
+      - /Users/lion/my_project/_docker/github_idoall/ubuntu16.04-jira-bamboo/6.7.1/my.ini:/etc/mysql/my.cnf
+    networks:
+      - bamboo
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456
+      - MYSQL_DATABASE=bamboo
+      - MYSQL_USER=bamboo
+      - MYSQL_PASSWORD=bamboo_mshk
+      - character-set-server=utf8mb4
+      - collation-server=utf8mb4_bin
+    deploy:
+      replicas: 1
+      update_config:
+        delay: 1s
+      restart_policy:
+        condition: on-failure
+##############################
+# jira_bamboo
+##############################
+  jira_bamboo:
+    image: "idoall/ubuntu16.04-golang1.11.2-jira-bamboo:6.7.1"
+    hostname: jira_bamboo
+    ports:
+     - "80:8085"
+    networks:
+      - bamboo
+    depends_on:
+     - jira_bamboo_mysql
+    deploy:
+      replicas: 1
+      update_config:
+        delay: 1s
+      restart_policy:
+        condition: on-failure
+
+# 统一网络设置
+networks:
+  bamboo:
+    driver: overlay
