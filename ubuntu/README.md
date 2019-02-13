@@ -8,5 +8,6 @@ This repository contains the sources for the following [docker](https://docker.i
 
 - [`16.04`(*16.04/Dockerfile*)](https://github.com/idoall/docker/blob/master/ubuntu/16.04/Dockerfile)
 
+- [`18.04`(*18.04/Dockerfile*)](https://github.com/idoall/docker/blob/master/ubuntu/18.04/Dockerfile)
   ​
 
