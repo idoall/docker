@@ -64,6 +64,7 @@ watch docker service ps mshk_gitlab_gitlab
 ## Where is the data stored?
 
 The GitLab container uses host mounted volumes to store persistent data:
+
 | Local location       | Container location | Usage                                      |
 | -------------------- | ------------------ | ------------------------------------------ |
 | `/srv/gitlab/data`   | `/var/opt/gitlab`  | For storing application data               |
