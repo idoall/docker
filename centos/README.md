@@ -7,6 +7,7 @@ This repository contains the sources for the following [docker](https://docker.i
 # Supported tags and respective `Dockerfile` links
 
 - [`6.8`(*6.8/Dockerfile*)](https://github.com/idoall/docker/blob/master/centos/6.8/Dockerfile)
+- [`7.6`(*7.6/Dockerfile*)](https://github.com/idoall/docker/blob/master/centos/7.6/Dockerfile)
 
   ​
 

@@ -1,9 +1,10 @@
-FROM idoall/centos6.8-sshd
+FROM idoall/centos:7.6
 MAINTAINER lion <lion.net@163.com>
 
 ARG DEBIAN_FRONTEND=noninteractive
 COPY files/ /
 
+ENV NGINX_VERSION 1.14.2
 
 # -----------------------------------------------------------------------------
 # 基础工具
@@ -17,12 +18,11 @@ RUN yum update -y \
 # -----------------------------------------------------------------------------
 RUN mkdir -p /home/work/_src /home/work/_app/nginx/conf/conf.d /home/work/_logs/nginx \
 	&& cd /home/work/_src \
-	&& axel -n 10 -o tengine-2.2.0.tar.gz http://tengine.taobao.org/download/tengine-2.2.0.tar.gz \
-	&& tar xzvf tengine-2.2.0.tar.gz \
-	&& cd tengine-2.2.0 \
-	&& ./configure --prefix=/home/work/_app/nginx --with-http_gzip_static_module --with-http_realip_module --with-http_stub_status_module --with-http_concat_module --with-http_ssl_module --with-http_userid_filter_module=shared --with-threads \
-	&& make \
-    && make install
+	&& axel -n 10 -o /home/work/_src/nginx.tgz http://nginx.org/download/nginx-$NGINX_VERSION.tar.gz \
+	&& tar xzvf nginx.tgz \
+	&& cd nginx-$NGINX_VERSION/ \
+	&& ./configure --prefix=/home/work/_app/nginx --user=work --group=work --with-http_gzip_static_module --with-http_realip_module --with-http_stub_status_module --with-http_ssl_module --with-threads --with-http_v2_module --with-http_geoip_module --with-http_image_filter_module --with-http_xslt_module \
+	&& make && make install
 
 
 # -----------------------------------------------------------------------------
