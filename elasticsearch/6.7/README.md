@@ -10,23 +10,48 @@ This repository contains the sources for the following [docker](https://docker.i
 ```bash
 # Pull image
 git clone https://github.com/idoall/docker.git
-cd ubuntu16.04-nginx/1.12.1
+cd elasticsearch/6.7
 
 # hack hack hack
 
 # build
-docker build -t idoall/ubuntu16.04-nginx:1.12.1 .
+docker build -t idoall/elasticsearch:6.7 .
 
 # run
 docker run -it \
 --rm \
---name nginx \
---hostname nginx \
--p 2222:2222 \
--p 80:80 \
-idoall/ubuntu16.04-nginx:1.12.1
+--name elasticsearch \
+--hostname elasticsearch \
+-e "discovery.type=single-node" \
+-p 9200:9200 \
+-p 9300:9300 \
+idoall/elasticsearch:6.7
+```
+
+浏览 http://localhost:9200/ 能够看到下面的信息，说明已经运行成功
+
+```bash
+{
+  "name" : "tXbv0KV",
+  "cluster_name" : "docker-cluster",
+  "cluster_uuid" : "ZxcckgjmQiaRclPFdornSw",
+  "version" : {
+    "number" : "6.7.0",
+    "build_flavor" : "default",
+    "build_type" : "docker",
+    "build_hash" : "8453f77",
+    "build_date" : "2019-03-21T15:32:29.844721Z",
+    "build_snapshot" : false,
+    "lucene_version" : "7.7.0",
+    "minimum_wire_compatibility_version" : "5.6.0",
+    "minimum_index_compatibility_version" : "5.0.0"
+  },
+  "tagline" : "You Know, for Search"
+}
+```
 
 
+```
 # Open http://localhost/ in your browser
 
 
