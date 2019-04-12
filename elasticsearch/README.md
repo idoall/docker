@@ -60,7 +60,7 @@ $ docker network create somenetwork
 Run Elasticsearch:
 
 ```console
-$ docker run -d --name elasticsearch --net somenetwork -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" elasticsearch:tag
+$ docker run -d --name elasticsearch --net somenetwork -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" idoall/elasticsearch:tag
 ```
 
 ## Running in Production Mode
