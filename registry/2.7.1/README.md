@@ -35,3 +35,6 @@ The container uses host mounted volumes to store persistent data:
 | Local location         | Container location                       |
 | ---------------------- | ---------------------------------------- |
 | `/srv/registry_folder` | `/var/lib/registry` |
+
+
+更多配置请参考：https://docs.docker.com/registry/configuration/
