@@ -66,6 +66,11 @@ idoall/centos7.6-nginx:<version>
 ```
 
 
+# Directory structure inside image
+/home/work/_app/nginx # Nginx root
+/home/work/_logs/nginx # Nginx logs
+/home/work/_app/nginx/html # meant to contain web content
+
 
 # About Nginx
 

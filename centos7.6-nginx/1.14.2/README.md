@@ -61,6 +61,10 @@ docker run -d \
 idoall/centos7.6-nginx:1.14.2
 ```
 
+# Directory structure inside image
+/home/work/_app/nginx # Nginx root
+/home/work/_logs/nginx # Nginx logs
+/home/work/_app/nginx/html # meant to contain web content
 
 
 # About Nginx
