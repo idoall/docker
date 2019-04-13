@@ -1,0 +1,34 @@
+version: '2.2'
+services:
+  elasticsearch:
+    image: idoall/elasticsearch:6.7
+    container_name: elasticsearch
+    environment:
+      - cluster.name=docker-cluster
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - esdata1:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+      - 9300:9300
+  kibana:
+    image: idoall/kibana:6.7.1
+    container_name: kibana
+    environment:
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ports:
+      - 5601:5601
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+
+volumes:
+  esdata1:
+    driver: local
