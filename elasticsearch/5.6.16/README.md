@@ -1,4 +1,4 @@
-# ElasticSearch/6.7
+# ElasticSearch/5.6.16
 
 
 
@@ -7,12 +7,12 @@
 ```bash
 # Pull image
 git clone https://github.com/idoall/docker.git
-cd elasticsearch/6.7
+cd elasticsearch/5.6.16
 
 # hack hack hack
 
 # build
-docker build -t idoall/elasticsearch:6.7 .
+docker build -t idoall/elasticsearch:5.6.16 .
 ```
 
 ## 安装
@@ -28,7 +28,7 @@ docker run -it \
 -e "discovery.type=single-node" \
 -p 9200:9200 \
 -p 9300:9300 \
-idoall/elasticsearch:6.7
+idoall/elasticsearch:5.6.16
 ```
 
 浏览 http://localhost:9200/ 能够看到下面的信息，说明已经运行成功
@@ -37,21 +37,17 @@ idoall/elasticsearch:6.7
 $ curl http://localhost:9200/ | jq
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
-100   497  100   497    0     0   2696      0 --:--:-- --:--:-- --:--:--  2701
+100   328  100   328    0     0   2192      0 --:--:-- --:--:-- --:--:--  2201
 {
-  "name": "EHM3D8f",
-  "cluster_name": "docker-cluster",
-  "cluster_uuid": "YiPDKx-ZSzyMR8kFVIdo7g",
+  "name": "V1aoxAF",
+  "cluster_name": "elasticsearch",
+  "cluster_uuid": "6NeOxv9uRlWGukZ1X0B0VA",
   "version": {
-    "number": "6.7.0",
-    "build_flavor": "default",
-    "build_type": "docker",
-    "build_hash": "8453f77",
-    "build_date": "2019-03-21T15:32:29.844721Z",
+    "number": "5.6.16",
+    "build_hash": "3a740d1",
+    "build_date": "2019-03-13T15:33:36.565Z",
     "build_snapshot": false,
-    "lucene_version": "7.7.0",
-    "minimum_wire_compatibility_version": "5.6.0",
-    "minimum_index_compatibility_version": "5.0.0"
+    "lucene_version": "6.6.1"
   },
   "tagline": "You Know, for Search"
 }
@@ -70,7 +66,7 @@ docker-compose down
 通过下面的命令检查集群的运行状态 
 ```bash
 $ curl http://127.0.0.1:9200/_cat/health
-1555167216 14:53:36 docker-cluster green 2 2 0 0 0 0 0 0 - 100.0%
+1555175839 17:17:19 elasticsearch green 1 1 0 0 0 0 0 0 - 100.0%
 ```
 
 ### 绑定配置文件
@@ -88,4 +84,4 @@ The container uses host mounted volumes to store persistent data:
 | ---------------------- | ---------------------------------------- |
 | `/srv/es_folder` | `/usr/share/elasticsearch/data` |
 
-更多关于 Docker 下的使用，请参考：https://www.elastic.co/guide/en/elasticsearch/reference/6.x/docker.html
+更多关于 Docker 下的使用，请参考：https://www.elastic.co/guide/en/elasticsearch/reference/5.6/docker.html

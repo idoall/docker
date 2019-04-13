@@ -1,8 +1,8 @@
 # Supported tags and respective `Dockerfile` links
 
 - [`7.0` (*7.0/Dockerfile*)](https://github.com/idoall/docker/blob/master/kibana/7.0/Dockerfile)
-- 
 - [`6.7.1` (*6.7.1/Dockerfile*)](https://github.com/idoall/docker/blob/master/kibana/6.7.1/Dockerfile)
+- [`5.6.16` (*5.6.16/Dockerfile*)](https://github.com/idoall/docker/blob/master/kibana/5.6.16/Dockerfile)
 
 # Quick reference
 

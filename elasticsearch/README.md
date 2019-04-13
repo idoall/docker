@@ -1,6 +1,10 @@
 # Supported tags and respective `Dockerfile` links
 
+- [`7.0` (*6.7/Dockerfile*)](https://github.com/idoall/docker/blob/master/elasticsearch/7.0/Dockerfile)
+- 
 - [`6.7.0` (*6.7/Dockerfile*)](https://github.com/idoall/docker/blob/master/elasticsearch/6.7/Dockerfile)
+- 
+- [`5.6.16` (*5.6.16/Dockerfile*)](https://github.com/idoall/docker/blob/master/elasticsearch/5.6.16/Dockerfile)
 
 # Quick reference
 

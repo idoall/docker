@@ -1,84 +1,62 @@
-# docker-registry2.5.1
-为了便于使用，将默认端口从5000改为80
+# Supported tags and respective `Dockerfile` links
 
-This repository contains the sources for the following base images:
-- [`registry:2.5.1`](https://hub.docker.com/_/registry/)
+- [`2.7.1` (*2.7.1/Dockerfile*)](https://github.com/idoall/docker/blob/master/registry/2.7.1/Dockerfile)
 
+# Quick reference
 
-## Developing
+- **Where to get help**:
+  [the Docker Community Forums](https://forums.docker.com/), [the Docker Community Slack](https://blog.docker.com/2016/11/introducing-docker-community-directory-docker-community-slack/), or [Stack Overflow](https://stackoverflow.com/search?tab=newest&q=docker)
+- **Where to file issues**:
+  <https://github.com/docker/distribution-library-image/issues>
+- **Maintained by**:
+  [Docker, Inc.](https://github.com/docker/distribution-library-image)
+- **Supported architectures**: ([more info](https://github.com/docker-library/official-images#architectures-other-than-amd64))
+  [`amd64`](https://hub.docker.com/r/amd64/registry/), [`arm32v6`](https://hub.docker.com/r/arm32v6/registry/), [`arm64v8`](https://hub.docker.com/r/arm64v8/registry/)
+- **Published image artifact details**:
+  [repo-info repo's `repos/registry/` directory](https://github.com/docker-library/repo-info/blob/master/repos/registry) ([history](https://github.com/docker-library/repo-info/commits/master/repos/registry))
+  (image metadata, transfer size, etc)
+- **Image updates**:
+  [official-images PRs with label `library/registry`](https://github.com/docker-library/official-images/pulls?q=label%3Alibrary%2Fregistry)
+  [official-images repo's `library/registry` file](https://github.com/docker-library/official-images/blob/master/library/registry) ([history](https://github.com/docker-library/official-images/commits/master/library/registry))
+- **Source of this description**:
+  [docs repo's `registry/` directory](https://github.com/docker-library/docs/tree/master/registry) ([history](https://github.com/docker-library/docs/commits/master/registry))
+- **Supported Docker versions**:
+  [the latest release](https://github.com/docker/docker-ce/releases/latest) (down to 1.6 on a best-effort basis)
 
-```bash
-# Pull image
-git clone https://github.com/idoall/docker.git
-cd registry
+# Docker Registry
 
-# hack hack hack
+This image contains an implementation of the Docker Registry HTTP API V2 for use with Docker 1.6+. See [github.com/docker/distribution](https://github.com/docker/distribution) for more details about what it is.
 
-# build
-docker build -t idoall/registry .
+## Run a local registry: Quick Version
 
-# run
-docker run -it \
---rm \
---name registry \
---hostname registry \
--p 80:80 \
-idoall/registry
-
-# view
-curl localhost/v2/_catalog
+```console
+$ docker run -d -p 80:80 --restart always --name registry idoall/registry:<tag>
 ```
 
+Now, use it from within Docker:
 
+```console
+$ docker pull idoall/registry:2.7.1
+$ docker tag idoall/registry:2.7.1 localhost/idoall/registry:2.7.1
+$ docker push localhost/idoall/registry:2.7.1
+```
 
+## Recommended Reading
 
-Supported tags and respective Dockerfile links
-2, 2.5, 2.5.1, latest (Dockerfile)
-2.6.0-rc.2 (Dockerfile)
-For more information about this image and its history, please see the relevant manifest file (library/registry). This image is updated via pull requests to the docker-library/official-images GitHub repo.
+The [documentation over at docs.docker.com](https://docs.docker.com/registry/) is a good place to learn more about what the registry is, how it works, and how to use it.
 
-For detailed information about the virtual/transfer sizes and individual layers of each of the above supported tags, please see the repos/registry/tag-details.md file in the docker-library/repo-info GitHub repo.
+Specifically, [the section regarding deployment](https://docs.docker.com/registry/deploying/) has pointers for more complex use cases than simply running a registry on localhost.
 
-Docker Registry
-Tags < 1.0 refer to the deprecated registry.
+# Support
 
-Run the Registry
-install docker according to the following instructions
-Run the registry docker container: Quick version
-run the registry: docker run -p 5000:5000 -v <HOST_DIR>:/tmp/registry-dev registry
-Modify your docker startup line/script: add "-H tcp://127.0.0.1:2375 -H unix:///var/run/docker.sock --insecure-registry <REGISTRY_HOSTNAME>:5000"
-Recommended: run the registry docker container
-$ docker run \
-         -e SETTINGS_FLAVOR=s3 \
-         -e AWS_BUCKET=acme-docker \
-         -e STORAGE_PATH=/registry \
-         -e AWS_KEY=AKIAHSHB43HS3J92MXZ \
-         -e AWS_SECRET=xdDowwlK7TJajV1Y7EoOZrmuPEJlHYcNP2k4j49T \
-         -e SEARCH_BACKEND=sqlalchemy \
-         -p 5000:5000 \
-         registry
-NOTE: The container will try to allocate the port 5000. If the port is already taken, find out which container is already using it by running docker ps.
+If you are interested in commercial support, the [Docker Trusted Registry](https://www.docker.com/docker-trusted-registry) provides an image registry, LDAP/Active Directory integration, security certificates, and more in a solution that includes commercial support.
 
-Support
-If you are interested in commercial support, the Docker Trusted Registry provides an image registry, LDAP/Active Directory integration, security certificates, and more in a solution that includes commercial support.
+# License
 
-Supported Docker versions
-This image is officially supported on Docker version 1.12.5.
+View [license information](https://github.com/docker/distribution/blob/master/LICENSE) for the software contained in this image.
 
-Support for older versions (down to 1.6) is provided on a best-effort basis.
+As with all Docker images, these likely also contain other software which may be under other licenses (such as Bash, etc from the base distribution, along with any direct or indirect dependencies of the primary software being contained).
 
-Please see the Docker installation documentation for details on how to upgrade your Docker daemon.
+Some additional license information which was able to be auto-detected might be found in [the `repo-info`repository's `registry/` directory](https://github.com/docker-library/repo-info/tree/master/repos/registry).
 
-User Feedback
-Issues
-If you have any problems with or questions about this image, please contact us through a GitHub issue. If the issue is related to a CVE, please check for a cve-tracker issue on the official-images repository first.
-
-You can also reach many of the official image maintainers via the #docker-library IRC channel on Freenode.
-
-Contributing
-You are invited to contribute new features, fixes, or updates, large or small; we are always thrilled to receive pull requests, and do our best to process them as fast as we can.
-
-Before you start to code, we recommend discussing your plans through a GitHub issue, especially for more ambitious contributions. This gives other contributors a chance to point you in the right direction, give you feedback on your design, and help you find out if someone else is working on the same thing.
-
-Documentation
-Documentation for this image is stored in the registry/ directory of the docker-library/docs GitHub repo. Be sure to familiarize yourself with the repository's README.md file before attempting a pull request.
+As for any pre-built image usage, it is the image user's responsibility to ensure that any use of this image complies with any relevant licenses for all software contained within.

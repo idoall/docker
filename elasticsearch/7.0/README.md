@@ -7,12 +7,12 @@
 ```bash
 # Pull image
 git clone https://github.com/idoall/docker.git
-cd elasticsearch/6.7
+cd elasticsearch/7.0
 
 # hack hack hack
 
 # build
-docker build -t idoall/elasticsearch:6.7 .
+docker build -t idoall/elasticsearch:7.0 .
 ```
 
 ## 安装
@@ -28,7 +28,7 @@ docker run -it \
 -e "discovery.type=single-node" \
 -p 9200:9200 \
 -p 9300:9300 \
-idoall/elasticsearch:6.7
+idoall/elasticsearch:7.0
 ```
 
 浏览 http://localhost:9200/ 能够看到下面的信息，说明已经运行成功
