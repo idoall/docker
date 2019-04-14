@@ -25,7 +25,7 @@ docker build -t idoall/kibana:7.0 .
 docker run -it \
 --rm \
 --name kibana \
--e "ELASTICSEARCH_HOSTS=http://10.0.0.30:9200" \
+-e "ELASTICSEARCH_HOSTS=http://eleasticsearch:9200" \
 --hostname kibana \
 -p 5601:5601 \
 idoall/kibana:7.0
