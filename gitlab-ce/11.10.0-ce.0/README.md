@@ -106,7 +106,7 @@ apt-get update -y \
 && apt-get install -y patch
 ```
 
-## 2、执行以下命令后，在执行`patch -d /opt/gitlab/embedded/service/gitlab-rails -p1 < ../11.3.9-zh.diff`命令后，会提示一路回车，按到底。
+## 2、执行以下命令后
 ```bash
 cd /tmp \
 && git clone https://gitlab.com/xhang/gitlab.git \
