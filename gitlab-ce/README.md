@@ -5,6 +5,7 @@ gitlab-ce:11.4.6-ce.0
 This repository contains the sources for the following [gitlab/gitlab-ce](https://hub.docker.com/r/gitlab/gitlab-ce/) base images:
 - [`gitlab-ce:9.3.6-ce.0`(*9.3.6-ce.0/Dockerfile*)](https://github.com/idoall/docker/blob/master/gitlab-ce/9.3.6-ce.0/Dockerfile)
 - [`gitlab-ce:11.4.6-ce.0`(*11.4.6-ce.0/Dockerfile*)](https://github.com/idoall/docker/blob/master/gitlab-ce/11.4.6-ce.0/Dockerfile)
+- [`gitlab-ce:11.10.0-ce.0`(*11.10.0-ce.0/Dockerfile*)](https://github.com/idoall/docker/blob/master/gitlab-ce/11.10.0-ce.0/Dockerfile)
 
 
 ## Developing
