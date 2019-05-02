@@ -4,7 +4,7 @@
 
 ## Simple Tags
 
-- [`1.12.4`(*1.12.4/stretch/Dockerfile*)](https://github.com/idoall/docker/blob/master/golang/1.12.4/Dockerfile)
+- [`1.12.4`(*1.12.4/Dockerfile*)](https://github.com/idoall/docker/blob/master/golang/1.12.4/Dockerfile)
 
 # Quick reference
 
