@@ -44,9 +44,9 @@ wget https://gitlab.com/xhang/gitlab/-/archive/11-3-stable-zh/gitlab-11-3-stable
 类似下面这样
 ```bash
 REGISTRATION_TOKEN=FdQBq_WesbFQxeDxq1yj
-docker exec -it 11100-ce0_mshk_gitlab-runner1_1 gitlab-runner register -n -r $REGISTRATION_TOKEN -u http://GITLAB_HOST/ --executor docker --docker-image docker:latest --description "My Docker Runner1" --docker-volumes "/var/run/docker.sock:/var/run/docker.sock"
-docker exec -it 11100-ce0_mshk_gitlab-runner2_1 gitlab-runner register -n -r $REGISTRATION_TOKEN -u http://GITLAB_HOST/ --executor docker --docker-image docker:latest --description "My Docker Runner2" --docker-volumes "/var/run/docker.sock:/var/run/docker.sock"
-docker exec -it 11100-ce0_mshk_gitlab-runner3_1 gitlab-runner register -n -r $REGISTRATION_TOKEN -u http://GITLAB_HOST/ --executor docker --docker-image docker:latest --description "My Docker Runner3" --docker-volumes "/var/run/docker.sock:/var/run/docker.sock"
+docker exec -it 11100-ce0_mshk_gitlab-runner1_1 gitlab-runner register -n -r $REGISTRATION_TOKEN -u http://GITLAB_HOST/ --executor docker --docker-image docker:latest --tag-list "test" --description "My Docker Runner1" --docker-volumes "/var/run/docker.sock:/var/run/docker.sock"
+docker exec -it 11100-ce0_mshk_gitlab-runner2_1 gitlab-runner register -n -r $REGISTRATION_TOKEN -u http://GITLAB_HOST/ --executor docker --docker-image docker:latest --tag-list "build" --description "My Docker Runner2" --docker-volumes "/var/run/docker.sock:/var/run/docker.sock"
+docker exec -it 11100-ce0_mshk_gitlab-runner3_1 gitlab-runner register -n -r $REGISTRATION_TOKEN -u http://GITLAB_HOST/ --executor docker --docker-image docker:latest --tag-list "deploy-production,deploy" --description "My Docker Runner3" --docker-volumes "/var/run/docker.sock:/var/run/docker.sock"
 ```
 
 注册成功后会看到类似下面的信息
