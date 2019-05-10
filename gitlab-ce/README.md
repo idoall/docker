@@ -1,4 +1,4 @@
-gitlab-ce:11.4.6-ce.0
+gitlab-ce
 =============
 
 
