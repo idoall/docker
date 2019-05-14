@@ -33,3 +33,9 @@ consul                	1       	Sun May  5 21:13:16 2019	DEPLOYED	consul-3.6.1  
 wget https://gitlab.com/xhang/gitlab/-/archive/11-3-stable-zh/gitlab-11-3-stable-zh.tar.bz2
 ```
 
+# Note
+
+当使用 `update-ca-certificates` 提示错误时，可以使用下面的方法忽略错误
+```
+$ update-ca-certificates 2>/dev/null || true
+```
