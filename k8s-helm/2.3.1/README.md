@@ -29,8 +29,6 @@ helm list
 NAME                  	REVISION	UPDATED                 	STATUS  	CHART                       	APP VERSION	NAMESPACE
 consul                	1       	Sun May  5 21:13:16 2019	DEPLOYED	consul-3.6.1                	1.0.0      	default
 
-# 汉化
-wget https://gitlab.com/xhang/gitlab/-/archive/11-3-stable-zh/gitlab-11-3-stable-zh.tar.bz2
 ```
 
 # Note
