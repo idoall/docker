@@ -1,7 +1,7 @@
 node:10.15.3
 =============
 
-Add python make g++
+Add python make g++ git
 
 ## Developing
 
