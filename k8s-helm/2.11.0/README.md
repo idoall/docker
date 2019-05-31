@@ -6,7 +6,7 @@ k8s-helm:2.11.0
 ```bash
 # Pull image
 git clone https://github.com/idoall/docker.git
-cd k8s-helm/2.3.1
+cd k8s-helm/2.11.0
 
 # hack hack hack
 

@@ -6,3 +6,9 @@ MAINTAINER lion <lion@mshk.top>
 RUN apk add tzdata \
     && ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
     && echo "Asia/Shanghai" > /etc/timezone
+# -----------------------------------------------------------------------------
+# 添加 ca 证书认证
+# -----------------------------------------------------------------------------
+RUN apk add ca-certificates \
+    && update-ca-certificates \
+    && rm -rf /var/cache/apk/*
