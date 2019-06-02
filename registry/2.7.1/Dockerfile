@@ -1,5 +1,5 @@
 FROM registry:2.7.1
-MAINTAINER lion <lion@mshk.top>
+MAINTAINER lion <lion@.888@gmail.com>
 
 # -----------------------------------------------------------------------------
 # 将 registry 的默认端口 5000 心为 80

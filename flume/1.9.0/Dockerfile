@@ -1,5 +1,5 @@
 FROM centos:latest
-MAINTAINER lion <lion@mshk.top>
+MAINTAINER lion <lion@.888@gmail.com>
 
 ARG FLUME_VERSION=1.9.0
 
