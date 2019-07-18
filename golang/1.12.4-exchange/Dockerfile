@@ -22,7 +22,8 @@ RUN go get github.com/idoall/gods
 RUN go get github.com/agtorre/gocolorize
 
 # 安装 v8
-RUN go get github.com/idoall/v8 \
+RUN cd `go env GOPATH`/src/github.com/idoall \
+    && git clone https://github.com/idoall/v8 \
     && cd `go env GOPATH`/src/github.com/idoall/v8 \
     && mkdir data && cd data \
     && curl https://rubygems.org/downloads/libv8-6.3.292.48.1-x86_64-linux.gem > libv8.gem \
