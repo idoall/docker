@@ -3,23 +3,30 @@ MAINTAINER lion <lion.888@gmail.com>
 
 # COPY files /
 
-RUN go get github.com/idoall/gocryptotrader
-RUN go get github.com/idoall/gomail
-RUN go get github.com/idoall/hermes
-RUN go get github.com/astaxie/beego
-RUN go get github.com/go-sql-driver/mysql
-RUN go get github.com/gorilla/websocket
-RUN go get github.com/json-iterator/go
-RUN go get github.com/lestrrat/go-file-rotatelogs
-RUN go get github.com/micro/go-api
-RUN go get github.com/micro/go-log
-RUN go get github.com/micro/go-micro
-RUN go get github.com/rifflock/lfshook
-RUN go get github.com/sirupsen/logrus
-RUN go get github.com/uber/jaeger-client-go
-RUN go get golang.org/x/crypto/scrypt
-RUN go get github.com/idoall/gods
-RUN go get github.com/agtorre/gocolorize
+RUN go get -u github.com/idoall/gocryptotrader
+RUN go get -u github.com/idoall/gomail
+RUN go get -u github.com/idoall/hermes
+RUN go get -u github.com/astaxie/beego
+RUN go get -u github.com/go-sql-driver/mysql
+RUN go get -u github.com/gorilla/websocket
+RUN go get -u github.com/json-iterator/go
+RUN go get -u github.com/lestrrat/go-file-rotatelogs
+RUN go get -u github.com/micro/go-api
+RUN go get -u github.com/micro/go-log
+RUN go get -u github.com/micro/go-micro
+RUN go get -u github.com/rifflock/lfshook
+RUN go get -u github.com/sirupsen/logrus
+RUN go get -u github.com/uber/jaeger-client-go
+RUN go get -u golang.org/x/crypto/scrypt
+RUN go get -u github.com/idoall/gods
+RUN go get -u github.com/agtorre/gocolorize
+RUN go get -u github.com/astaxie/beego
+
+
+# 安装 TokenExchangeCommon
+RUN cd `go env GOPATH`/src/github.com/idoall \
+    && rm -rf TokenExchangeCommon \
+    && git clone https://github.com/idoall/TokenExchangeCommon
 
 # 安装 v8
 RUN cd `go env GOPATH`/src/github.com/idoall \
