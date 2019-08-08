@@ -1,3 +1,9 @@
 
-FROM googlecontainer/echoserver：1.10
+FROM gcr.io/kubernetes-e2e-test-images/echoserver:2.1
 MAINTAINER lion <lion@.888@gmail.com>
+
+
+# -----------------------------------------------------------------------------
+# 映射端口
+# -----------------------------------------------------------------------------
+EXPOSE 8080
