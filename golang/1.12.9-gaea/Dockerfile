@@ -1,6 +1,8 @@
 FROM golang:1.12.9
 MAINTAINER lion <lion.888@gmail.com>
 
+ENV GAEA_VERSION 1.0.1
+
 # Install golint
 RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
     && echo "Asia/Shanghai" > /etc/timezone
@@ -11,6 +13,7 @@ RUN export GOPROXY=https://mirrors.aliyun.com/goproxy/ \
     && cd `go env GOPATH`/src/github.com/idoall \
     && git clone https://github.com/idoall/Gaea.git \
     && cd Gaea \
+    && git checkout $GAEA_VERSION \
     && GO111MODULE=on go mod tidy \
     && GO111MODULE=on make \
     && cp -r bin/gaea* / \

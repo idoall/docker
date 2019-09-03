@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+
+echo "copying supervisord/gaea.ini"
+cp -r /etc/_supervisord/gaea.ini /home/work/_app/supervisord/conf.d/
+
