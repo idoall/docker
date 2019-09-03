@@ -23,5 +23,7 @@ RUN apk add --update ca-certificates \
  && rm /var/cache/apk/* \
  && rm -f /helm-${HELM_LATEST_VERSION}-linux-amd64.tar.gz
 
+# RUN helm init --client-only -i registry.cn-hangzhou.aliyuncs.com/google_containers/tiller:v2.11.0
+# RUN helm init --client-only --stable-repo-url https://kubernetes.oss-cn-hangzhou.aliyuncs.com/charts
 RUN helm init --client-only
 
