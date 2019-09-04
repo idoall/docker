@@ -17,8 +17,8 @@ RUN apk add --no-cache \
     g++
 
 # 安装 gaea
-# RUN export GOPROXY=https://mirrors.aliyun.com/goproxy/ \
-RUN mkdir -p $GOPATH/src/github.com/idoall \
+RUN export GOPROXY=https://mirrors.aliyun.com/goproxy/ \
+    && mkdir -p $GOPATH/src/github.com/idoall \
     && cd `go env GOPATH`/src/github.com/idoall \
     && git clone https://github.com/idoall/Gaea.git \
     && cd Gaea \
