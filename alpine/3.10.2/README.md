@@ -17,8 +17,6 @@ docker build -t idoall/alpine:3.10.2 .
 
 ## 安装
 
-### 单节点安装
-
 ```bash
 # run
 docker run -it \
