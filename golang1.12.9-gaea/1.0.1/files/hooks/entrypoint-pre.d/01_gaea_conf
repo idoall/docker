@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+
+echo "copying gaea etc"
+
+mv $GOPATH/src/github.com/idoall/Gaea/etc $GOPATH/src/github.com/idoall/Gaea/etc.old
+cp -r /etc/_gaea/* $GOPATH/src/github.com/idoall/Gaea/

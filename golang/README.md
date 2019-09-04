@@ -1,10 +1,12 @@
 # Supported tags and respective `Dockerfile` links
 
-在原有的基础上，增加 lint 工具， docker 链接， expect，用于在 gitlab 上使用 CI 部署
+
 
 ## Simple Tags
 
-- [`1.12.4`(*1.12.4/Dockerfile*)](https://github.com/idoall/docker/blob/master/golang/1.12.4/Dockerfile)
+- [`1.12.9`(*1.12.9/Dockerfile*)](https://github.com/idoall/docker/blob/master/golang/1.12.9/Dockerfile) # 增加中文时区，supervisord
+
+- [`1.12.4`(*1.12.4/Dockerfile*)](https://github.com/idoall/docker/blob/master/golang/1.12.4/Dockerfile) # 在原有的基础上，增加 lint 工具， docker 链接， expect，用于在 gitlab 上使用 CI 部署
 
 # Quick reference
 

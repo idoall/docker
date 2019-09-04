@@ -1,10 +1,14 @@
 # Supported tags and respective `Dockerfile` links
 
+- [`3.10.2` (*3.10.2/Dockerfile*)](https://github.com/idoall/docker/blob/master/alpine/3.10.2/Dockerfile)
+
 - [`3.9.3` (*3.9.3/Dockerfile*)](https://github.com/idoall/docker/blob/master/alpine/3.9.3/Dockerfile)
 
 # Quick reference
 
 因为GFW原因，中国境内无法更新 tzdata 时区文件，此镜像增加了 tzdata 时区
+
+3.10.2 版本增加了 supervisord 
 
 - **Where to get help**:
   [the Docker Community Forums](https://forums.docker.com/), [the Docker Community Slack](https://blog.docker.com/2016/11/introducing-docker-community-directory-docker-community-slack/), or [Stack Overflow](https://stackoverflow.com/search?tab=newest&q=docker)

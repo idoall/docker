@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-
-
-echo "copying gaea etc"
-mv /home/work/_project/golang/src/github.com/idoall/Gaea/etc /home/work/_project/golang/src/github.com/idoall/Gaea/etc.old
-cp -r /etc/_gaea/* /home/work/_project/golang/src/github.com/idoall/Gaea/

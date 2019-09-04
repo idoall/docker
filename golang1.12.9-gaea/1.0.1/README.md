@@ -13,21 +13,40 @@ https://github.com/XiaoMi/Gaea
 ```bash
 # Pull image
 git clone https://github.com/idoall/docker.git
-cd centos7.6-golang1.12.9-gaea/1.0.1
+cd golang1.12.9-gaea/1.0.1
 
 # hack hack hack
 
 # Build
-docker build -t idoall/centos7.6-golang1.12.9-gaea:1.0.1 .
+docker build -t idoall/golang1.12.9-gaea:1.0.1 .
 
-# Run
-docker run -d --name=gaea -p 13306:13306 idoall/centos7.6-golang1.12.9-gaea:1.0.1
+# Run rm
+docker run -it --rm --name=gaea -p 13306:13306 idoall/golang1.12.9-gaea:1.0.1
+
+# Run -d
+docker run -d --name=gaea -p 13306:13306 idoall/golang1.12.9-gaea:1.0.1
 
 # access the contain
 docker exec -it gaea /bin/bash
 
 # rm the contain
 docker stop gaea && docker rm gaea
+
+
+# run
+docker run -it \
+--rm \
+--name gaea \
+--hostname gaea \
+idoall/alpine:3.10.2
+
+
+# view supervisor version
+docker exec -it alpine supervisord -v
+
+
+# access the contain
+docker exec -it alpine /bin/bash
 ```
 
 ## Directory structure inside
