@@ -1,4 +1,4 @@
-FROM idoall/golang:1.12.9
+FROM idoall/golang:1.12.9 AS builder
 MAINTAINER lion <lion.888@gmail.com>
 
 
@@ -17,9 +17,9 @@ RUN apk add --no-cache \
     g++
 
 # 安装 gaea
-# RUN export GOPROXY=https://mirrors.aliyun.com/goproxy/ \
-#     && mkdir -p $GOPATH/src/github.com/idoall \
-RUN mkdir -p $GOPATH/src/github.com/idoall \
+RUN export GOPROXY=https://mirrors.aliyun.com/goproxy/ \
+    && mkdir -p $GOPATH/src/github.com/idoall \
+# RUN mkdir -p $GOPATH/src/github.com/idoall \
     && cd `go env GOPATH`/src/github.com/idoall \
     && git clone https://github.com/idoall/Gaea.git \
     && cd Gaea \
@@ -30,10 +30,23 @@ RUN mkdir -p $GOPATH/src/github.com/idoall \
     && cp -r etc /etc-gaea
 
 # -----------------------------------------------------------------------------
+# Build
+# -----------------------------------------------------------------------------
+FROM idoall/golang:1.12.9  
+RUN mkdir -p /home/work/_app/gaea
+COPY --from=builder /gaea* /home/work/_app/gaea/
+COPY --from=builder /etc-gaea /home/work/_app/gaea/etc
+
+
+# -----------------------------------------------------------------------------
 # 映射端口
 # -----------------------------------------------------------------------------
 EXPOSE 13306
 
+# -----------------------------------------------------------------------------
+# Define working directory.
+# -----------------------------------------------------------------------------
+WORKDIR /home/work
 
 # -----------------------------------------------------------------------------
 # 清除
