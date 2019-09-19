@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+
+echo "copying supervisord/shazam.ini"
+cp -r /etc/_supervisord/shazam.ini /home/work/_app/supervisord/conf.d/
+
