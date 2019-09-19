@@ -34,8 +34,8 @@ RUN export GOPROXY=https://mirrors.aliyun.com/goproxy/ \
 # -----------------------------------------------------------------------------
 FROM idoall/golang:1.12.9  
 RUN mkdir -p /home/work/_app/gaea
-COPY --from=builder /gaea* /home/work/_app/gaea/
-COPY --from=builder /etc-gaea /home/work/_app/gaea/etc
+COPY --from=builder /gaea* /home/work/_app/_gaea/
+COPY --from=builder /etc-gaea /home/work/_app/_gaea/etc
 
 
 # -----------------------------------------------------------------------------
