@@ -1,9 +1,10 @@
-FROM idoall/golang:1.13.1-alpine3.10.2
+FROM idoall/golang:1.12.9
 MAINTAINER lion <lion.888@gmail.com>
 
 # COPY files /
-RUN export GOPROXY=https://mirrors.aliyun.com/goproxy/
-RUN export GO111MODULE=on 
+
+RUN apk add --no-cache \
+		git
 RUN go get github.com/idoall/gomail
 RUN go get github.com/idoall/hermes
 RUN go get github.com/astaxie/beego

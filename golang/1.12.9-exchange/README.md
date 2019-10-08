@@ -8,18 +8,18 @@ golang:1.12.4-exchange
 ```bash
 # Pull image
 git clone https://github.com/idoall/docker.git
-cd golang/1.13.1-exchange
+cd golang/1.12.9-exchange
 
 # hack hack hack
 
 # Build
-docker build -t idoall/golang:1.13.1-alpine3.10.2-exchange .
+docker build -t idoall/golang:1.12.9-exchange .
 
 # run
 docker run -it \
 --rm \
 --name golang \
 --hostname golang \
-idoall/golang:1.13.1-alpine3.10.2-exchange \
+idoall/golang:1.12.9-exchange \
 go version
 ```
