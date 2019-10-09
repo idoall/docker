@@ -2,7 +2,10 @@ FROM idoall/alpine:3.10.2
 MAINTAINER lion <lion.888@gmail.com>
 
 RUN apk add --no-cache \
-		ca-certificates
+		ca-certificates \
+		git \
+		curl \
+        gcc
 
 # set up nsswitch.conf for Go's "netgo" implementation
 # - https://github.com/golang/go/blob/go1.9.1/src/net/conf.go#L194-L275
@@ -59,9 +62,7 @@ RUN set -eux; \
 
 ENV GOPATH /go
 ENV PATH $GOPATH/bin:/usr/local/go/bin:$PATH
-
-RUN apk add --no-cache \
-		git
+		
 
 RUN mkdir -p "$GOPATH/src" "$GOPATH/bin" && chmod -R 777 "$GOPATH"
 

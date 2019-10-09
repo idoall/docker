@@ -11,7 +11,7 @@ cd golang/1.13.1
 # hack hack hack
 
 # Build
-docker build -t idoall/golang:1.13.1-idoall-alpine3.10.2 .
+docker build -t idoall/golang:1.13.1-alpine3.10.2 .
 
 
 # view golang version
@@ -19,7 +19,7 @@ docker run -it \
 --rm \
 --name golang \
 --hostname golang \
-idoall/golang:1.13.1-idoall-alpine3.10.2 \
+idoall/golang:1.13.1-alpine3.10.2 \
 go version
 
 
@@ -28,7 +28,7 @@ docker run -it \
 --rm \
 --name golang \
 --hostname golang \
-idoall/golang:1.13.1-idoall-alpine3.10.2
+idoall/golang:1.13.1-alpine3.10.2
 
 
 # access the contain
