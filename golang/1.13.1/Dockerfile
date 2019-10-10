@@ -2,10 +2,7 @@ FROM idoall/alpine:3.10.2
 MAINTAINER lion <lion.888@gmail.com>
 
 RUN apk add --no-cache \
-		ca-certificates \
-		git \
-		curl \
-        gcc
+		ca-certificates
 
 # set up nsswitch.conf for Go's "netgo" implementation
 # - https://github.com/golang/go/blob/go1.9.1/src/net/conf.go#L194-L275
