@@ -37,3 +37,11 @@ RUN cd `go env GOPATH`/src/github.com/idoall \
     && tar -xf libv8.gem && tar -xzf data.tar.gz \
     && ln -s `go env GOPATH`/src/github.com/idoall/v8/data/vendor/v8/include $GOPATH/src/github.com/idoall/v8/include \
     && ln -s `go env GOPATH`/src/github.com/idoall/v8/data/vendor/v8/out/x64.release $GOPATH/src/github.com/idoall/v8/libv8
+
+# -----------------------------------------------------------------------------
+# 设置时区
+# -----------------------------------------------------------------------------
+RUN apt-get install -y tzdata \
+	&& ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
+	&& echo "Asia/Shanghai" > /etc/timezone \
+	&& dpkg-reconfigure -f noninteractive tzdata
