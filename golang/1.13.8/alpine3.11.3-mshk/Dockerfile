@@ -1,4 +1,4 @@
-FROM idoall/alpine:3.10.2
+FROM idoall/alpine:3.11.3-mshk
 MAINTAINER lion <lion.888@gmail.com>
 
 RUN apk add --no-cache \

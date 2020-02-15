@@ -1,4 +1,4 @@
-FROM alpine:3.11
+FROM idoall/alpine:3.11.3-source
 
 RUN apk add --no-cache \
 		ca-certificates
