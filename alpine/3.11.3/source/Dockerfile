@@ -33,23 +33,4 @@ RUN apk add tzdata \
     && echo "alias ls='ls \$LS_OPTIONS'" >>  /root/.bashrc \
     && echo "alias ll='ls \$LS_OPTIONS -l'" >>  /root/.bashrc \
     && echo "alias l='ls \$LS_OPTIONS -lA'" >>  /root/.bashrc \
-    && source /root/.bashrc \
-    \
-# -----------------------------------------------------------------------------
-# 创建work用户
-# -----------------------------------------------------------------------------
-    && useradd -r -m work \
-    && mkdir -p /home/work \
-    && echo "work:123456" | chpasswd \
-    && echo "root:123456" | chpasswd 
-
-# -----------------------------------------------------------------------------
-# 清除
-# -----------------------------------------------------------------------------
-RUN chown -R work:work /home/work \
-  	&& rm -rf /var/cache/apk/*
-
-# -----------------------------------------------------------------------------
-# Define working directory.
-# -----------------------------------------------------------------------------
-WORKDIR /home/work
+    && source /root/.bashrc
