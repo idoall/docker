@@ -33,4 +33,8 @@ RUN apk add tzdata \
     && echo "alias ls='ls \$LS_OPTIONS'" >>  /root/.bashrc \
     && echo "alias ll='ls \$LS_OPTIONS -l'" >>  /root/.bashrc \
     && echo "alias l='ls \$LS_OPTIONS -lA'" >>  /root/.bashrc \
-    && source /root/.bashrc
+    && source /root/.bashrc \
+# -----------------------------------------------------------------------------
+# 清除缓存
+# -----------------------------------------------------------------------------
+    && rm -rf /var/lib/apt/lists/* /var/cache/apk/*
