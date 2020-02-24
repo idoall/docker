@@ -13,11 +13,9 @@ LABEL org.label-schema.vcs-ref=$VCS_REF \
 
 ENV HELM_LATEST_VERSION="v3.0.0"
 
-RUN apk add --update -t deps wget curl git openssl bash \
+RUN apk add wget curl git openssl bash \
  && wget https://get.helm.sh/helm-${HELM_LATEST_VERSION}-linux-amd64.tar.gz \
  && tar -xvf helm-${HELM_LATEST_VERSION}-linux-amd64.tar.gz \
- && mv linux-amd64/helm /usr/local/bin \
- && apk add ca-certificates \
- && apk del --purge deps \
+ && mv /linux-amd64/helm /usr/local/bin \
  && rm /var/cache/apk/* \
  && rm -f /helm-${HELM_LATEST_VERSION}-linux-amd64.tar.gz
