@@ -1,4 +1,4 @@
-FROM ubuntu:19.10
+FROM ubuntu:20.04
 MAINTAINER lion <lion.net@163.com>
 
 ARG DEBIAN_FRONTEND=noninteractive
