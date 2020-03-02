@@ -93,3 +93,6 @@ RUN apk add --no-cache --virtual .build-deps-yarn curl gnupg tar \
   && apk del .build-deps-yarn \
   # smoke test
   && yarn --version
+
+
+RUN npm install -g cnpm --registry=https://registry.npm.taobao.org
