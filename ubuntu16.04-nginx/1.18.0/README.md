@@ -1,4 +1,4 @@
-# Docker-Nginx/1.12.1-Ubuntu/16.04
+# Docker-Nginx/1.18.0-Ubuntu/16.04
 
 
 This repository contains the sources for the following [docker](https://docker.io) base images:
@@ -10,12 +10,12 @@ This repository contains the sources for the following [docker](https://docker.i
 ```bash
 # Pull image
 git clone https://github.com/idoall/docker.git
-cd ubuntu16.04-nginx/1.12.1
+cd ubuntu16.04-nginx/1.18.0
 
 # hack hack hack
 
 # build
-docker build -t idoall/ubuntu16.04-nginx:1.12.1 .
+docker build -t idoall/ubuntu16.04-nginx:1.18.0 .
 
 # run
 docker run -it \
@@ -24,7 +24,7 @@ docker run -it \
 --hostname nginx \
 -p 2222:2222 \
 -p 80:80 \
-idoall/ubuntu16.04-nginx:1.12.1
+idoall/ubuntu16.04-nginx:1.18.0
 
 
 # Open http://localhost/ in your browser
@@ -50,7 +50,7 @@ docker run -d \
 --hostname nginx \
 -v /my/nginx.conf:/home/work/_app/nginx/conf/nignx.conf \
 -p 80:80 \
-idoall/ubuntu16.04-nginx:1.12.1
+idoall/ubuntu16.04-nginx:1.18.0
 ```
 
 
@@ -61,7 +61,7 @@ docker run -d \
 --hostname nginx \
 -v /some/content:/home/work/_app/nginx/html \
 -p 8080:80 \
-idoall/ubuntu16.04-nginx:1.12.1
+idoall/ubuntu16.04-nginx:1.18.0
 ```
 
 

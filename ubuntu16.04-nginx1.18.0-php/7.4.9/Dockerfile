@@ -10,7 +10,7 @@ ENV PHP_VERSION 7.4.9
 # 基础工具
 # -----------------------------------------------------------------------------
 RUN apt-fast update -y \
-	&& apt-fast install -y imagemagick graphicsmagick libxml2 libxml2-dev libcurl3-openssl-dev libjpeg-dev libpng-dev libfreetype6-dev libmcrypt-dev pkg-config libsqlite3-dev autoconf automake libtool libwebp-dev libzip-dev git  \
+	&& apt-fast install -y imagemagick graphicsmagick libxml2 libxml2-dev libcurl3-openssl-dev libjpeg-dev libpng-dev libfreetype6-dev libmcrypt-dev pkg-config libsqlite3-dev autoconf automake libtool libwebp-dev libzip-dev git libmemcached-dev  \
 	&& ln -s /usr/lib/x86_64-linux-gnu/libssl.so  /usr/lib
 
 # -----------------------------------------------------------------------------
@@ -26,8 +26,7 @@ RUN wget https://github.com/kkos/oniguruma/archive/v6.9.4.tar.gz -O oniguruma-6.
 # -----------------------------------------------------------------------------
 # 安装 PHP 
 # -----------------------------------------------------------------------------
-RUN cd /home/work/_src \  
-	# && axel -n 10 -o /home/work/_src/php.tgz http://cn2.php.net/distributions/php-$PHP_VERSION.tar.gz \
+RUN cd /home/work/_src \
     && wget http://cn2.php.net/distributions/php-$PHP_VERSION.tar.gz -O /home/work/_src/php.tgz \
     && tar xzvf php.tgz \
     && cd php-$PHP_VERSION \
@@ -110,15 +109,15 @@ RUN export PATH=$PATH:/home/work/_app/php$PHP_VERSION/bin:/home/work/_app/php$PH
 # -----------------------------------------------------------------------------
 # 安装 php-memcached
 # ----------------------------------------------------------------------------- 
-# RUN export PATH=$PATH:/home/work/_app/php$PHP_VERSION/bin:/home/work/_app/php$PHP_VERSION/sbin \
-#     && cd /home/work/_src \
-#     && git clone https://github.com/php-memcached-dev/php-memcached.git \
-#     && cd php-memcached \
-#     && git checkout php7 \
-#     && phpize \
-#     && ./configure \
-#     && make && make install \
-#     && echo "extension=memcached.so" >> /home/work/_app/php$PHP_VERSION/etc/php.ini
+RUN export PATH=$PATH:/home/work/_app/php$PHP_VERSION/bin:/home/work/_app/php$PHP_VERSION/sbin \
+    && cd /home/work/_src \
+    && git clone https://github.com/php-memcached-dev/php-memcached.git \
+    && cd php-memcached \
+    && git checkout v3.1.5 \
+    && phpize \
+    && ./configure \
+    && make && make install \
+    && echo "extension=memcached.so" >> /home/work/_app/php$PHP_VERSION/etc/php.ini
 
 # -----------------------------------------------------------------------------
 # 清除
