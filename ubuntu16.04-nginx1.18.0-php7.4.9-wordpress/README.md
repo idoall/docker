@@ -1,12 +1,12 @@
 This repository contains the sources for the following [docker](https://docker.io) base images:
 
-- [`idoall/ubuntu16.04-nginx1.12.1-php:7.1.9`](https://hub.docker.com/r/idoall/ubuntu16.04-nginx1.12.1-php/)
+- [`idoall/ubuntu16.04-nginx1.18.0-php:7.4.9`](https://hub.docker.com/r/idoall/ubuntu16.04-nginx1.18.0-php/)
 
 
 
 # Supported tags and respective `Dockerfile` links
 
-- [`4.8.1`(*4.8.1/Dockerfile*)](https://github.com/idoall/docker/blob/master/ubuntu16.04-nginx1.12.1-php7.1.9-wordpress/4.8.1/Dockerfile)
+- [`5.5.1`(*5.5.1/Dockerfile*)](https://github.com/idoall/docker/blob/master/ubuntu16.04-nginx1.18.0-php7.4.9-wordpress/5.5.1/Dockerfile)
 
   ​
 
@@ -26,7 +26,7 @@ docker run -d \
 --hostname wordpress \
 --link some-mysql:mysql \
 -p 80:80 \
-idoall/ubuntu16.04-nginx1.12.1-php7.1.9-wordpress:<version>
+idoall/ubuntu16.04-nginx1.18.0-php7.4.9-wordpress:<version>
 
 # Open http://localhost/ in your browser
 
