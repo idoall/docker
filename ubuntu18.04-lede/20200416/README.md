@@ -8,13 +8,36 @@ This repository contains the sources for the following [docker](https://docker.i
 
 > A minimal Docker image based on Alpine Linux with a complete package index and only 5 MB in size!
 
+固件使用说明
+
+* 基于Lede OpenWrt 及来自Lienol和若干自行维护的软件包（Feed）
+* 结合家庭x86软路由场景需要定制
+
+## Developing
+
 系统分区设置为 `10` G，如有特殊需要可以自己修改。在`./files/usr/src/lede/.config` 文件第 `225` 和 `226` 行，单位是 `MB`
 ```ini
 CONFIG_TARGET_KERNEL_PARTSIZE=32
 CONFIG_TARGET_ROOTFS_PARTSIZE=10240
 ```
 
-## Developing
+本套代码是编译 L 大的 20200416分支版本，第一次完成打包，如需要二次编译可以执行以下命令：
+```shell
+cd lede
+git pull
+./scripts/feeds update -a && ./scripts/feeds install -a
+make defconfig
+make -j8 download
+make -j$(($(nproc) + 1)) V=s
+```
+
+如果需要重新配置：
+```shell
+rm -rf ./tmp && rm -rf .config
+make menuconfig
+make -j$(($(nproc) + 1)) V=s
+```
+编译完成后输出路径：/lede/bin/targets
 
 ```bash
 # Pull image
@@ -37,9 +60,4 @@ idoall/ubuntu18.04-lede:20200416 /bin/bash
 docker exec -it mshk-lede /bin/bash
 ```
 
-# Run
-docker run -d --name=mshk-lede idoall/ubuntu18.04-lede:20200416
 
-# access the contain
-docker exec -it mshk-lede /bin/bash
-```
