@@ -15,10 +15,10 @@ This repository contains the sources for the following [docker](https://docker.i
 
 ## Developing
 
-系统分区设置为 `10` G，如有特殊需要可以自己修改。在`./files/usr/src/lede/.config` 文件第 `225` 和 `226` 行，单位是 `MB`
+系统分区设置为 `1` G，如有特殊需要可以自己修改。在`./files/usr/src/lede/.config` 文件第 `225` 和 `226` 行，单位是 `MB`
 ```ini
 CONFIG_TARGET_KERNEL_PARTSIZE=32
-CONFIG_TARGET_ROOTFS_PARTSIZE=10240
+CONFIG_TARGET_ROOTFS_PARTSIZE=1024
 ```
 
 本套代码是编译 L 大的 20200416分支版本，第一次完成打包，如需要二次编译可以执行以下命令：
