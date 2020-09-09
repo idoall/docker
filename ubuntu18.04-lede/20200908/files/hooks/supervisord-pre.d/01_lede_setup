@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+
+echo "copying .config"
+#cp -r /src/lede/.config /home/work/_src/lede/
+
+echo "copying banner"
+#cp -r /src/lede/banner /home/work/_src/lede/package/base-files/files/etc/banner
