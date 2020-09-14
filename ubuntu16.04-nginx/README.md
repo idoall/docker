@@ -7,6 +7,7 @@ This repository contains the sources for the following [docker](https://docker.i
 # Supported tags and respective `Dockerfile` links
 
 - [`1.12.1`(*1.12.1/Dockerfile*)](https://github.com/idoall/docker/blob/master/ubuntu16.04-nginx/1.12.1/Dockerfile)
+- [`1.18.0`(*1.18.0/Dockerfile*)](https://github.com/idoall/docker/blob/master/ubuntu16.04-nginx/1.18.0/Dockerfile)
 
 
 

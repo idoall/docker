@@ -1,0 +1,4 @@
+/home/work/_logs/php/php-fpm.error.log
+/home/work/_logs/php/fpm-php.slow.log
+/home/work/_logs/php/php.access.log
+/home/work/_logs/supervisord/supervisord_php.log

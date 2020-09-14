@@ -7,7 +7,7 @@ Supported Memcached & Redis
 
 
 This repository contains the sources for the following [docker](https://docker.io) base images:
-- [`idoall/ubuntu16.04-nginx:1.18.0`](https://hub.docker.com/r/idoall/ubuntu16.04-nginx/1.18.0)
+- [`idoall/ubuntu18.04.5-nginx:1.18.0`](https://hub.docker.com/r/idoall/ubuntu18.04.5-nginx/1.18.0)
 
 
 ## Developing
@@ -15,21 +15,20 @@ This repository contains the sources for the following [docker](https://docker.i
 ```bash
 # Pull image
 git clone https://github.com/idoall/docker.git
-cd ubuntu16.04-nginx1.18.0-php/7.4.9
+cd ubuntu18.04.5-nginx1.18.0-php/7.4.9
 
 # hack hack hack
 
 # build
-docker build -t idoall/ubuntu16.04-nginx1.18.0-php:7.4.9 .
+docker build -t idoall/ubuntu18.04.5-nginx1.18.0-php:7.4.9 .
 
 # run
 docker run -it \
 --rm \
 --name php \
 --hostname php \
--p 2222:2222 \
 -p 80:80 \
-idoall/ubuntu16.04-nginx1.18.0-php:7.4.9
+idoall/ubuntu18.04.5-nginx1.18.0-php:7.4.9
 
 # Open http://localhost/ in your browser and you should see "php info!"
 
@@ -42,7 +41,7 @@ docker exec -it php /bin/bash
 ssh work@<your ip> -p 2222
 
 # view version
-docker run -it --rm idoall/ubuntu16.04-nginx1.18.0-php:7.4.9 php -v
+docker run -it --rm idoall/ubuntu18.04.5-nginx1.18.0-php:7.4.9 php -v
 
 ```
 
@@ -62,5 +61,5 @@ docker run -d \
 --hostname nginx-php \
 -v /mysite:/home/work/_app/nginx/html \
 -p 80:80 \
-idoall/ubuntu16.04-nginx1.18.0-php:7.4.9
+idoall/ubuntu18.04.5-nginx1.18.0-php:7.4.9
 ```
