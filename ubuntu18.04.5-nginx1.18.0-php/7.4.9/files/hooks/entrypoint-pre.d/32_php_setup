@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+
+echo "copying supervisord/nginx.ini"
+cp -r /etc/_supervisord/php.ini /home/work/_app/supervisord/conf.d/
+
