@@ -5,7 +5,7 @@ services:
     container_name: expressvpn
     image: idoall/expressvpn:3.17
     environment:
-      - ACTIVATION_CODE=your-activation-code
+      - ACTIVATION_CODE=EQJQQEXMTABC9SAZD9VU4GG
       - SERVER=smart
       - PREFERRED_PROTOCOL=auto
       - LIGHTWAY_CIPHER=auto
