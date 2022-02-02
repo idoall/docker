@@ -6,6 +6,13 @@ if [[ $check_results =~ "Unable to connect" ]]
 then
     echo "[$time]Unable to connect.. "
     expressvpn connect
+elif [[ -z $check_results ]]
+then
+    echo "[$time]空.. "
+    expressvpn connect
+elif [[ $check_results =~ "Reconnecting" ]]
+then
+    echo "[$time]Reconnecting.. "
 elif [[ $check_results =~ "Not connected" ]]
 then
     echo "[$time]Not connected.. "
