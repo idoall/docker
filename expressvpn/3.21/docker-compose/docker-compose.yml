@@ -1,0 +1,29 @@
+version: '3.3'
+
+services:
+  expressvpn:
+    container_name: expressvpn
+    image: idoall/expressvpn:3.19
+    environment:
+      - ACTIVATION_CODE=your-activation-code
+      - SERVER=smart
+      - PREFERRED_PROTOCOL=auto
+      - LIGHTWAY_CIPHER=auto
+    cap_add:
+      - NET_ADMIN
+    devices: 
+      - /dev/net/tun
+    stdin_open: true
+    command: /bin/bash
+    privileged: true
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      # ports of other containers that use the vpn (to access them locally)
+
+  whoami:
+    image: idoall/whoami
+    container_name: whoami
+    network_mode: service:expressvpn
+    depends_on:
+      - expressvpn
