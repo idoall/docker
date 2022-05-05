@@ -10,7 +10,7 @@ ENV LOCATION smart
 ENV PREFERRED_PROTOCOL auto
 ENV LIGHTWAY_CIPHER auto
 
-ARG APP=expressvpn_3.21.0.2-1_amd64.deb
+ARG APP=expressvpn_3.22.0.2-1_amd64.deb
 
 # -----------------------------------------------------------------------------
 # 将系统时间改为上海时间
