@@ -3,7 +3,7 @@ version: '3.3'
 services:
   expressvpn:
     container_name: expressvpn
-    image: idoall/expressvpn:3.22
+    image: idoall/expressvpn:3.24
     environment:
       - ACTIVATION_CODE=your-activation-code
       - SERVER=smart
