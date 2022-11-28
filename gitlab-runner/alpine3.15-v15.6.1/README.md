@@ -1,21 +1,17 @@
-gitlab-runner:alpine3.12-v15.6.0
+gitlab-runner:alpine3.15-v15.6.1
 =============
-
-
-一定要和gitlab-ce的版本匹配
 
 ## Developing
 
 ```bash
 # Pull image
 git clone https://github.com/idoall/docker.git
-cd gitlab-runner/alpine3.12-v15.6.0
+cd gitlab-runner/alpine3.15-v15.6.1
 
 # hack hack hack
 
 # Build
-docker build -t idoall/gitlab-runner:alpine3.12-v15.6.0 .
-
+docker build -t idoall/gitlab-runner:alpine3.15-v15.6.1 .
 
 ```
 
@@ -46,7 +42,7 @@ docker run -d --name gitlab-runner --restart always \
     --privileged \
     -v /home/work/_app/gitlab-runner:/etc/gitlab-runner \
     -v /var/run/docker.sock:/var/run/docker.sock \
-    registry.cn-beijing.aliyuncs.com/mshk/gitlab-runner:alpine3.12-v15.6.0
+    registry.cn-beijing.aliyuncs.com/mshk/gitlab-runner:alpine3.15-v15.6.1
 ```
 
 向 gitlab-ce 中进行注册,替换`TokenString`为在 gitlab-ce 申请的 Token
@@ -67,11 +63,33 @@ docker exec -it ${CONTAINERNAME} \
 
 查看注册后的配置文件
 ```
-docker exec $CONTAINERNAME sh -c 'cat /etc/gitlab-runner/config.toml'
+$ docker exec $CONTAINERNAME sh -c 'cat /etc/gitlab-runner/config.toml'
 ```
 
 删除 gitlab-RUNNER 容器
 ```
-docker ps -a | grep "gitlab-runner" | awk '{print $1 }'|xargs docker stop
-docker ps -a | grep "gitlab-runner" | awk '{print $1 }'|xargs docker rm
+$ docker ps -a | grep "gitlab-runner" | awk '{print $1 }'|xargs docker stop
+$ docker ps -a | grep "gitlab-runner" | awk '{print $1 }'|xargs docker rm
+```
+
+登录到 容器中进行注册
+```
+$ CONTAINERNAME=`docker ps --format "{{.Names}}" | grep gitlab-runner`
+$ docker exec -it $CONTAINERNAME gitlab-runner register
+Enter the GitLab instance URL (for example, https://gitlab.com/):
+https://xxx.xxx.xxx/
+Enter the registration token:
+GR13489413refH_a9bMDPxr9y
+Enter a description for the runner:
+[gitlab_runner]: Gitlab Runner by lion
+Enter tags for the runner (comma-separated):
+build-golang, build-node, deploy-production
+Enter optional maintenance note for the runner:
+
+Registering runner... succeeded                     runner=GR13489413refH6N4
+Enter an executor: virtualbox, docker+machine, docker-ssh+machine, kubernetes, docker-ssh, parallels, shell, instance, custom, docker, ssh:
+shell
+Runner registered successfully. Feel free to start it, but if it's running already the config should be automatically reloaded!
+
+Configuration (with the authentication token) was saved in "/etc/gitlab-runner/config.toml"
 ```

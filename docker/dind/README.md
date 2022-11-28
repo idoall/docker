@@ -1,20 +1,17 @@
-gitlab-runner:alpine3.12-v15.6.0
+docker:22.06-rc-dind
 =============
-
-
-一定要和gitlab-ce的版本匹配
 
 ## Developing
 
 ```bash
 # Pull image
 git clone https://github.com/idoall/docker.git
-cd gitlab-runner/alpine3.12-v15.6.0
+cd docker/22.06-rc-dind
 
 # hack hack hack
 
 # Build
-docker build -t idoall/gitlab-runner:alpine3.12-v15.6.0 .
+docker build -t idoall/docker:22.06-rc-dind .
 
 
 ```
