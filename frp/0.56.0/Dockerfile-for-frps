@@ -1,0 +1,20 @@
+#
+# NOTE: THIS DOCKERFILE IS GENERATED VIA "apply-templates.sh"
+#
+# PLEASE DO NOT EDIT IT DIRECTLY.
+#
+
+FROM idoall/golang:1.22.0 as building
+
+ENV FRP_VERSION v0.56.0
+
+RUN git clone --depth 1 --branch $FRP_VERSION https://github.com/fatedier/frp
+RUN cd frp \
+    && make frps
+
+FROM idoall/alpine:3.18.3-source 
+
+COPY --from=building /go/frp/bin/frps /usr/bin/frps
+COPY --from=building /go/frp/conf/legacy/frps_legacy_full.ini /frps.ini
+
+ENTRYPOINT ["/usr/bin/frps","-c","/frps.ini"]

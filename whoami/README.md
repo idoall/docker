@@ -28,5 +28,13 @@ docker build -t idoall/whoami .
 docker run -d -p 80:80 --name whoami -t idoall/whoami
 
 
+docker run -it \
+--rm \
+--name whoami \
+-p 8080:80 \
+idoall/whoami
+
+
+
 # Open http://localhost/ in your browser
 ```
