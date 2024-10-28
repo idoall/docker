@@ -1,4 +1,4 @@
-FROM alpine:3.20
+FROM alpine:3.18
 
 ENV NODE_VERSION 18.20.3
 
@@ -104,6 +104,7 @@ RUN apk add --no-cache --virtual .build-deps-yarn curl gnupg tar \
   && apk del .build-deps-yarn \
   # smoke test
   && yarn --version \
+  && npm install -g sharp@0.33 \
   && rm -rf /tmp/*
 
 COPY docker-entrypoint.sh /usr/local/bin/

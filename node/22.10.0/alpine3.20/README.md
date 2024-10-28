@@ -1,4 +1,4 @@
-node 18.20.3-alpine3.20
+node 22.10.0-alpine3.20
 =============
 
 Add python make g++ git
@@ -8,24 +8,25 @@ Add python make g++ git
 ```bash
 # Pull image
 git clone https://github.com/idoall/docker.git
-cd node/18.20.3/alpine3.20
+cd node/22.10.0/alpine3.20
 
 # hack hack hack
 
 # Build
-docker build -t idoall/node:18.20.3-alpine3.20 .
+docker build -t idoall/node:22.10.0-alpine3.20 .
 
 # view node version
 docker run -it \
 --rm \
 --name node \
 --hostname node \
-idoall/node:18.20.3-alpine3.20 \
+idoall/node:22.10.0-alpine3.20 \
 node -v
+
 
 # Run After running, wait for 1 minutes.
 $ docker run -it --rm \
 --name=node \
-idoall/node:18.20.3-alpine3.20 \
+idoall/node:22.10.0-alpine3.20 \
 /bin/sh
 ```
