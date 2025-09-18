@@ -4,17 +4,23 @@ MAINTAINER lion <lion.net@163.com>
 ARG DEBIAN_FRONTEND=noninteractive
 COPY files/ /
 
-ENV PHP_VERSION 7.4.9
+ENV PHP_VERSION 8.4.12
 
 # -----------------------------------------------------------------------------
 # 基础工具
 # -----------------------------------------------------------------------------
 RUN apt-fast update -y \
-	&& apt-fast install -y imagemagick graphicsmagick libxml2 libxml2-dev libcurl3-openssl-dev libjpeg-dev libpng-dev libfreetype6-dev libmcrypt-dev pkg-config libsqlite3-dev autoconf automake libtool libwebp-dev libzip-dev git libmemcached-dev  \
+	&& apt-fast install -y \
+	imagemagick graphicsmagick libxml2 libxml2-dev \
+	libcurl4-openssl-dev \
+	libjpeg-dev libpng-dev libfreetype6-dev \
+	pkg-config libsqlite3-dev autoconf automake libtool \
+	libwebp-dev libzip-dev git libmemcached-dev \
+	build-essential \
 	&& ln -s /usr/lib/x86_64-linux-gnu/libssl.so  /usr/lib
 
 # -----------------------------------------------------------------------------
-# 安装 oniguruma (PHP 7.4.x中mbstring的正则表达式功能需要oniguruma)
+# 安装 oniguruma (PHP mbstring 需要)
 # -----------------------------------------------------------------------------
 RUN wget https://github.com/kkos/oniguruma/archive/v6.9.4.tar.gz -O oniguruma-6.9.4.tar.gz \
     && tar -zxvf oniguruma-6.9.4.tar.gz \
@@ -26,8 +32,9 @@ RUN wget https://github.com/kkos/oniguruma/archive/v6.9.4.tar.gz -O oniguruma-6.
 # -----------------------------------------------------------------------------
 # 安装 PHP 
 # -----------------------------------------------------------------------------
-RUN cd /home/work/_src \
-    && wget http://cn2.php.net/distributions/php-$PHP_VERSION.tar.gz -O /home/work/_src/php.tgz \
+RUN mkdir -p /home/work/_src \
+    && cd /home/work/_src \
+    && wget https://www.php.net/distributions/php-$PHP_VERSION.tar.gz -O php.tgz \
     && tar xzvf php.tgz \
     && cd php-$PHP_VERSION \
     && ./configure --prefix=/home/work/_app/php$PHP_VERSION \
@@ -40,7 +47,6 @@ RUN cd /home/work/_src \
 --enable-gd \
 --with-iconv \
 --with-zlib \
---enable-xml \
 --enable-bcmath \
 --enable-shmop \
 --enable-sysvsem \
@@ -52,7 +58,6 @@ RUN cd /home/work/_src \
 --with-openssl \
 --enable-pcntl \
 --enable-sockets \
---with-xmlrpc \
 --with-zip \
 --enable-soap \
 --without-pear \
@@ -60,7 +65,7 @@ RUN cd /home/work/_src \
 --enable-session \
 --with-curl \
 --enable-opcache \
-	&& make && make install \
+	&& make -j$(nproc) && make install \
     && cp php.ini-production /home/work/_app/php$PHP_VERSION/etc/php.ini \
     && cp /home/work/_app/php$PHP_VERSION/etc/php-fpm.conf.default /home/work/_app/php$PHP_VERSION/etc/php-fpm.conf \
     && cp /home/work/_app/php$PHP_VERSION/etc/php-fpm.d/www.conf.default /home/work/_app/php$PHP_VERSION/etc/php-fpm.d/www.conf \
@@ -70,7 +75,6 @@ RUN cd /home/work/_src \
 # -----------------------------------------------------------------------------   
     && mkdir -p /home/work/_logs/php /home/work/_app/php$PHP_VERSION/session \
     && chmod o=rwx -R /home/work/_app/php$PHP_VERSION/session \
-    && sed -i "s/pdo_mysql.default_socket=/pdo_mysql.default_socket=\/tmp\/mysql.sock/" /home/work/_app/php$PHP_VERSION/etc/php.ini \
     && sed -i "s/;date.timezone =.*/date.timezone = Asia\/Shanghai/" /home/work/_app/php$PHP_VERSION/etc/php.ini \
     && sed -i 's/max_execution_time = 30/max_execution_time = 300/g' /home/work/_app/php$PHP_VERSION/etc/php.ini \
     && sed -i 's/upload_max_filesize = 2M/upload_max_filesize = 256M/g' /home/work/_app/php$PHP_VERSION/etc/php.ini \
@@ -95,28 +99,27 @@ RUN cd /home/work/_src \
 
 # -----------------------------------------------------------------------------
 # 安装 php-redis
-# ----------------------------------------------------------------------------- 
+# -----------------------------------------------------------------------------
 RUN export PATH=$PATH:/home/work/_app/php$PHP_VERSION/bin:/home/work/_app/php$PHP_VERSION/sbin \
     && cd /home/work/_src \
     && git clone https://github.com/phpredis/phpredis.git \
     && cd phpredis \
     && phpize \
     && ./configure \
-    && make && make install \
+    && make -j$(nproc) && make install \
     && echo "extension=redis.so" >> /home/work/_app/php$PHP_VERSION/etc/php.ini
-
 
 # -----------------------------------------------------------------------------
 # 安装 php-memcached
-# ----------------------------------------------------------------------------- 
+# -----------------------------------------------------------------------------
 RUN export PATH=$PATH:/home/work/_app/php$PHP_VERSION/bin:/home/work/_app/php$PHP_VERSION/sbin \
     && cd /home/work/_src \
     && git clone https://github.com/php-memcached-dev/php-memcached.git \
     && cd php-memcached \
-    && git checkout v3.1.5 \
+    && git checkout v3.2.0 \
     && phpize \
     && ./configure \
-    && make && make install \
+    && make -j$(nproc) && make install \
     && echo "extension=memcached.so" >> /home/work/_app/php$PHP_VERSION/etc/php.ini
 
 # -----------------------------------------------------------------------------
@@ -133,6 +136,3 @@ RUN chmod 755 /hooks \
 # 设置变量
 # -----------------------------------------------------------------------------
 ENV PATH $PATH:/home/work/_app/php$PHP_VERSION/bin:/home/work/_app/php$PHP_VERSION/sbin
-
-
-
