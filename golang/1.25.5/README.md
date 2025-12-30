@@ -12,16 +12,9 @@ cd golang/1.25.5
 
 # Build
 docker buildx build \
+  --platform linux/amd64,linux/arm64 \
   -t registry.cn-beijing.aliyuncs.com/mshk/golang:1.25.5 \
-  --platform linux/amd64,linux/arm64 \
-  --push \
-  --no-cache \
-  --provenance=false \
-  --sbom=false .
-
- docker buildx build \
   -t idoall/golang:1.25.5 \
-  --platform linux/amd64,linux/arm64 \
   --push \
   --no-cache \
   --provenance=false \
@@ -29,11 +22,11 @@ docker buildx build \
 
 
 # view golang version
-docker run -it \
+docker run -i \
 --rm \
 --name golang \
 --hostname golang \
-idoall/golang:1.25.5 \
+registry.cn-beijing.aliyuncs.com/mshk/golang:1.25.5 \
 go version
 
 

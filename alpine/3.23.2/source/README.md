@@ -14,19 +14,13 @@ cd alpine/3.23.2/source
 # build
 docker buildx build \
   -t registry.cn-beijing.aliyuncs.com/mshk/alpine:3.23.2-source \
-  --platform linux/amd64,linux/arm64 \
-  --push \
-  --no-cache \
-  --provenance=false \
-  --sbom=false .
-
- docker buildx build \
   -t idoall/alpine:3.23.2-source \
   --platform linux/amd64,linux/arm64 \
   --push \
   --no-cache \
   --provenance=false \
   --sbom=false .
+
 ```
 
 ## 安装
