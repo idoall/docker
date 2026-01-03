@@ -1,0 +1,19 @@
+accessKeyId: testid
+accessKeySecret: testsecret
+log:
+  path: /var/log
+  level: debug # debug,info,warn,error
+  develop: true # 开发者模式，开启后会输出代码文件和堆栈信息
+ipv4_check_url: v4.myip.la #ipv4.icanhazip.com
+ipv6_check_url: v6.myip.la #ipv6.icanhazip.com
+ttl: 600
+interval: 60
+broadband_retry: 2
+cache: true
+customer:
+  - domain: your_domain.com
+    ipv4_rr: subdomain1
+    ipv6_rr: subdomain2
+  - domain: another_domain.com
+    ipv4_rr: subdomain1
+    ipv6_rr: subdomain2

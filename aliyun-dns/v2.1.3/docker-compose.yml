@@ -1,0 +1,16 @@
+services:
+
+
+##############################
+# aliyun_dns
+##############################
+  aliyun_dns:
+    image: "idoall/aliyun-dns:v2.1.3"
+    container_name: aliyun-dns
+    hostname: aliyun_dns
+    restart: unless-stopped
+    network_mode: host
+    volumes: 
+      - /etc/config.yaml:/etc/config.yaml
+
+      

@@ -1,0 +1,65 @@
+version: "3.6"
+# https://docs.docker.com/compose/compose-file/
+# support Docker version 17.05.0-ce
+services:
+
+#################################### gitlab ######################################################
+
+##############################
+# mshk_gitlab
+##############################
+  mshk_gitlab:
+    image: "idoall/gitlab-ce:${VERSION}-ce.0"
+    hostname: mshk_gitlab
+    ports:
+      - "20052:22"
+      - "20050:80"
+      - "20051:443"
+    networks:
+      - mshk
+    volumes: ["gitlab-config:/etc/gitlab", "gitlab-logs:/var/log/gitlab", "gitlab-data:/var/opt/gitlab"]
+    environment:
+      GITLAB_OMNIBUS_CONFIG: "from_file('/omnibus_config.rb')"
+    configs:
+      - source: gitlab
+        target: /omnibus_config.rb
+    secrets:
+      - gitlab_root_password
+    deploy:
+      replicas: 1
+      update_config:
+        delay: 1s
+      restart_policy:
+        condition: on-failure
+  # mshk_gitlab-runner1:
+  #   image: gitlab/gitlab-runner:alpine-v${VERSION}
+  #   # volumes: ["gitlab-runner1-config:/etc/gitlab-runner:Z", "/var/run/docker.sock:/var/run/docker.sock"]
+  #   volumes: ["/var/run/docker.sock:/var/run/docker.sock"]
+  # mshk_gitlab-runner2:
+  #   image: gitlab/gitlab-runner:alpine-v${VERSION}
+  #   volumes: ["/var/run/docker.sock:/var/run/docker.sock"]
+  # mshk_gitlab-runner3:
+  #   image: gitlab/gitlab-runner:alpine-v${VERSION}
+  #   volumes: ["/var/run/docker.sock:/var/run/docker.sock"]
+
+
+
+configs:
+  gitlab:
+    file: gitlab.rb
+secrets:
+  gitlab_root_password:
+    file: root_password.txt
+
+volumes:
+  gitlab-config:
+  gitlab-logs:
+  gitlab-data:
+  gitlab-runner1-config:
+  gitlab-runner2-config:
+  gitlab-runner3-config:
+    
+# 统一网络设置
+networks:
+  mshk:
+    driver: overlay
